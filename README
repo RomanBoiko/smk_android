@@ -1,0 +1,37 @@
+==Smarkets Android App==
+
+Development setup (draft):
+
+-download ANDROID SDK
+
+-finish installation using Aandroid SDK Manager:
+	../../apps/android-sdk-linux/tools/android
+
+-setup env variables:
+	export ANDROID_HOME=/home/vu/apps/android-sdk-linux
+	export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
+-create Android VM instance with name "smk" using properties from http://www.gsmarena.com/samsung_galaxy_ace_s5830-3724.php
+	../../apps/android-sdk-linux/tools/android avd
+
+-setup Maven >= 3.0.4
+
+-install client jar into local repo:
+	mvn install:install-file \
+		-Dfile=$ANDROID_HOME/platforms/android-17/android.jar \
+		-DgroupId=com.google.android \
+		-DartifactId=android \
+		-Dversion=17 \
+		-Dpackaging=jar
+
+-fix libGL link issue:
+	sudo apt-get install libgl1-mesa-dev
+	ln -s /usr/lib/libGL.so ~/apps/android-sdk-linux/tools/lib/libGL.so
+
+-start emulator, build and deploy smk app:
+	mvn clean install android:emulator-start android:deploy
+
+#manual emulator start
+	#../../apps/android-sdk-linux/tools/emulator -avd smk
+#new project
+	#http://stand.spree.de/wiki_details_maven_archetypes
