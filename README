@@ -12,17 +12,12 @@ Development setup (draft):
 	export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 -create Android VM instance with name "smk" using properties from http://www.gsmarena.com/samsung_galaxy_ace_s5830-3724.php
-	../../apps/android-sdk-linux/tools/android avd
+	$ANDROID_HOME/tools/android avd
 
 -setup Maven >= 3.0.4
 
 -install client jar into local repo:
-	mvn install:install-file \
-		-Dfile=$ANDROID_HOME/platforms/android-17/android.jar \
-		-DgroupId=com.google.android \
-		-DartifactId=android \
-		-Dversion=17 \
-		-Dpackaging=jar
+	mvn install:install-file -Dfile=$ANDROID_HOME/platforms/android-17/android.jar -DgroupId=com.google.android -DartifactId=android -Dversion=17 -Dpackaging=jar
 
 -fix libGL link issue:
 	sudo apt-get install libgl1-mesa-dev
@@ -35,3 +30,15 @@ Development setup (draft):
 	#../../apps/android-sdk-linux/tools/emulator -avd smk
 #new project
 	#http://stand.spree.de/wiki_details_maven_archetypes
+
+
+#update piqi file from https://github.com/smarkets/smk_api_common/blob/master/seto.piqi to src/main/resources
+#update piqi file from https://github.com/smarkets/eto_common/blob/master/eto.piqi to src/main/resources
+
+
+#piqi/protoc generation
+tools/piqi to-proto src/main/resources/eto.piqi -o src/main/resources/smarkets.eto.piqi.proto
+tools/piqi to-proto src/main/resources/seto.piqi -o src/main/resources/smarkets.seto.piqi.proto
+
+/usr/bin/protoc -I=src/main/resources --java_out=src/main/java src/main/resources/smarkets.eto.piqi.proto
+/usr/bin/protoc -I=src/main/resources --java_out=src/main/java src/main/resources/smarkets.seto.piqi.proto
