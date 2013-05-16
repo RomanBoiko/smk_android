@@ -1,3 +1,5 @@
+package com.smarkets.android;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -10,12 +12,15 @@ import smarkets.seto.SmarketsSetoPiqi;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
+import com.smarkets.android.SmkConfig;
 
 public class SmarketsStreamingApiTest {
+	
+	private SmkConfig smkConfig = new SmkConfig();
 
 	@Test
 	public void shouldLoginToSmkWithoutExceptions() throws UnknownHostException, IOException {
-		SmarketsSetoPiqi.Payload loginRequest = loginRequest("user@smarkets.com", "password");
+		SmarketsSetoPiqi.Payload loginRequest = loginRequest(smkConfig.smkTestUserLogin, smkConfig.smkTestUserPassword);
 		System.out.println("===>request:" + loginRequest.toString());
 		ByteString responseBytes = getSmkResponse(loginRequest);
 		SmarketsSetoPiqi.Payload loginResponse = SmarketsSetoPiqi.Payload.parseFrom(responseBytes);
@@ -23,7 +28,7 @@ public class SmarketsStreamingApiTest {
 	}
 
 	private ByteString getSmkResponse(SmarketsSetoPiqi.Payload loginRequest) throws UnknownHostException, IOException {
-		Socket ssl = new Socket("api-sandbox.smarkets.com", 3701);
+		Socket ssl = new Socket(smkConfig.smkStreamingApiHost, smkConfig.smkStreamingApiPort);
 		CodedOutputStream co = CodedOutputStream.newInstance(ssl.getOutputStream());
 
 		int byteCount = loginRequest.getSerializedSize();

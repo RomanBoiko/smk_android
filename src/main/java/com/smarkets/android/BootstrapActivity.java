@@ -1,4 +1,4 @@
-package com.smarkets;
+package com.smarkets.android;
 
 import android.app.Activity;
 import android.os.Bundle;
