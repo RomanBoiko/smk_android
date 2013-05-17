@@ -18985,7 +18985,7 @@ public final class SmarketsSetoPiqi {
       
       public smarkets.seto.SmarketsSetoPiqi.Events buildPartial() {
         smarkets.seto.SmarketsSetoPiqi.Events result = new smarkets.seto.SmarketsSetoPiqi.Events(this);
-        int from_bitField0_ = bitField0_;
+//        int from_bitField0_ = bitField0_;
         if (withMarketsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             withMarkets_ = java.util.Collections.unmodifiableList(withMarkets_);
@@ -27582,7 +27582,7 @@ public final class SmarketsSetoPiqi {
       
       public smarkets.seto.SmarketsSetoPiqi.orders_for_account buildPartial() {
         smarkets.seto.SmarketsSetoPiqi.orders_for_account result = new smarkets.seto.SmarketsSetoPiqi.orders_for_account(this);
-        int from_bitField0_ = bitField0_;
+//        int from_bitField0_ = bitField0_;
         if (marketsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             markets_ = java.util.Collections.unmodifiableList(markets_);
