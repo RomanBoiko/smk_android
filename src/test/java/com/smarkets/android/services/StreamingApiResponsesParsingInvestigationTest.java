@@ -49,6 +49,7 @@ public class StreamingApiResponsesParsingInvestigationTest {
 		assertThat(accountStateResponse.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ACCOUNT_STATE));
 		assertThat(accountStateResponse.getAccountState().getAccount().getLow(), is(34L));
 		assertThat(accountStateResponse.getAccountState().getCurrency(), is(Currency.CURRENCY_GBP));
+		assertThat(accountStateResponse.getAccountState().getCurrency().toString().replace("CURRENCY_", ""), is("GBP"));
 		assertThat(accountStateResponse.getAccountState().getCash().getValue(), is(200L));
 		assertThat(accountStateResponse.getAccountState().getBonus().getValue(), is(201L));
 		assertThat(accountStateResponse.getAccountState().getExposure().getValue(), is(202L));

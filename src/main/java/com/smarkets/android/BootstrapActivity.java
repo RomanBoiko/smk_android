@@ -23,7 +23,7 @@ public class BootstrapActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
-		setContentView(R.layout.main);
+		setContentView(R.layout.login);
 		txtUserName = (EditText) this.findViewById(R.id.txtUname);
 		txtPassword = (EditText) this.findViewById(R.id.txtPwd);
 		btnLogin = (Button) this.findViewById(R.id.btnLogin);
