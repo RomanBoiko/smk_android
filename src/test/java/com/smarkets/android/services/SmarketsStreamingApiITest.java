@@ -15,7 +15,7 @@ import com.smarkets.android.SmkConfig;
 
 import smarkets.seto.SmarketsSetoPiqi;
 
-public class SmarketsStreamingApiIntegrationTest {
+public class SmarketsStreamingApiITest {
 
 	private final Logger log = Logger.getLogger(getClass());
 	private SmkConfig smkConfig = new SmkConfig();
