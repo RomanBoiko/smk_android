@@ -12,6 +12,7 @@ import smarkets.seto.SmarketsSetoPiqi;
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 import smarkets.seto.SmarketsSetoPiqi.Currency;
 import smarkets.seto.SmarketsSetoPiqi.Decimal;
+import smarkets.seto.SmarketsSetoPiqi.HttpFound;
 import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
 public class StreamingApiResponsesParsingInvestigationTest {
@@ -67,5 +68,26 @@ public class StreamingApiResponsesParsingInvestigationTest {
 						.setExposure(Decimal.newBuilder().setValue(202L).build())
 						.build())
 				.build();
+	}
+	
+	@Test
+	public void shouldGenerateFootballEventsReponseMocks() {
+		SmarketsSetoPiqi.Payload eventsResponse = footballEventsResponse();
+		log.debug(eventsResponse);
+		
+		assertThat(eventsResponse.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_HTTP_FOUND));
+		assertThat(eventsResponse.getHttpFound().getSeq(), is(3L));
+		assertThat(eventsResponse.getHttpFound().getUrl(), is("url"));
+	}
+
+	private SmarketsSetoPiqi.Payload footballEventsResponse() {
+		return SmarketsSetoPiqi.Payload.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_HTTP_FOUND)
+				.setEtoPayload(SmarketsEtoPiqi.Payload.newBuilder().setSeq(3L).build())
+				.setHttpFound(HttpFound.newBuilder()
+						.setSeq(3L)
+						.setUrl("url")
+				.build())
+			.build();
 	}
 }

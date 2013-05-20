@@ -1,4 +1,4 @@
-package com.smarkets.android.services;
+package com.smarkets.android.domain;
 
 import static java.lang.String.format;
 

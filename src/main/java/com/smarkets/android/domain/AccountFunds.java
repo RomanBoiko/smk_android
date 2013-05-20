@@ -1,6 +1,8 @@
-package com.smarkets.android.services;
+package com.smarkets.android.domain;
 
-import static com.smarkets.android.services.CashAmount.cashAmountWithCurrency;
+import static com.smarkets.android.domain.CashAmount.cashAmountWithCurrency;
+
+
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 
 public class AccountFunds {

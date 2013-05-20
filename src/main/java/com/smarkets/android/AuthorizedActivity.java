@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.smarkets.android.services.AccountFunds;
+import com.smarkets.android.domain.AccountFunds;
 import com.smarkets.android.services.StreamingApiClient;
 import com.smarkets.android.services.StreamingApiRequestsFactory;
 

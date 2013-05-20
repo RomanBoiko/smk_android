@@ -55,6 +55,19 @@ public class SmarketsStreamingApiIntegrationTest {
 		
 	}
 
+	@Test
+	public void shouldGetFootballEvents() throws UnknownHostException, IOException {
+		StreamingApiClient streamingApi = loggedInSmkApi();
+		SmarketsSetoPiqi.Payload footballEventsRequest = factory.todaysFootballEventsRequest();
+		log.info("Football events request:" + footballEventsRequest.toString());
+		SmarketsSetoPiqi.Payload footballEventsResponse = streamingApi.getSmkResponse(footballEventsRequest);
+		log.info("Football events response:" + footballEventsResponse.toString());
+		logoutFromSmk(streamingApi);
+		assertThat(footballEventsResponse.toString(), containsString("http_found {"));
+		
+//		SmarketsSetoPiqi.Payload footballEvents = streamingApi.getSmkResponseViaHttp(footballEventsResponse.getHttpFound().getUrl());
+	}
+
 	private StreamingApiClient loggedInSmkApi () throws UnknownHostException, IOException {
 		StreamingApiClient streamingApi = streamingApiClient();
 		SmarketsSetoPiqi.Payload loginRequest = factory.loginRequest(smkConfig.smkTestUserLogin, smkConfig.smkTestUserPassword);

@@ -1,9 +1,11 @@
-package com.smarkets.android.services;
+package com.smarkets.android.domain;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import com.smarkets.android.domain.AccountFunds;
 
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 import smarkets.seto.SmarketsSetoPiqi.Currency;
