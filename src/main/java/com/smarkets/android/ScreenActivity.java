@@ -1,11 +1,21 @@
 package com.smarkets.android;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +46,7 @@ public class ScreenActivity extends Activity {
 			public void onClick(View v) {
 				if (smkService.login(txtUserName.getText().toString(), txtPassword.getText().toString())) {
 					Toast.makeText(ScreenActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
-					showFunds();
+					authorizedView();
 				} else {
 					Toast.makeText(ScreenActivity.this, "Invalid Login", Toast.LENGTH_LONG).show();
 				}
@@ -49,9 +59,68 @@ public class ScreenActivity extends Activity {
 			}
 		});
 	}
-	
-	private void showFunds () {
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.my_options_menu, menu);
+		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.about:
+			Toast.makeText(ScreenActivity.this, "about", Toast.LENGTH_SHORT).show();
+			return true;
+		case R.id.help:
+			Toast.makeText(ScreenActivity.this, "help", Toast.LENGTH_SHORT).show();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	private void authorizedView() {
 		setContentView(R.layout.authorized);
+		showFunds();
+		ListView listview = (ListView) findViewById(R.id.listview);
+	    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+	        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
+	        "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
+	        "Android", "iPhone", "WindowsMobile" };
+
+	    final ArrayList<String> list = new ArrayList<String>();
+	    for (int i = 0; i < values.length; ++i) {
+	      list.add(values[i]);
+	    }
+	    final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+	    listview.setAdapter(adapter);
+	}
+	
+	private class StableArrayAdapter extends ArrayAdapter<String> {
+
+	    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+
+	    public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
+	      super(context, textViewResourceId, objects);
+	      for (int i = 0; i < objects.size(); ++i) {
+	        mIdMap.put(objects.get(i), i);
+	      }
+	    }
+
+	    @Override
+	    public long getItemId(int position) {
+	      String item = getItem(position);
+	      return mIdMap.get(item);
+	    }
+
+	    @Override
+	    public boolean hasStableIds() {
+	      return true;
+	    }
+
+	  }
+	private void showFunds() {
 		TextView cash = (TextView) this.findViewById(R.id.cash);
 		TextView bonus = (TextView) this.findViewById(R.id.bonus);
 		TextView exposure = (TextView) this.findViewById(R.id.exposure);
