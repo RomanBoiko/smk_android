@@ -1,23 +1,21 @@
 package com.smarkets.android.services;
 
-import static org.apache.log4j.Logger.getLogger;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 import com.smarkets.android.SmkConfig;
 
 public class JsonEventsSource {
 
-	private static final Logger LOG = getLogger(JsonEventsSource.class);
 	private static final SmkConfig CONFIG = new SmkConfig();
 	private final JSONObject json;
 
@@ -28,8 +26,7 @@ public class JsonEventsSource {
 	public static JsonEventsSource fetchViaHttp(String jsonUrl) throws IOException, JSONException {
 		jsonUrl = CONFIG.smkRestApiRoot + jsonUrl;
 
-		LOG.info("Fetching events using url: " + jsonUrl);
-
+		Log.i("smk_jsonsource", "Url for json: " + jsonUrl);
 		URL url = new URL(jsonUrl);
 		URLConnection conn = url.openConnection();
 

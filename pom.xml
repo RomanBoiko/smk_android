@@ -11,6 +11,7 @@
 	<properties>
 		<java.version>1.6</java.version>
 		<android.platform.version>2.3.3</android.platform.version>
+		<android.sdk.path>c:/dev/apps/android-sdk</android.sdk.path>
 	</properties>
 
 
@@ -53,6 +54,7 @@
 				<configuration>
 					<excludes>
 						<exclude>**/*ITest.java</exclude>
+						<exclude>**/view/*ActivityTest.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -92,6 +94,12 @@
 		</dependency>
 
 		<!-- TEST_SCOPE -->
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-test</artifactId>
+			<version>${android.platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>

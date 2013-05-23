@@ -25,6 +25,15 @@ Development setup (draft):
 
 -start emulator, build and deploy smk app:
 	mvn clean install android:emulator-start android:deploy
+	
+-run instrument tests:
+	mvn install -DskipITs -DskipTests android:instrument
+	
+-deploy app to device:
+	 mvn install android:deploy -DskipTests -DskipITs
+	 
+-read android logs
+	$ANDROID_HOME/platform-tools/adb logcat
 
 #manual emulator start
 	#../../apps/android-sdk-linux/tools/emulator -avd smk
