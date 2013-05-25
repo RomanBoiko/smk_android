@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:stretchColumns="1">
+	<TableRow>
+		<TextView android:text="Account Details" android:id="@+id/accountDetailsHeader"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+	</TableRow>
+	<TableRow>
+		<TextView android:text="Cash: " android:id="@+id/cashHeader"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+		<TextView android:text="" android:id="@+id/cash"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+	</TableRow>
+	<TableRow>
+		<TextView android:text="Bonus: " android:id="@+id/bonusHeader"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+		<TextView android:text="" android:id="@+id/bonus"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+	</TableRow>
+	<TableRow>
+		<TextView android:text="Exposure: " android:id="@+id/exposureHeader"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+		<TextView android:text="" android:id="@+id/exposure"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+		</TextView>
+	</TableRow>
+</TableLayout>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="logged_in_info">Loading account data...</string>
     <string name="app_name">Smarkets</string>
 </resources>

@@ -1,31 +1,32 @@
 package com.smarkets.android;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import static com.smarkets.android.services.RestApiClient.getEventsRoot;
+
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.smarkets.android.domain.AccountFunds;
+import com.smarkets.android.domain.SmkEvent;
 
 public class ScreenActivity extends Activity {
 
+	public final static String LOG_TAG = "smarkets";
+
 	private SmkStreamingService smkService = new SmkStreamingService();
 
-	private static String TAG = "smarkets";
 	private static String EMPTY = "";
 
 	private EditText txtUserName;
@@ -36,7 +37,7 @@ public class ScreenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreate");
+		Log.i(LOG_TAG, "onCreate");
 		setContentView(R.layout.login);
 		txtUserName = (EditText) this.findViewById(R.id.txtUname);
 		txtPassword = (EditText) this.findViewById(R.id.txtPwd);
@@ -58,18 +59,20 @@ public class ScreenActivity extends Activity {
 				txtPassword.setText(EMPTY);
 			}
 		});
+		// For events development
+//		authorizedView();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.my_options_menu, menu);
+		inflater.inflate(R.menu.smkmenu, menu);
 		return true;
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.about:
-			Toast.makeText(ScreenActivity.this, "about", Toast.LENGTH_SHORT).show();
+		case R.id.account:
+			new AccountStateViewDialog(this).showFunds(smkService);
 			return true;
 		case R.id.help:
 			Toast.makeText(ScreenActivity.this, "help", Toast.LENGTH_SHORT).show();
@@ -81,63 +84,26 @@ public class ScreenActivity extends Activity {
 
 	private void authorizedView() {
 		setContentView(R.layout.authorized);
-		showFunds();
-		ListView listview = (ListView) findViewById(R.id.listview);
-	    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-	        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-	        "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-	        "Android", "iPhone", "WindowsMobile" };
+		final ListView listview = (ListView) this.findViewById(R.id.listview);
 
-	    final ArrayList<String> list = new ArrayList<String>();
-	    for (int i = 0; i < values.length; ++i) {
-	      list.add(values[i]);
-	    }
-	    final StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-	    listview.setAdapter(adapter);
+		listview.setAdapter(eventsSourceAdapter(getEventsRoot().getChildren()));
+		listview.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				List<SmkEvent> children = ((SmkEvent)listview.getAdapter().getItem(position)).getChildren();
+				if(!children.isEmpty()) {
+					listview.setAdapter(eventsSourceAdapter(children));
+				}
+			}
+
+		});
 	}
-	
-	private class StableArrayAdapter extends ArrayAdapter<String> {
 
-	    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-	    public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
-	      super(context, textViewResourceId, objects);
-	      for (int i = 0; i < objects.size(); ++i) {
-	        mIdMap.put(objects.get(i), i);
-	      }
-	    }
-
-	    @Override
-	    public long getItemId(int position) {
-	      String item = getItem(position);
-	      return mIdMap.get(item);
-	    }
-
-	    @Override
-	    public boolean hasStableIds() {
-	      return true;
-	    }
-
-	  }
-	private void showFunds() {
-		TextView cash = (TextView) this.findViewById(R.id.cash);
-		TextView bonus = (TextView) this.findViewById(R.id.bonus);
-		TextView exposure = (TextView) this.findViewById(R.id.exposure);
-
-		try {
-			AccountFunds accountFunds = smkService.getAccountStatus();
-			cash.setText(accountFunds.getCash().toString());
-			bonus.setText(accountFunds.getBonus().toString());
-			exposure.setText(accountFunds.getExposure().toString());
-		} catch (Exception e) {
-			Log.e(TAG, "Account status not retrieved", e);
-			throw new RuntimeException(e);
-		}
+	private ArrayAdapter<SmkEvent> eventsSourceAdapter(List<SmkEvent> children) {
+		return new ArrayAdapter<SmkEvent>(this, android.R.layout.simple_list_item_1, children);
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle instanceStateToSave) {
-		Log.i(TAG, "saveOnShutdown");
+		Log.i(LOG_TAG, "saveOnShutdown");
 	}
 }

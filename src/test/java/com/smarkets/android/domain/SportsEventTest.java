@@ -9,13 +9,13 @@ public class SportsEventTest {
 
 	@Test
 	public void shouldParseDateFromUrl() {
-		SportsEvent event = new SportsEvent("eventName", "events/sport/football/irish-fai-cup/2013/06/02/avondale-vs-sheriff-yc");
+		SmkEvent event = new SmkEvent("eventName", "events/sport/football/irish-fai-cup/2013/06/02/avondale-vs-sheriff-yc", null);
 		assertThat(event.date, is("2013/06/02"));
 	}
 
 	@Test
 	public void shouldUseDefaultDateIfEventDateNotFoundInUrl() {
-		SportsEvent event = new SportsEvent("eventName", "events/sport/football/irish-fai-cup/");
+		SmkEvent event = new SmkEvent("eventName", "events/sport/football/irish-fai-cup/", null);
 		assertThat(event.date, is("1970/01/01"));
 	}
 

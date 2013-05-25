@@ -51,6 +51,9 @@ public class JsonEventsSource {
 	}
 
 	private JSONArray getEventChildrenByTagName(String childrenTagName) throws JSONException {
+		if (json.getJSONArray("event").length()>1) {
+			return json.getJSONArray("event");
+		}
 		return json.getJSONArray("event").getJSONObject(0).getJSONArray(childrenTagName);
 	}
 
