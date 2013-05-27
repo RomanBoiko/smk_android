@@ -1,7 +1,14 @@
 package com.smarkets.android;
 
+import static com.smarkets.android.domain.BetType.BUY;
+import static com.smarkets.android.domain.BetType.SELL;
+
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 import smarkets.seto.SmarketsSetoPiqi.Currency;
@@ -9,6 +16,7 @@ import smarkets.seto.SmarketsSetoPiqi.Decimal;
 import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
 import com.smarkets.android.domain.AccountFunds;
+import com.smarkets.android.domain.Bet;
 
 public class SmkStreamingService {
 	public boolean login(String username, String password) {
@@ -32,5 +40,20 @@ public class SmkStreamingService {
 				.setExposure(Decimal.newBuilder().setValue(202000L).build())
 				.build();
 		return new AccountFunds(state);
+	}
+
+	public String contractNameForId(Long contractId) {
+		return "SomeContractName";
+	}
+
+	public String marketNameForId(Long marketId) {
+		return "Over/under 5.5 for Botafogo vs. CRB";
+	}
+
+	public List<Bet> currentBets() {
+		return Arrays.asList(
+				new Bet(BUY, 111L, 112L, 113L, new BigDecimal("12.23"), new BigDecimal("25.0"), new Date(), this),
+				new Bet(BUY, 211L, 212L, 213L, new BigDecimal("23.12"), new BigDecimal("30.0"), new Date(), this),
+				new Bet(SELL, 311L, 312L, 313L, new BigDecimal("15.13"), new BigDecimal("40.0"), new Date(), this));
 	}
 }

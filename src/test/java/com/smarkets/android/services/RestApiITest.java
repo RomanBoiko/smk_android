@@ -8,11 +8,17 @@ import java.io.IOException;
 import java.util.List;
 
 import org.json.JSONException;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import com.smarkets.android.LongRunningActionAlert;
 import com.smarkets.android.domain.SmkEvent;
 
+@RunWith(MockitoJUnitRunner.class)
 public class RestApiITest {
 
+	@Mock LongRunningActionAlert alert;
 	//Long running test(goes through full tree of events) 
 	//execute only manually for finding corrupted events
 //	@Test
@@ -21,9 +27,9 @@ public class RestApiITest {
 	}
 	
 	private void walkThroughEventChildren(SmkEvent parentEvent) throws JSONException, IOException {
-		List<SmkEvent> children = parentEvent.getChildren();
+		List<SmkEvent> children = parentEvent.getChildren(alert);
 		if (children.isEmpty()) {
-			assertThat(parentEvent.getMarkets(), is(notNullValue()));
+			assertThat(parentEvent.getMarkets(alert), is(notNullValue()));
 		}
 		for (SmkEvent child : children) {
 			walkThroughEventChildren(child);
