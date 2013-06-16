@@ -53,6 +53,7 @@ message Payload {
     optional orders_for_market orders_for_market = 23;
     optional AccountStateRequest account_state_request = 24;
     optional AccountState account_state = 25;
+    optional DowntimeAlert downtime_alert = 26;
 }
 
 enum PayloadType {
@@ -80,6 +81,7 @@ enum PayloadType {
     PAYLOAD_ORDERS_FOR_MARKET = 22;
     PAYLOAD_ACCOUNT_STATE_REQUEST = 23;
     PAYLOAD_ACCOUNT_STATE = 24;
+    PAYLOAD_DOWNTIME_ALERT = 25;
 }
 
 message Uuid128 {
@@ -102,10 +104,17 @@ message OrderCreate {
     required uint32 quantity = 6;
     optional PriceType price_type = 7;
     optional uint32 price = 8;
+    optional uint32 maq = 9;
+    optional TimeInForceType tif = 10;
 }
 
 enum OrderCreateType {
     ORDER_CREATE_LIMIT = 1;
+}
+
+enum TimeInForceType {
+    GOOD_TIL_CANCELLED = 1;
+    IMMEDIATE_OR_CANCEL = 2;
 }
 
 message OrderRejected {
@@ -127,6 +136,8 @@ enum OrderRejectedReason {
     ORDER_REJECTED_CROSSED_SELF = 6;
     ORDER_REJECTED_MARKET_NOT_FOUND = 7;
     ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE = 8;
+    ORDER_REJECTED_CONTRACT_NOT_FOUND = 9;
+    ORDER_REJECTED_ACCOUNT_SUSPENDED = 10;
 }
 
 enum OrderCancelRejectedReason {
@@ -144,6 +155,7 @@ message OrderExecuted {
     required uint32 price = 2;
     required QuantityType quantity_type = 3;
     required uint32 quantity = 4;
+    optional uint32 account_sequence = 5;
 }
 
 message OrderCancel {
@@ -250,6 +262,14 @@ enum SportByDateType {
     SPORT_BY_DATE_FOOTBALL = 1;
     SPORT_BY_DATE_HORSE_RACING = 2;
     SPORT_BY_DATE_TENNIS = 3;
+    SPORT_BY_DATE_BASKETBALL = 4;
+    SPORT_BY_DATE_AMERICANFOOTBALL = 5;
+    SPORT_BY_DATE_BASEBALL = 6;
+    SPORT_BY_DATE_CRICKET = 7;
+    SPORT_BY_DATE_HANDBALL = 8;
+    SPORT_BY_DATE_RUGBY = 9;
+    SPORT_BY_DATE_RUGBYLEAGUE = 10;
+    SPORT_BY_DATE_VOLLEYBALL = 11;
 }
 
 message Events {
@@ -328,6 +348,18 @@ enum EventType {
     EVENT_BOXING_MATCH = 21;
     EVENT_AMERICAN_FOOTBALL_MATCH = 22;
     EVENT_RUGBY_UNION_MATCH = 23;
+    EVENT_BASKETBALL_MATCH = 24;
+    EVENT_BASKETBALL_SEASON = 25;
+    EVENT_CRICKET_MATCH = 26;
+    EVENT_CRICKET_SEASON = 27;
+    EVENT_VOLLEYBALL_MATCH = 28;
+    EVENT_HANDBALL_MATCH = 29;
+    EVENT_RUGBY_UNION_SEASON = 30;
+    EVENT_RUGBY_LEAGUE_MATCH = 31;
+    EVENT_RUGBY_LEAGUE_SEASON = 32;
+    EVENT_AMERICAN_FOOTBALL_SEASON = 33;
+    EVENT_BASEBALL_MATCH = 34;
+    EVENT_BASEBALL_SEASON = 35;
 }
 
 enum EntityRelationshipType {
@@ -460,5 +492,13 @@ enum Currency {
 message Decimal {
     required sint64 value = 1;
     optional uint32 exponent = 2 [default = 2];
+}
+
+message DowntimeAlert {
+    required DowntimeAlertType type = 1;
+}
+
+enum DowntimeAlertType {
+    DOWNTIME_ALERT_ORDER_CREATE = 1;
 }
 

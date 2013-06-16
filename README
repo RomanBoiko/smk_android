@@ -46,8 +46,8 @@ Development setup (draft):
 
 
 #piqi/protoc generation
-tools/piqi to-proto src/main/resources/eto.piqi -o src/main/resources/smarkets.eto.piqi.proto
-tools/piqi to-proto src/main/resources/seto.piqi -o src/main/resources/smarkets.seto.piqi.proto
+piqi to-proto -I src/main/resources/ src/main/resources/eto.piqi -o src/main/resources/smarkets.eto.piqi.proto
+piqi to-proto -I src/main/resources/ src/main/resources/seto.piqi -o src/main/resources/smarkets.seto.piqi.proto
 
 /usr/bin/protoc -I=src/main/resources --java_out=src/main/java src/main/resources/smarkets.eto.piqi.proto
 /usr/bin/protoc -I=src/main/resources --java_out=src/main/java src/main/resources/smarkets.seto.piqi.proto

@@ -9,6 +9,7 @@ message Payload {
     optional Login login = 5;
     optional LoginResponse login_response = 6;
     optional Logout logout = 7;
+    optional DowntimeAlert downtime_alert = 8;
 }
 
 enum PayloadType {
@@ -21,6 +22,7 @@ enum PayloadType {
     PAYLOAD_LOGIN = 7;
     PAYLOAD_LOGIN_RESPONSE = 8;
     PAYLOAD_LOGOUT = 9;
+    PAYLOAD_DOWNTIME_ALERT = 10;
 }
 
 message Replay {
@@ -49,5 +51,35 @@ enum LogoutReason {
     LOGOUT_UNKNOWN_SESSION = 6;
     LOGOUT_UNAUTHORISED = 7;
     LOGOUT_SERVICE_TEMPORARILY_UNAVAILABLE = 8;
+    LOGOUT_DOWNTIME = 9;
+}
+
+message DowntimeAlert {
+    optional DowntimeAlertType type = 1;
+    optional DateTime datetime = 2;
+    optional string description = 3;
+}
+
+enum DowntimeAlertType {
+    DOWNTIME_ALERT_CONNECTION = 1;
+    DOWNTIME_ALERT_FUNCTIONALITY = 2;
+    DOWNTIME_ALERT_CANCELLED = 3;
+    DOWNTIME_ALERT_SERVICE_RESUMED = 4;
+}
+
+message Date {
+    required uint32 year = 1;
+    required uint32 month = 2;
+    required uint32 day = 3;
+}
+
+message Time {
+    required uint32 hour = 1;
+    required uint32 minute = 2;
+}
+
+message DateTime {
+    required Date date = 1;
+    required Time time = 2;
 }
 

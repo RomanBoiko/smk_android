@@ -34,6 +34,7 @@ public final class SmarketsSetoPiqi {
     PAYLOAD_ORDERS_FOR_MARKET(21, 22),
     PAYLOAD_ACCOUNT_STATE_REQUEST(22, 23),
     PAYLOAD_ACCOUNT_STATE(23, 24),
+    PAYLOAD_DOWNTIME_ALERT(24, 25),
     ;
     
     public static final int PAYLOAD_ETO_VALUE = 1;
@@ -60,6 +61,7 @@ public final class SmarketsSetoPiqi {
     public static final int PAYLOAD_ORDERS_FOR_MARKET_VALUE = 22;
     public static final int PAYLOAD_ACCOUNT_STATE_REQUEST_VALUE = 23;
     public static final int PAYLOAD_ACCOUNT_STATE_VALUE = 24;
+    public static final int PAYLOAD_DOWNTIME_ALERT_VALUE = 25;
     
     
     public final int getNumber() { return value; }
@@ -90,6 +92,7 @@ public final class SmarketsSetoPiqi {
         case 22: return PAYLOAD_ORDERS_FOR_MARKET;
         case 23: return PAYLOAD_ACCOUNT_STATE_REQUEST;
         case 24: return PAYLOAD_ACCOUNT_STATE;
+        case 25: return PAYLOAD_DOWNTIME_ALERT;
         default: return null;
       }
     }
@@ -120,7 +123,7 @@ public final class SmarketsSetoPiqi {
     }
     
     private static final PayloadType[] VALUES = {
-      PAYLOAD_ETO, PAYLOAD_LOGIN, PAYLOAD_ORDER_CREATE, PAYLOAD_ORDER_REJECTED, PAYLOAD_ORDER_ACCEPTED, PAYLOAD_ORDER_EXECUTED, PAYLOAD_ORDER_CANCEL, PAYLOAD_ORDER_CANCELLED, PAYLOAD_ORDER_INVALID, PAYLOAD_MARKET_SUBSCRIBE, PAYLOAD_MARKET_UNSUBSCRIBE, PAYLOAD_MARKET_QUOTES_REQUEST, PAYLOAD_MARKET_QUOTES, PAYLOAD_CONTRACT_QUOTES, PAYLOAD_EVENTS_REQUEST, PAYLOAD_HTTP_FOUND, PAYLOAD_INVALID_REQUEST, PAYLOAD_ORDER_CANCEL_REJECTED, PAYLOAD_ORDERS_FOR_ACCOUNT_REQUEST, PAYLOAD_ORDERS_FOR_ACCOUNT, PAYLOAD_ORDERS_FOR_MARKET_REQUEST, PAYLOAD_ORDERS_FOR_MARKET, PAYLOAD_ACCOUNT_STATE_REQUEST, PAYLOAD_ACCOUNT_STATE, 
+      PAYLOAD_ETO, PAYLOAD_LOGIN, PAYLOAD_ORDER_CREATE, PAYLOAD_ORDER_REJECTED, PAYLOAD_ORDER_ACCEPTED, PAYLOAD_ORDER_EXECUTED, PAYLOAD_ORDER_CANCEL, PAYLOAD_ORDER_CANCELLED, PAYLOAD_ORDER_INVALID, PAYLOAD_MARKET_SUBSCRIBE, PAYLOAD_MARKET_UNSUBSCRIBE, PAYLOAD_MARKET_QUOTES_REQUEST, PAYLOAD_MARKET_QUOTES, PAYLOAD_CONTRACT_QUOTES, PAYLOAD_EVENTS_REQUEST, PAYLOAD_HTTP_FOUND, PAYLOAD_INVALID_REQUEST, PAYLOAD_ORDER_CANCEL_REJECTED, PAYLOAD_ORDERS_FOR_ACCOUNT_REQUEST, PAYLOAD_ORDERS_FOR_ACCOUNT, PAYLOAD_ORDERS_FOR_MARKET_REQUEST, PAYLOAD_ORDERS_FOR_MARKET, PAYLOAD_ACCOUNT_STATE_REQUEST, PAYLOAD_ACCOUNT_STATE, PAYLOAD_DOWNTIME_ALERT, 
     };
     
     public static PayloadType valueOf(
@@ -209,6 +212,75 @@ public final class SmarketsSetoPiqi {
     // @@protoc_insertion_point(enum_scope:smarkets.seto.OrderCreateType)
   }
   
+  public enum TimeInForceType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    GOOD_TIL_CANCELLED(0, 1),
+    IMMEDIATE_OR_CANCEL(1, 2),
+    ;
+    
+    public static final int GOOD_TIL_CANCELLED_VALUE = 1;
+    public static final int IMMEDIATE_OR_CANCEL_VALUE = 2;
+    
+    
+    public final int getNumber() { return value; }
+    
+    public static TimeInForceType valueOf(int value) {
+      switch (value) {
+        case 1: return GOOD_TIL_CANCELLED;
+        case 2: return IMMEDIATE_OR_CANCEL;
+        default: return null;
+      }
+    }
+    
+    public static com.google.protobuf.Internal.EnumLiteMap<TimeInForceType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<TimeInForceType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TimeInForceType>() {
+            public TimeInForceType findValueByNumber(int number) {
+              return TimeInForceType.valueOf(number);
+            }
+          };
+    
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(2);
+    }
+    
+    private static final TimeInForceType[] VALUES = {
+      GOOD_TIL_CANCELLED, IMMEDIATE_OR_CANCEL, 
+    };
+    
+    public static TimeInForceType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+    
+    private final int index;
+    private final int value;
+    
+    private TimeInForceType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+    
+    // @@protoc_insertion_point(enum_scope:smarkets.seto.TimeInForceType)
+  }
+  
   public enum OrderRejectedReason
       implements com.google.protobuf.ProtocolMessageEnum {
     ORDER_REJECTED_INSUFFICIENT_FUNDS(0, 1),
@@ -219,6 +291,8 @@ public final class SmarketsSetoPiqi {
     ORDER_REJECTED_CROSSED_SELF(5, 6),
     ORDER_REJECTED_MARKET_NOT_FOUND(6, 7),
     ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE(7, 8),
+    ORDER_REJECTED_CONTRACT_NOT_FOUND(8, 9),
+    ORDER_REJECTED_ACCOUNT_SUSPENDED(9, 10),
     ;
     
     public static final int ORDER_REJECTED_INSUFFICIENT_FUNDS_VALUE = 1;
@@ -229,6 +303,8 @@ public final class SmarketsSetoPiqi {
     public static final int ORDER_REJECTED_CROSSED_SELF_VALUE = 6;
     public static final int ORDER_REJECTED_MARKET_NOT_FOUND_VALUE = 7;
     public static final int ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE_VALUE = 8;
+    public static final int ORDER_REJECTED_CONTRACT_NOT_FOUND_VALUE = 9;
+    public static final int ORDER_REJECTED_ACCOUNT_SUSPENDED_VALUE = 10;
     
     
     public final int getNumber() { return value; }
@@ -243,6 +319,8 @@ public final class SmarketsSetoPiqi {
         case 6: return ORDER_REJECTED_CROSSED_SELF;
         case 7: return ORDER_REJECTED_MARKET_NOT_FOUND;
         case 8: return ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE;
+        case 9: return ORDER_REJECTED_CONTRACT_NOT_FOUND;
+        case 10: return ORDER_REJECTED_ACCOUNT_SUSPENDED;
         default: return null;
       }
     }
@@ -269,11 +347,11 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(2);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(3);
     }
     
     private static final OrderRejectedReason[] VALUES = {
-      ORDER_REJECTED_INSUFFICIENT_FUNDS, ORDER_REJECTED_LIMIT_EXCEEDED, ORDER_REJECTED_MARKET_NOT_OPEN, ORDER_REJECTED_MARKET_SETTLED, ORDER_REJECTED_MARKET_HALTED, ORDER_REJECTED_CROSSED_SELF, ORDER_REJECTED_MARKET_NOT_FOUND, ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE, 
+      ORDER_REJECTED_INSUFFICIENT_FUNDS, ORDER_REJECTED_LIMIT_EXCEEDED, ORDER_REJECTED_MARKET_NOT_OPEN, ORDER_REJECTED_MARKET_SETTLED, ORDER_REJECTED_MARKET_HALTED, ORDER_REJECTED_CROSSED_SELF, ORDER_REJECTED_MARKET_NOT_FOUND, ORDER_REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE, ORDER_REJECTED_CONTRACT_NOT_FOUND, ORDER_REJECTED_ACCOUNT_SUSPENDED, 
     };
     
     public static OrderRejectedReason valueOf(
@@ -338,7 +416,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(3);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(4);
     }
     
     private static final OrderCancelRejectedReason[] VALUES = {
@@ -410,7 +488,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(4);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(5);
     }
     
     private static final OrderCancelledReason[] VALUES = {
@@ -479,7 +557,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(5);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(6);
     }
     
     private static final OrderInvalidReason[] VALUES = {
@@ -545,7 +623,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(6);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(7);
     }
     
     private static final QuantityType[] VALUES = {
@@ -611,7 +689,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(7);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(8);
     }
     
     private static final PriceType[] VALUES = {
@@ -680,7 +758,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(8);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(9);
     }
     
     private static final Side[] VALUES = {
@@ -746,7 +824,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(9);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(10);
     }
     
     private static final ContentType[] VALUES = {
@@ -824,7 +902,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(10);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(11);
     }
     
     private static final EventsRequestType[] VALUES = {
@@ -856,11 +934,27 @@ public final class SmarketsSetoPiqi {
     SPORT_BY_DATE_FOOTBALL(0, 1),
     SPORT_BY_DATE_HORSE_RACING(1, 2),
     SPORT_BY_DATE_TENNIS(2, 3),
+    SPORT_BY_DATE_BASKETBALL(3, 4),
+    SPORT_BY_DATE_AMERICANFOOTBALL(4, 5),
+    SPORT_BY_DATE_BASEBALL(5, 6),
+    SPORT_BY_DATE_CRICKET(6, 7),
+    SPORT_BY_DATE_HANDBALL(7, 8),
+    SPORT_BY_DATE_RUGBY(8, 9),
+    SPORT_BY_DATE_RUGBYLEAGUE(9, 10),
+    SPORT_BY_DATE_VOLLEYBALL(10, 11),
     ;
     
     public static final int SPORT_BY_DATE_FOOTBALL_VALUE = 1;
     public static final int SPORT_BY_DATE_HORSE_RACING_VALUE = 2;
     public static final int SPORT_BY_DATE_TENNIS_VALUE = 3;
+    public static final int SPORT_BY_DATE_BASKETBALL_VALUE = 4;
+    public static final int SPORT_BY_DATE_AMERICANFOOTBALL_VALUE = 5;
+    public static final int SPORT_BY_DATE_BASEBALL_VALUE = 6;
+    public static final int SPORT_BY_DATE_CRICKET_VALUE = 7;
+    public static final int SPORT_BY_DATE_HANDBALL_VALUE = 8;
+    public static final int SPORT_BY_DATE_RUGBY_VALUE = 9;
+    public static final int SPORT_BY_DATE_RUGBYLEAGUE_VALUE = 10;
+    public static final int SPORT_BY_DATE_VOLLEYBALL_VALUE = 11;
     
     
     public final int getNumber() { return value; }
@@ -870,6 +964,14 @@ public final class SmarketsSetoPiqi {
         case 1: return SPORT_BY_DATE_FOOTBALL;
         case 2: return SPORT_BY_DATE_HORSE_RACING;
         case 3: return SPORT_BY_DATE_TENNIS;
+        case 4: return SPORT_BY_DATE_BASKETBALL;
+        case 5: return SPORT_BY_DATE_AMERICANFOOTBALL;
+        case 6: return SPORT_BY_DATE_BASEBALL;
+        case 7: return SPORT_BY_DATE_CRICKET;
+        case 8: return SPORT_BY_DATE_HANDBALL;
+        case 9: return SPORT_BY_DATE_RUGBY;
+        case 10: return SPORT_BY_DATE_RUGBYLEAGUE;
+        case 11: return SPORT_BY_DATE_VOLLEYBALL;
         default: return null;
       }
     }
@@ -896,11 +998,11 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(11);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(12);
     }
     
     private static final SportByDateType[] VALUES = {
-      SPORT_BY_DATE_FOOTBALL, SPORT_BY_DATE_HORSE_RACING, SPORT_BY_DATE_TENNIS, 
+      SPORT_BY_DATE_FOOTBALL, SPORT_BY_DATE_HORSE_RACING, SPORT_BY_DATE_TENNIS, SPORT_BY_DATE_BASKETBALL, SPORT_BY_DATE_AMERICANFOOTBALL, SPORT_BY_DATE_BASEBALL, SPORT_BY_DATE_CRICKET, SPORT_BY_DATE_HANDBALL, SPORT_BY_DATE_RUGBY, SPORT_BY_DATE_RUGBYLEAGUE, SPORT_BY_DATE_VOLLEYBALL, 
     };
     
     public static SportByDateType valueOf(
@@ -977,7 +1079,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(12);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(13);
     }
     
     private static final ContractType[] VALUES = {
@@ -1029,6 +1131,18 @@ public final class SmarketsSetoPiqi {
     EVENT_BOXING_MATCH(20, 21),
     EVENT_AMERICAN_FOOTBALL_MATCH(21, 22),
     EVENT_RUGBY_UNION_MATCH(22, 23),
+    EVENT_BASKETBALL_MATCH(23, 24),
+    EVENT_BASKETBALL_SEASON(24, 25),
+    EVENT_CRICKET_MATCH(25, 26),
+    EVENT_CRICKET_SEASON(26, 27),
+    EVENT_VOLLEYBALL_MATCH(27, 28),
+    EVENT_HANDBALL_MATCH(28, 29),
+    EVENT_RUGBY_UNION_SEASON(29, 30),
+    EVENT_RUGBY_LEAGUE_MATCH(30, 31),
+    EVENT_RUGBY_LEAGUE_SEASON(31, 32),
+    EVENT_AMERICAN_FOOTBALL_SEASON(32, 33),
+    EVENT_BASEBALL_MATCH(33, 34),
+    EVENT_BASEBALL_SEASON(34, 35),
     ;
     
     public static final int EVENT_FOOTBALL_MATCH_VALUE = 1;
@@ -1054,6 +1168,18 @@ public final class SmarketsSetoPiqi {
     public static final int EVENT_BOXING_MATCH_VALUE = 21;
     public static final int EVENT_AMERICAN_FOOTBALL_MATCH_VALUE = 22;
     public static final int EVENT_RUGBY_UNION_MATCH_VALUE = 23;
+    public static final int EVENT_BASKETBALL_MATCH_VALUE = 24;
+    public static final int EVENT_BASKETBALL_SEASON_VALUE = 25;
+    public static final int EVENT_CRICKET_MATCH_VALUE = 26;
+    public static final int EVENT_CRICKET_SEASON_VALUE = 27;
+    public static final int EVENT_VOLLEYBALL_MATCH_VALUE = 28;
+    public static final int EVENT_HANDBALL_MATCH_VALUE = 29;
+    public static final int EVENT_RUGBY_UNION_SEASON_VALUE = 30;
+    public static final int EVENT_RUGBY_LEAGUE_MATCH_VALUE = 31;
+    public static final int EVENT_RUGBY_LEAGUE_SEASON_VALUE = 32;
+    public static final int EVENT_AMERICAN_FOOTBALL_SEASON_VALUE = 33;
+    public static final int EVENT_BASEBALL_MATCH_VALUE = 34;
+    public static final int EVENT_BASEBALL_SEASON_VALUE = 35;
     
     
     public final int getNumber() { return value; }
@@ -1083,6 +1209,18 @@ public final class SmarketsSetoPiqi {
         case 21: return EVENT_BOXING_MATCH;
         case 22: return EVENT_AMERICAN_FOOTBALL_MATCH;
         case 23: return EVENT_RUGBY_UNION_MATCH;
+        case 24: return EVENT_BASKETBALL_MATCH;
+        case 25: return EVENT_BASKETBALL_SEASON;
+        case 26: return EVENT_CRICKET_MATCH;
+        case 27: return EVENT_CRICKET_SEASON;
+        case 28: return EVENT_VOLLEYBALL_MATCH;
+        case 29: return EVENT_HANDBALL_MATCH;
+        case 30: return EVENT_RUGBY_UNION_SEASON;
+        case 31: return EVENT_RUGBY_LEAGUE_MATCH;
+        case 32: return EVENT_RUGBY_LEAGUE_SEASON;
+        case 33: return EVENT_AMERICAN_FOOTBALL_SEASON;
+        case 34: return EVENT_BASEBALL_MATCH;
+        case 35: return EVENT_BASEBALL_SEASON;
         default: return null;
       }
     }
@@ -1109,11 +1247,11 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(13);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(14);
     }
     
     private static final EventType[] VALUES = {
-      EVENT_FOOTBALL_MATCH, EVENT_FOOTBALL_SEASON, EVENT_FOOTBALL, EVENT_GENERIC, EVENT_FOOTBALL_GENERIC, EVENT_GOLF_SEASON, EVENT_BOXING_SEASON, EVENT_FORMULA_1_RACE, EVENT_FORMULA_1_SEASON, EVENT_HORSE_RACING_RACE, EVENT_HORSE_RACING_COURSE, EVENT_HORSE_RACING, EVENT_GOLF_GENERIC, EVENT_EUROVISION_SEASON, EVENT_TENNIS_ROUND, EVENT_TENNIS_FORMAT, EVENT_TENNIS_TOURNAMENT, EVENT_CYCLING_SEASON, EVENT_CYCLING_RACE, EVENT_MOTOGP_SEASON, EVENT_BOXING_MATCH, EVENT_AMERICAN_FOOTBALL_MATCH, EVENT_RUGBY_UNION_MATCH, 
+      EVENT_FOOTBALL_MATCH, EVENT_FOOTBALL_SEASON, EVENT_FOOTBALL, EVENT_GENERIC, EVENT_FOOTBALL_GENERIC, EVENT_GOLF_SEASON, EVENT_BOXING_SEASON, EVENT_FORMULA_1_RACE, EVENT_FORMULA_1_SEASON, EVENT_HORSE_RACING_RACE, EVENT_HORSE_RACING_COURSE, EVENT_HORSE_RACING, EVENT_GOLF_GENERIC, EVENT_EUROVISION_SEASON, EVENT_TENNIS_ROUND, EVENT_TENNIS_FORMAT, EVENT_TENNIS_TOURNAMENT, EVENT_CYCLING_SEASON, EVENT_CYCLING_RACE, EVENT_MOTOGP_SEASON, EVENT_BOXING_MATCH, EVENT_AMERICAN_FOOTBALL_MATCH, EVENT_RUGBY_UNION_MATCH, EVENT_BASKETBALL_MATCH, EVENT_BASKETBALL_SEASON, EVENT_CRICKET_MATCH, EVENT_CRICKET_SEASON, EVENT_VOLLEYBALL_MATCH, EVENT_HANDBALL_MATCH, EVENT_RUGBY_UNION_SEASON, EVENT_RUGBY_LEAGUE_MATCH, EVENT_RUGBY_LEAGUE_SEASON, EVENT_AMERICAN_FOOTBALL_SEASON, EVENT_BASEBALL_MATCH, EVENT_BASEBALL_SEASON, 
     };
     
     public static EventType valueOf(
@@ -1208,7 +1346,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(14);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(15);
     }
     
     private static final EntityRelationshipType[] VALUES = {
@@ -1274,7 +1412,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(15);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(16);
     }
     
     private static final InvalidRequestType[] VALUES = {
@@ -1367,7 +1505,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(16);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(17);
     }
     
     private static final EventCategory[] VALUES = {
@@ -1445,7 +1583,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(17);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(18);
     }
     
     private static final OrderStatus[] VALUES = {
@@ -1514,7 +1652,7 @@ public final class SmarketsSetoPiqi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(18);
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(19);
     }
     
     private static final Currency[] VALUES = {
@@ -1539,6 +1677,72 @@ public final class SmarketsSetoPiqi {
     }
     
     // @@protoc_insertion_point(enum_scope:smarkets.seto.Currency)
+  }
+  
+  public enum DowntimeAlertType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    DOWNTIME_ALERT_ORDER_CREATE(0, 1),
+    ;
+    
+    public static final int DOWNTIME_ALERT_ORDER_CREATE_VALUE = 1;
+    
+    
+    public final int getNumber() { return value; }
+    
+    public static DowntimeAlertType valueOf(int value) {
+      switch (value) {
+        case 1: return DOWNTIME_ALERT_ORDER_CREATE;
+        default: return null;
+      }
+    }
+    
+    public static com.google.protobuf.Internal.EnumLiteMap<DowntimeAlertType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<DowntimeAlertType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DowntimeAlertType>() {
+            public DowntimeAlertType findValueByNumber(int number) {
+              return DowntimeAlertType.valueOf(number);
+            }
+          };
+    
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return smarkets.seto.SmarketsSetoPiqi.getDescriptor().getEnumTypes().get(20);
+    }
+    
+    private static final DowntimeAlertType[] VALUES = {
+      DOWNTIME_ALERT_ORDER_CREATE, 
+    };
+    
+    public static DowntimeAlertType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+    
+    private final int index;
+    private final int value;
+    
+    private DowntimeAlertType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+    
+    // @@protoc_insertion_point(enum_scope:smarkets.seto.DowntimeAlertType)
   }
   
   public interface eventOrBuilder
@@ -3682,6 +3886,11 @@ public final class SmarketsSetoPiqi {
     boolean hasAccountState();
     smarkets.seto.SmarketsSetoPiqi.AccountState getAccountState();
     smarkets.seto.SmarketsSetoPiqi.AccountStateOrBuilder getAccountStateOrBuilder();
+    
+    // optional .smarkets.seto.DowntimeAlert downtime_alert = 26;
+    boolean hasDowntimeAlert();
+    smarkets.seto.SmarketsSetoPiqi.DowntimeAlert getDowntimeAlert();
+    smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder();
   }
   public static final class Payload extends
       com.google.protobuf.GeneratedMessage
@@ -4034,6 +4243,19 @@ public final class SmarketsSetoPiqi {
       return accountState_;
     }
     
+    // optional .smarkets.seto.DowntimeAlert downtime_alert = 26;
+    public static final int DOWNTIME_ALERT_FIELD_NUMBER = 26;
+    private smarkets.seto.SmarketsSetoPiqi.DowntimeAlert downtimeAlert_;
+    public boolean hasDowntimeAlert() {
+      return ((bitField0_ & 0x02000000) == 0x02000000);
+    }
+    public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert getDowntimeAlert() {
+      return downtimeAlert_;
+    }
+    public smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder() {
+      return downtimeAlert_;
+    }
+    
     private void initFields() {
       type_ = smarkets.seto.SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO;
       etoPayload_ = smarkets.eto.SmarketsEtoPiqi.Payload.getDefaultInstance();
@@ -4060,6 +4282,7 @@ public final class SmarketsSetoPiqi {
       ordersForMarket_ = smarkets.seto.SmarketsSetoPiqi.orders_for_market.getDefaultInstance();
       accountStateRequest_ = smarkets.seto.SmarketsSetoPiqi.AccountStateRequest.getDefaultInstance();
       accountState_ = smarkets.seto.SmarketsSetoPiqi.AccountState.getDefaultInstance();
+      downtimeAlert_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4204,6 +4427,12 @@ public final class SmarketsSetoPiqi {
           return false;
         }
       }
+      if (hasDowntimeAlert()) {
+        if (!getDowntimeAlert().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4285,6 +4514,9 @@ public final class SmarketsSetoPiqi {
       }
       if (((bitField0_ & 0x01000000) == 0x01000000)) {
         output.writeMessage(25, accountState_);
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
+        output.writeMessage(26, downtimeAlert_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4394,6 +4626,10 @@ public final class SmarketsSetoPiqi {
       if (((bitField0_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(25, accountState_);
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(26, downtimeAlert_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4535,6 +4771,7 @@ public final class SmarketsSetoPiqi {
           getOrdersForMarketFieldBuilder();
           getAccountStateRequestFieldBuilder();
           getAccountStateFieldBuilder();
+          getDowntimeAlertFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4689,6 +4926,12 @@ public final class SmarketsSetoPiqi {
           accountStateBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x01000000);
+        if (downtimeAlertBuilder_ == null) {
+          downtimeAlert_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance();
+        } else {
+          downtimeAlertBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x02000000);
         return this;
       }
       
@@ -4923,6 +5166,14 @@ public final class SmarketsSetoPiqi {
         } else {
           result.accountState_ = accountStateBuilder_.build();
         }
+        if (((from_bitField0_ & 0x02000000) == 0x02000000)) {
+          to_bitField0_ |= 0x02000000;
+        }
+        if (downtimeAlertBuilder_ == null) {
+          result.downtimeAlert_ = downtimeAlert_;
+        } else {
+          result.downtimeAlert_ = downtimeAlertBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5013,6 +5264,9 @@ public final class SmarketsSetoPiqi {
         }
         if (other.hasAccountState()) {
           mergeAccountState(other.getAccountState());
+        }
+        if (other.hasDowntimeAlert()) {
+          mergeDowntimeAlert(other.getDowntimeAlert());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5153,6 +5407,12 @@ public final class SmarketsSetoPiqi {
         }
         if (hasAccountState()) {
           if (!getAccountState().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasDowntimeAlert()) {
+          if (!getDowntimeAlert().isInitialized()) {
             
             return false;
           }
@@ -5408,6 +5668,15 @@ public final class SmarketsSetoPiqi {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setAccountState(subBuilder.buildPartial());
+              break;
+            }
+            case 210: {
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder subBuilder = smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.newBuilder();
+              if (hasDowntimeAlert()) {
+                subBuilder.mergeFrom(getDowntimeAlert());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDowntimeAlert(subBuilder.buildPartial());
               break;
             }
           }
@@ -7600,6 +7869,96 @@ public final class SmarketsSetoPiqi {
         return accountStateBuilder_;
       }
       
+      // optional .smarkets.seto.DowntimeAlert downtime_alert = 26;
+      private smarkets.seto.SmarketsSetoPiqi.DowntimeAlert downtimeAlert_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          smarkets.seto.SmarketsSetoPiqi.DowntimeAlert, smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder, smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder> downtimeAlertBuilder_;
+      public boolean hasDowntimeAlert() {
+        return ((bitField0_ & 0x02000000) == 0x02000000);
+      }
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert getDowntimeAlert() {
+        if (downtimeAlertBuilder_ == null) {
+          return downtimeAlert_;
+        } else {
+          return downtimeAlertBuilder_.getMessage();
+        }
+      }
+      public Builder setDowntimeAlert(smarkets.seto.SmarketsSetoPiqi.DowntimeAlert value) {
+        if (downtimeAlertBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          downtimeAlert_ = value;
+          onChanged();
+        } else {
+          downtimeAlertBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      public Builder setDowntimeAlert(
+          smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder builderForValue) {
+        if (downtimeAlertBuilder_ == null) {
+          downtimeAlert_ = builderForValue.build();
+          onChanged();
+        } else {
+          downtimeAlertBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      public Builder mergeDowntimeAlert(smarkets.seto.SmarketsSetoPiqi.DowntimeAlert value) {
+        if (downtimeAlertBuilder_ == null) {
+          if (((bitField0_ & 0x02000000) == 0x02000000) &&
+              downtimeAlert_ != smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance()) {
+            downtimeAlert_ =
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.newBuilder(downtimeAlert_).mergeFrom(value).buildPartial();
+          } else {
+            downtimeAlert_ = value;
+          }
+          onChanged();
+        } else {
+          downtimeAlertBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      public Builder clearDowntimeAlert() {
+        if (downtimeAlertBuilder_ == null) {
+          downtimeAlert_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance();
+          onChanged();
+        } else {
+          downtimeAlertBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x02000000);
+        return this;
+      }
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder getDowntimeAlertBuilder() {
+        bitField0_ |= 0x02000000;
+        onChanged();
+        return getDowntimeAlertFieldBuilder().getBuilder();
+      }
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder() {
+        if (downtimeAlertBuilder_ != null) {
+          return downtimeAlertBuilder_.getMessageOrBuilder();
+        } else {
+          return downtimeAlert_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          smarkets.seto.SmarketsSetoPiqi.DowntimeAlert, smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder, smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder> 
+          getDowntimeAlertFieldBuilder() {
+        if (downtimeAlertBuilder_ == null) {
+          downtimeAlertBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlert, smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder, smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder>(
+                  downtimeAlert_,
+                  getParentForChildren(),
+                  isClean());
+          downtimeAlert_ = null;
+        }
+        return downtimeAlertBuilder_;
+      }
+      
       // @@protoc_insertion_point(builder_scope:smarkets.seto.Payload)
     }
     
@@ -8579,6 +8938,14 @@ public final class SmarketsSetoPiqi {
     // optional uint32 price = 8;
     boolean hasPrice();
     int getPrice();
+    
+    // optional uint32 maq = 9;
+    boolean hasMaq();
+    int getMaq();
+    
+    // optional .smarkets.seto.TimeInForceType tif = 10;
+    boolean hasTif();
+    smarkets.seto.SmarketsSetoPiqi.TimeInForceType getTif();
   }
   public static final class OrderCreate extends
       com.google.protobuf.GeneratedMessage
@@ -8695,6 +9062,26 @@ public final class SmarketsSetoPiqi {
       return price_;
     }
     
+    // optional uint32 maq = 9;
+    public static final int MAQ_FIELD_NUMBER = 9;
+    private int maq_;
+    public boolean hasMaq() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public int getMaq() {
+      return maq_;
+    }
+    
+    // optional .smarkets.seto.TimeInForceType tif = 10;
+    public static final int TIF_FIELD_NUMBER = 10;
+    private smarkets.seto.SmarketsSetoPiqi.TimeInForceType tif_;
+    public boolean hasTif() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    public smarkets.seto.SmarketsSetoPiqi.TimeInForceType getTif() {
+      return tif_;
+    }
+    
     private void initFields() {
       type_ = smarkets.seto.SmarketsSetoPiqi.OrderCreateType.ORDER_CREATE_LIMIT;
       market_ = smarkets.seto.SmarketsSetoPiqi.Uuid128.getDefaultInstance();
@@ -8704,6 +9091,8 @@ public final class SmarketsSetoPiqi {
       quantity_ = 0;
       priceType_ = smarkets.seto.SmarketsSetoPiqi.PriceType.PRICE_PERCENT_ODDS;
       price_ = 0;
+      maq_ = 0;
+      tif_ = smarkets.seto.SmarketsSetoPiqi.TimeInForceType.GOOD_TIL_CANCELLED;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8773,6 +9162,12 @@ public final class SmarketsSetoPiqi {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeUInt32(8, price_);
       }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(9, maq_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeEnum(10, tif_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -8813,6 +9208,14 @@ public final class SmarketsSetoPiqi {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(8, price_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(9, maq_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(10, tif_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8964,6 +9367,10 @@ public final class SmarketsSetoPiqi {
         bitField0_ = (bitField0_ & ~0x00000040);
         price_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        maq_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        tif_ = smarkets.seto.SmarketsSetoPiqi.TimeInForceType.GOOD_TIL_CANCELLED;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       
@@ -9042,6 +9449,14 @@ public final class SmarketsSetoPiqi {
           to_bitField0_ |= 0x00000080;
         }
         result.price_ = price_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.maq_ = maq_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.tif_ = tif_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9081,6 +9496,12 @@ public final class SmarketsSetoPiqi {
         }
         if (other.hasPrice()) {
           setPrice(other.getPrice());
+        }
+        if (other.hasMaq()) {
+          setMaq(other.getMaq());
+        }
+        if (other.hasTif()) {
+          setTif(other.getTif());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9215,6 +9636,22 @@ public final class SmarketsSetoPiqi {
             case 64: {
               bitField0_ |= 0x00000080;
               price_ = input.readUInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              maq_ = input.readUInt32();
+              break;
+            }
+            case 80: {
+              int rawValue = input.readEnum();
+              smarkets.seto.SmarketsSetoPiqi.TimeInForceType value = smarkets.seto.SmarketsSetoPiqi.TimeInForceType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(10, rawValue);
+              } else {
+                bitField0_ |= 0x00000200;
+                tif_ = value;
+              }
               break;
             }
           }
@@ -9537,6 +9974,51 @@ public final class SmarketsSetoPiqi {
       public Builder clearPrice() {
         bitField0_ = (bitField0_ & ~0x00000080);
         price_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional uint32 maq = 9;
+      private int maq_ ;
+      public boolean hasMaq() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      public int getMaq() {
+        return maq_;
+      }
+      public Builder setMaq(int value) {
+        bitField0_ |= 0x00000100;
+        maq_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMaq() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        maq_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional .smarkets.seto.TimeInForceType tif = 10;
+      private smarkets.seto.SmarketsSetoPiqi.TimeInForceType tif_ = smarkets.seto.SmarketsSetoPiqi.TimeInForceType.GOOD_TIL_CANCELLED;
+      public boolean hasTif() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      public smarkets.seto.SmarketsSetoPiqi.TimeInForceType getTif() {
+        return tif_;
+      }
+      public Builder setTif(smarkets.seto.SmarketsSetoPiqi.TimeInForceType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000200;
+        tif_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearTif() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        tif_ = smarkets.seto.SmarketsSetoPiqi.TimeInForceType.GOOD_TIL_CANCELLED;
         onChanged();
         return this;
       }
@@ -10916,6 +11398,10 @@ public final class SmarketsSetoPiqi {
     // required uint32 quantity = 4;
     boolean hasQuantity();
     int getQuantity();
+    
+    // optional uint32 account_sequence = 5;
+    boolean hasAccountSequence();
+    int getAccountSequence();
   }
   public static final class OrderExecuted extends
       com.google.protobuf.GeneratedMessage
@@ -10989,11 +11475,22 @@ public final class SmarketsSetoPiqi {
       return quantity_;
     }
     
+    // optional uint32 account_sequence = 5;
+    public static final int ACCOUNT_SEQUENCE_FIELD_NUMBER = 5;
+    private int accountSequence_;
+    public boolean hasAccountSequence() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public int getAccountSequence() {
+      return accountSequence_;
+    }
+    
     private void initFields() {
       order_ = smarkets.seto.SmarketsSetoPiqi.Uuid128.getDefaultInstance();
       price_ = 0;
       quantityType_ = smarkets.seto.SmarketsSetoPiqi.QuantityType.QUANTITY_PAYOFF_CURRENCY;
       quantity_ = 0;
+      accountSequence_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11039,6 +11536,9 @@ public final class SmarketsSetoPiqi {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(4, quantity_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(5, accountSequence_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -11063,6 +11563,10 @@ public final class SmarketsSetoPiqi {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(4, quantity_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, accountSequence_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11201,6 +11705,8 @@ public final class SmarketsSetoPiqi {
         bitField0_ = (bitField0_ & ~0x00000004);
         quantity_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        accountSequence_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       
@@ -11259,6 +11765,10 @@ public final class SmarketsSetoPiqi {
           to_bitField0_ |= 0x00000008;
         }
         result.quantity_ = quantity_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.accountSequence_ = accountSequence_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11286,6 +11796,9 @@ public final class SmarketsSetoPiqi {
         }
         if (other.hasQuantity()) {
           setQuantity(other.getQuantity());
+        }
+        if (other.hasAccountSequence()) {
+          setAccountSequence(other.getAccountSequence());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -11366,6 +11879,11 @@ public final class SmarketsSetoPiqi {
             case 32: {
               bitField0_ |= 0x00000008;
               quantity_ = input.readUInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              accountSequence_ = input.readUInt32();
               break;
             }
           }
@@ -11526,6 +12044,27 @@ public final class SmarketsSetoPiqi {
       public Builder clearQuantity() {
         bitField0_ = (bitField0_ & ~0x00000008);
         quantity_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional uint32 account_sequence = 5;
+      private int accountSequence_ ;
+      public boolean hasAccountSequence() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public int getAccountSequence() {
+        return accountSequence_;
+      }
+      public Builder setAccountSequence(int value) {
+        bitField0_ |= 0x00000010;
+        accountSequence_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearAccountSequence() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        accountSequence_ = 0;
         onChanged();
         return this;
       }
@@ -18985,7 +19524,6 @@ public final class SmarketsSetoPiqi {
       
       public smarkets.seto.SmarketsSetoPiqi.Events buildPartial() {
         smarkets.seto.SmarketsSetoPiqi.Events result = new smarkets.seto.SmarketsSetoPiqi.Events(this);
-//        int from_bitField0_ = bitField0_;
         if (withMarketsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             withMarkets_ = java.util.Collections.unmodifiableList(withMarkets_);
@@ -27582,7 +28120,6 @@ public final class SmarketsSetoPiqi {
       
       public smarkets.seto.SmarketsSetoPiqi.orders_for_account buildPartial() {
         smarkets.seto.SmarketsSetoPiqi.orders_for_account result = new smarkets.seto.SmarketsSetoPiqi.orders_for_account(this);
-//        int from_bitField0_ = bitField0_;
         if (marketsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             markets_ = java.util.Collections.unmodifiableList(markets_);
@@ -33841,6 +34378,361 @@ public final class SmarketsSetoPiqi {
     // @@protoc_insertion_point(class_scope:smarkets.seto.Decimal)
   }
   
+  public interface DowntimeAlertOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required .smarkets.seto.DowntimeAlertType type = 1;
+    boolean hasType();
+    smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType getType();
+  }
+  public static final class DowntimeAlert extends
+      com.google.protobuf.GeneratedMessage
+      implements DowntimeAlertOrBuilder {
+    // Use DowntimeAlert.newBuilder() to construct.
+    private DowntimeAlert(Builder builder) {
+      super(builder);
+    }
+    private DowntimeAlert(boolean noInit) {}
+    
+    private static final DowntimeAlert defaultInstance;
+    public static DowntimeAlert getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public DowntimeAlert getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smarkets.seto.SmarketsSetoPiqi.internal_static_smarkets_seto_DowntimeAlert_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smarkets.seto.SmarketsSetoPiqi.internal_static_smarkets_seto_DowntimeAlert_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required .smarkets.seto.DowntimeAlertType type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType type_;
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType getType() {
+      return type_;
+    }
+    
+    private void initFields() {
+      type_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType.DOWNTIME_ALERT_ORDER_CREATE;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static smarkets.seto.SmarketsSetoPiqi.DowntimeAlert parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(smarkets.seto.SmarketsSetoPiqi.DowntimeAlert prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements smarkets.seto.SmarketsSetoPiqi.DowntimeAlertOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smarkets.seto.SmarketsSetoPiqi.internal_static_smarkets_seto_DowntimeAlert_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smarkets.seto.SmarketsSetoPiqi.internal_static_smarkets_seto_DowntimeAlert_fieldAccessorTable;
+      }
+      
+      // Construct using smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        type_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType.DOWNTIME_ALERT_ORDER_CREATE;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDescriptor();
+      }
+      
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert getDefaultInstanceForType() {
+        return smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance();
+      }
+      
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert build() {
+        smarkets.seto.SmarketsSetoPiqi.DowntimeAlert result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private smarkets.seto.SmarketsSetoPiqi.DowntimeAlert buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        smarkets.seto.SmarketsSetoPiqi.DowntimeAlert result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlert buildPartial() {
+        smarkets.seto.SmarketsSetoPiqi.DowntimeAlert result = new smarkets.seto.SmarketsSetoPiqi.DowntimeAlert(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smarkets.seto.SmarketsSetoPiqi.DowntimeAlert) {
+          return mergeFrom((smarkets.seto.SmarketsSetoPiqi.DowntimeAlert)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(smarkets.seto.SmarketsSetoPiqi.DowntimeAlert other) {
+        if (other == smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType value = smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required .smarkets.seto.DowntimeAlertType type = 1;
+      private smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType type_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType.DOWNTIME_ALERT_ORDER_CREATE;
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType getType() {
+        return type_;
+      }
+      public Builder setType(smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = smarkets.seto.SmarketsSetoPiqi.DowntimeAlertType.DOWNTIME_ALERT_ORDER_CREATE;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:smarkets.seto.DowntimeAlert)
+    }
+    
+    static {
+      defaultInstance = new DowntimeAlert(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:smarkets.seto.DowntimeAlert)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_smarkets_seto_event_descriptor;
   private static
@@ -34066,6 +34958,11 @@ public final class SmarketsSetoPiqi {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smarkets_seto_Decimal_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_smarkets_seto_DowntimeAlert_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smarkets_seto_DowntimeAlert_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34081,7 +34978,7 @@ public final class SmarketsSetoPiqi {
       "ow\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"(\n\010contract\022\013\n" +
       "\003low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"%\n\005order\022\013\n\003" +
       "low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"&\n\006entity\022\013\n\003" +
-      "low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"\213\013\n\007Payload\022(" +
+      "low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"\301\013\n\007Payload\022(" +
       "\n\004type\030\001 \002(\0162\032.smarkets.seto.PayloadType" +
       "\022*\n\013eto_payload\030\002 \002(\0132\025.smarkets.eto.Pay" +
       "load\022#\n\005login\030\003 \001(\0132\024.smarkets.seto.Logi",
@@ -34117,221 +35014,246 @@ public final class SmarketsSetoPiqi {
       "or_market\022A\n\025account_state_request\030\030 \001(\013",
       "2\".smarkets.seto.AccountStateRequest\0222\n\r" +
       "account_state\030\031 \001(\0132\033.smarkets.seto.Acco" +
-      "untState\"\'\n\007Uuid128\022\013\n\003low\030\001 \002(\004\022\017\n\004high" +
-      "\030\002 \001(\004:\0010\";\n\005Login\022\020\n\010username\030\001 \001(\t\022\020\n\010" +
-      "password\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\014\"\263\002\n\013Order" +
-      "Create\022,\n\004type\030\001 \002(\0162\036.smarkets.seto.Ord" +
-      "erCreateType\022&\n\006market\030\002 \002(\0132\026.smarkets." +
-      "seto.Uuid128\022(\n\010contract\030\003 \002(\0132\026.smarket" +
-      "s.seto.Uuid128\022!\n\004side\030\004 \002(\0162\023.smarkets." +
-      "seto.Side\0222\n\rquantity_type\030\005 \002(\0162\033.smark",
-      "ets.seto.QuantityType\022\020\n\010quantity\030\006 \002(\r\022" +
-      ",\n\nprice_type\030\007 \001(\0162\030.smarkets.seto.Pric" +
-      "eType\022\r\n\005price\030\010 \001(\r\"P\n\rOrderRejected\022\013\n" +
-      "\003seq\030\001 \002(\004\0222\n\006reason\030\002 \002(\0162\".smarkets.se" +
-      "to.OrderRejectedReason\"\\\n\023OrderCancelRej" +
-      "ected\022\013\n\003seq\030\001 \002(\004\0228\n\006reason\030\002 \002(\0162(.sma" +
-      "rkets.seto.OrderCancelRejectedReason\"C\n\r" +
-      "OrderAccepted\022\013\n\003seq\030\001 \002(\004\022%\n\005order\030\002 \002(" +
-      "\0132\026.smarkets.seto.Uuid128\"\213\001\n\rOrderExecu" +
-      "ted\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid1",
-      "28\022\r\n\005price\030\002 \002(\r\0222\n\rquantity_type\030\003 \002(\016" +
-      "2\033.smarkets.seto.QuantityType\022\020\n\010quantit" +
-      "y\030\004 \002(\r\"4\n\013OrderCancel\022%\n\005order\030\001 \002(\0132\026." +
-      "smarkets.seto.Uuid128\"l\n\016OrderCancelled\022" +
-      "%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid128\0223" +
-      "\n\006reason\030\002 \002(\0162#.smarkets.seto.OrderCanc" +
-      "elledReason\"O\n\014OrderInvalid\022\013\n\003seq\030\001 \002(\004" +
-      "\0222\n\007reasons\030\002 \003(\0162!.smarkets.seto.OrderI" +
-      "nvalidReason\"9\n\017MarketSubscribe\022&\n\006marke" +
-      "t\030\001 \002(\0132\026.smarkets.seto.Uuid128\";\n\021Marke",
-      "tUnsubscribe\022&\n\006market\030\001 \002(\0132\026.smarkets." +
-      "seto.Uuid128\"=\n\023MarketQuotesRequest\022&\n\006m" +
-      "arket\030\001 \002(\0132\026.smarkets.seto.Uuid128\"\320\001\n\014" +
-      "MarketQuotes\022&\n\006market\030\001 \002(\0132\026.smarkets." +
-      "seto.Uuid128\0226\n\017contract_quotes\030\002 \003(\0132\035." +
-      "smarkets.seto.ContractQuotes\022,\n\nprice_ty" +
-      "pe\030\003 \002(\0162\030.smarkets.seto.PriceType\0222\n\rqu" +
-      "antity_type\030\004 \002(\0162\033.smarkets.seto.Quanti" +
-      "tyType\"\344\001\n\016ContractQuotes\022(\n\010contract\030\001 " +
-      "\002(\0132\026.smarkets.seto.Uuid128\022\"\n\004bids\030\002 \003(",
-      "\0132\024.smarkets.seto.Quote\022$\n\006offers\030\003 \003(\0132" +
-      "\024.smarkets.seto.Quote\022,\n\nexecutions\030\004 \003(" +
-      "\0132\030.smarkets.seto.Execution\0220\n\016last_exec" +
-      "ution\030\005 \001(\0132\030.smarkets.seto.Execution\"(\n" +
-      "\005Quote\022\r\n\005price\030\001 \002(\r\022\020\n\010quantity\030\002 \002(\r\"" +
-      "j\n\tExecution\022\r\n\005price\030\001 \002(\r\022\020\n\010quantity\030" +
-      "\002 \002(\r\022&\n\tliquidity\030\003 \002(\0162\023.smarkets.seto" +
-      ".Side\022\024\n\014microseconds\030\004 \002(\004\"\244\001\n\rEventsRe" +
-      "quest\022.\n\004type\030\001 \002(\0162 .smarkets.seto.Even" +
-      "tsRequestType\0220\n\014content_type\030\002 \002(\0162\032.sm",
-      "arkets.seto.ContentType\0221\n\rsport_by_date" +
-      "\030\003 \001(\0132\032.smarkets.seto.SportByDate\"^\n\013Sp" +
-      "ortByDate\022,\n\004type\030\001 \002(\0162\036.smarkets.seto." +
-      "SportByDateType\022!\n\004date\030\002 \002(\0132\023.smarkets" +
-      ".seto.Date\"c\n\006Events\022.\n\014with_markets\030\001 \003" +
-      "(\0132\030.smarkets.seto.EventInfo\022)\n\007parents\030" +
-      "\002 \003(\0132\030.smarkets.seto.EventInfo\"\344\003\n\tEven" +
-      "tInfo\022%\n\005event\030\001 \002(\0132\026.smarkets.seto.Uui" +
-      "d128\022&\n\004type\030\002 \002(\0162\030.smarkets.seto.Event" +
-      "Type\022.\n\010category\030\003 \002(\0162\034.smarkets.seto.E",
-      "ventCategory\022\014\n\004slug\030\004 \002(\t\022\014\n\004name\030\005 \002(\t" +
-      "\022&\n\006parent\030\006 \001(\0132\026.smarkets.seto.Uuid128" +
-      "\022\'\n\nstart_date\030\007 \001(\0132\023.smarkets.seto.Dat" +
-      "e\022\'\n\nstart_time\030\010 \001(\0132\023.smarkets.seto.Ti" +
-      "me\022%\n\010end_date\030\t \001(\0132\023.smarkets.seto.Dat" +
-      "e\022%\n\010end_time\030\n \001(\0132\023.smarkets.seto.Time" +
-      "\0223\n\010entities\030\013 \003(\0132!.smarkets.seto.Entit" +
-      "yRelationship\022*\n\007markets\030\014 \003(\0132\031.smarket" +
-      "s.seto.MarketInfo\022\023\n\013description\030\r \001(\t\"\350" +
-      "\002\n\nMarketInfo\022&\n\006market\030\001 \002(\0132\026.smarkets",
-      ".seto.Uuid128\022.\n\tcontracts\030\002 \003(\0132\033.smark" +
-      "ets.seto.ContractInfo\022\014\n\004slug\030\003 \002(\t\022\014\n\004n" +
-      "ame\030\004 \002(\t\022\'\n\nstart_date\030\005 \001(\0132\023.smarkets" +
-      ".seto.Date\022\'\n\nstart_time\030\006 \001(\0132\023.smarket" +
-      "s.seto.Time\022%\n\010end_date\030\007 \001(\0132\023.smarkets" +
-      ".seto.Date\022%\n\010end_time\030\010 \001(\0132\023.smarkets." +
-      "seto.Time\0223\n\010entities\030\t \003(\0132!.smarkets.s" +
-      "eto.EntityRelationship\022\021\n\tshortname\030\n \001(" +
-      "\t\"\307\001\n\014ContractInfo\022(\n\010contract\030\001 \002(\0132\026.s" +
-      "markets.seto.Uuid128\022)\n\004type\030\002 \002(\0162\033.sma",
-      "rkets.seto.ContractType\022\014\n\004slug\030\003 \002(\t\022\014\n" +
-      "\004name\030\004 \002(\t\0223\n\010entities\030\005 \003(\0132!.smarkets" +
-      ".seto.EntityRelationship\022\021\n\tshortname\030\006 " +
-      "\001(\t\"y\n\022EntityRelationship\022&\n\006entity\030\001 \002(" +
-      "\0132\026.smarkets.seto.Uuid128\022;\n\014relationshi" +
-      "p\030\002 \002(\0162%.smarkets.seto.EntityRelationsh" +
-      "ipType\"%\n\tHttpFound\022\013\n\003seq\030\001 \002(\004\022\013\n\003url\030" +
-      "\002 \002(\t\"N\n\016InvalidRequest\022\013\n\003seq\030\001 \002(\004\022/\n\004" +
-      "type\030\002 \002(\0162!.smarkets.seto.InvalidReques" +
-      "tType\"0\n\004Date\022\014\n\004year\030\001 \002(\r\022\r\n\005month\030\002 \002",
-      "(\r\022\013\n\003day\030\003 \002(\r\"$\n\004Time\022\014\n\004hour\030\001 \002(\r\022\016\n" +
-      "\006minute\030\002 \002(\r\"\034\n\032orders_for_account_requ" +
-      "est\"G\n\022orders_for_account\0221\n\007markets\030\001 \003" +
-      "(\0132 .smarkets.seto.orders_for_market\"C\n\031" +
-      "orders_for_market_request\022&\n\006market\030\001 \002(" +
-      "\0132\026.smarkets.seto.Uuid128\"\240\001\n\021orders_for" +
-      "_market\022&\n\006market\030\001 \002(\0132\026.smarkets.seto." +
-      "Uuid128\022,\n\nprice_type\030\002 \002(\0162\030.smarkets.s" +
-      "eto.PriceType\0225\n\tcontracts\030\003 \003(\0132\".smark" +
-      "ets.seto.orders_for_contract\"\237\001\n\023orders_",
-      "for_contract\022(\n\010contract\030\001 \002(\0132\026.smarket" +
-      "s.seto.Uuid128\022-\n\004bids\030\002 \003(\0132\037.smarkets." +
-      "seto.orders_for_price\022/\n\006offers\030\003 \003(\0132\037." +
-      "smarkets.seto.orders_for_price\"L\n\020orders" +
-      "_for_price\022\r\n\005price\030\001 \002(\r\022)\n\006orders\030\002 \003(" +
-      "\0132\031.smarkets.seto.OrderState\"\215\002\n\nOrderSt" +
-      "ate\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid1" +
-      "28\022,\n\004type\030\002 \002(\0162\036.smarkets.seto.OrderCr" +
-      "eateType\022*\n\006status\030\003 \002(\0162\032.smarkets.seto" +
-      ".OrderStatus\0222\n\rquantity_type\030\004 \002(\0162\033.sm",
-      "arkets.seto.QuantityType\022\020\n\010quantity\030\005 \002" +
-      "(\r\022\034\n\024created_microseconds\030\006 \002(\004\022\032\n\017quan" +
-      "tity_filled\030\007 \001(\r:\0010\">\n\023AccountStateRequ" +
-      "est\022\'\n\007account\030\001 \001(\0132\026.smarkets.seto.Uui" +
-      "d128\"\331\001\n\014AccountState\022\'\n\007account\030\001 \002(\0132\026" +
-      ".smarkets.seto.Uuid128\022)\n\010currency\030\002 \002(\016" +
-      "2\027.smarkets.seto.Currency\022$\n\004cash\030\003 \002(\0132" +
-      "\026.smarkets.seto.Decimal\022%\n\005bonus\030\004 \002(\0132\026" +
-      ".smarkets.seto.Decimal\022(\n\010exposure\030\005 \002(\013" +
-      "2\026.smarkets.seto.Decimal\"\'\n\007account\022\013\n\003l",
-      "ow\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"-\n\007Decimal\022\r\n\005" +
-      "value\030\001 \002(\022\022\023\n\010exponent\030\002 \001(\r:\0012*\312\005\n\013Pay" +
-      "loadType\022\017\n\013PAYLOAD_ETO\020\001\022\021\n\rPAYLOAD_LOG" +
-      "IN\020\002\022\030\n\024PAYLOAD_ORDER_CREATE\020\003\022\032\n\026PAYLOA" +
-      "D_ORDER_REJECTED\020\004\022\032\n\026PAYLOAD_ORDER_ACCE" +
-      "PTED\020\005\022\032\n\026PAYLOAD_ORDER_EXECUTED\020\006\022\030\n\024PA" +
-      "YLOAD_ORDER_CANCEL\020\007\022\033\n\027PAYLOAD_ORDER_CA" +
-      "NCELLED\020\010\022\031\n\025PAYLOAD_ORDER_INVALID\020\t\022\034\n\030" +
-      "PAYLOAD_MARKET_SUBSCRIBE\020\n\022\036\n\032PAYLOAD_MA" +
-      "RKET_UNSUBSCRIBE\020\013\022!\n\035PAYLOAD_MARKET_QUO",
-      "TES_REQUEST\020\014\022\031\n\025PAYLOAD_MARKET_QUOTES\020\r" +
-      "\022\033\n\027PAYLOAD_CONTRACT_QUOTES\020\016\022\032\n\026PAYLOAD" +
-      "_EVENTS_REQUEST\020\017\022\026\n\022PAYLOAD_HTTP_FOUND\020" +
-      "\020\022\033\n\027PAYLOAD_INVALID_REQUEST\020\021\022!\n\035PAYLOA" +
-      "D_ORDER_CANCEL_REJECTED\020\022\022&\n\"PAYLOAD_ORD" +
-      "ERS_FOR_ACCOUNT_REQUEST\020\023\022\036\n\032PAYLOAD_ORD" +
-      "ERS_FOR_ACCOUNT\020\024\022%\n!PAYLOAD_ORDERS_FOR_" +
-      "MARKET_REQUEST\020\025\022\035\n\031PAYLOAD_ORDERS_FOR_M" +
-      "ARKET\020\026\022!\n\035PAYLOAD_ACCOUNT_STATE_REQUEST" +
-      "\020\027\022\031\n\025PAYLOAD_ACCOUNT_STATE\020\030*)\n\017OrderCr",
-      "eateType\022\026\n\022ORDER_CREATE_LIMIT\020\001*\302\002\n\023Ord" +
-      "erRejectedReason\022%\n!ORDER_REJECTED_INSUF" +
-      "FICIENT_FUNDS\020\001\022!\n\035ORDER_REJECTED_LIMIT_" +
-      "EXCEEDED\020\002\022\"\n\036ORDER_REJECTED_MARKET_NOT_" +
-      "OPEN\020\003\022!\n\035ORDER_REJECTED_MARKET_SETTLED\020" +
-      "\004\022 \n\034ORDER_REJECTED_MARKET_HALTED\020\005\022\037\n\033O" +
-      "RDER_REJECTED_CROSSED_SELF\020\006\022#\n\037ORDER_RE" +
-      "JECTED_MARKET_NOT_FOUND\020\007\0222\n.ORDER_REJEC" +
-      "TED_SERVICE_TEMPORARILY_UNAVAILABLE\020\010*d\n" +
-      "\031OrderCancelRejectedReason\022#\n\037ORDER_CANC",
-      "EL_REJECTED_NOT_FOUND\020\001\022\"\n\036ORDER_CANCEL_" +
-      "REJECTED_NOT_LIVE\020\002*\213\001\n\024OrderCancelledRe" +
-      "ason\022$\n ORDER_CANCELLED_MEMBER_REQUESTED" +
-      "\020\001\022!\n\035ORDER_CANCELLED_MARKET_HALTED\020\002\022*\n" +
-      "&ORDER_CANCELLED_INSUFFICIENT_LIQUIDITY\020" +
-      "\003*Y\n\022OrderInvalidReason\022\037\n\033ORDER_INVALID" +
-      "_INVALID_PRICE\020\001\022\"\n\036ORDER_INVALID_INVALI" +
-      "D_QUANTITY\020\002*,\n\014QuantityType\022\034\n\030QUANTITY" +
-      "_PAYOFF_CURRENCY\020\001*#\n\tPriceType\022\026\n\022PRICE" +
-      "_PERCENT_ODDS\020\001*#\n\004Side\022\014\n\010SIDE_BUY\020\001\022\r\n",
-      "\tSIDE_SELL\020\002*(\n\013ContentType\022\031\n\025CONTENT_T" +
-      "YPE_PROTOBUF\020\001*\277\001\n\021EventsRequestType\022\033\n\027" +
-      "EVENTS_REQUEST_POLITICS\020\001\022\"\n\036EVENTS_REQU" +
-      "EST_CURRENT_AFFAIRS\020\002\022\'\n#EVENTS_REQUEST_" +
-      "TV_AND_ENTERTAINMENT\020\003\022 \n\034EVENTS_REQUEST" +
-      "_SPORT_BY_DATE\020\004\022\036\n\032EVENTS_REQUEST_SPORT" +
-      "_OTHER\020\005*g\n\017SportByDateType\022\032\n\026SPORT_BY_" +
-      "DATE_FOOTBALL\020\001\022\036\n\032SPORT_BY_DATE_HORSE_R" +
-      "ACING\020\002\022\030\n\024SPORT_BY_DATE_TENNIS\020\003*\245\001\n\014Co" +
-      "ntractType\022 \n\034CONTRACT_HALF_TIME_FULL_TI",
-      "ME\020\001\022\032\n\026CONTRACT_CORRECT_SCORE\020\002\022\024\n\020CONT" +
-      "RACT_GENERIC\020\003\022\023\n\017CONTRACT_WINNER\020\004\022\023\n\017C" +
-      "ONTRACT_BINARY\020\005\022\027\n\023CONTRACT_OVER_UNDER\020" +
-      "\006*\343\004\n\tEventType\022\030\n\024EVENT_FOOTBALL_MATCH\020" +
-      "\001\022\031\n\025EVENT_FOOTBALL_SEASON\020\002\022\022\n\016EVENT_FO" +
-      "OTBALL\020\003\022\021\n\rEVENT_GENERIC\020\004\022\032\n\026EVENT_FOO" +
-      "TBALL_GENERIC\020\005\022\025\n\021EVENT_GOLF_SEASON\020\006\022\027" +
-      "\n\023EVENT_BOXING_SEASON\020\007\022\030\n\024EVENT_FORMULA" +
-      "_1_RACE\020\010\022\032\n\026EVENT_FORMULA_1_SEASON\020\t\022\033\n" +
-      "\027EVENT_HORSE_RACING_RACE\020\n\022\035\n\031EVENT_HORS",
-      "E_RACING_COURSE\020\013\022\026\n\022EVENT_HORSE_RACING\020" +
-      "\014\022\026\n\022EVENT_GOLF_GENERIC\020\r\022\033\n\027EVENT_EUROV" +
-      "ISION_SEASON\020\016\022\026\n\022EVENT_TENNIS_ROUND\020\017\022\027" +
-      "\n\023EVENT_TENNIS_FORMAT\020\020\022\033\n\027EVENT_TENNIS_" +
-      "TOURNAMENT\020\021\022\030\n\024EVENT_CYCLING_SEASON\020\022\022\026" +
-      "\n\022EVENT_CYCLING_RACE\020\023\022\027\n\023EVENT_MOTOGP_S" +
-      "EASON\020\024\022\026\n\022EVENT_BOXING_MATCH\020\025\022!\n\035EVENT" +
-      "_AMERICAN_FOOTBALL_MATCH\020\026\022\033\n\027EVENT_RUGB" +
-      "Y_UNION_MATCH\020\027*\212\004\n\026EntityRelationshipTy" +
-      "pe\022*\n&ENTITY_RELATIONSHIP_FOOTBALL_HOME_",
-      "TEAM\020\001\022*\n&ENTITY_RELATIONSHIP_FOOTBALL_A" +
-      "WAY_TEAM\020\002\022,\n(ENTITY_RELATIONSHIP_FOOTBA" +
-      "LL_COMPETITION\020\003\022+\n\'ENTITY_RELATIONSHIP_" +
-      "HORSE_RACING_COURSE\020\004\022*\n&ENTITY_RELATION" +
-      "SHIP_HORSE_RACING_HORSE\020\005\022+\n\'ENTITY_RELA" +
-      "TIONSHIP_HORSE_RACING_JOCKEY\020\006\022+\n\'ENTITY" +
-      "_RELATIONSHIP_CONTRACT_ASSOCIATED\020\007\022\037\n\033E" +
-      "NTITY_RELATIONSHIP_GENERIC\020\010\022\'\n#ENTITY_R" +
-      "ELATIONSHIP_TENNIS_PLAYER_A\020\t\022\'\n#ENTITY_" +
-      "RELATIONSHIP_TENNIS_PLAYER_B\020\n\022!\n\035ENTITY",
-      "_RELATIONSHIP_HOME_TEAM\020\013\022!\n\035ENTITY_RELA" +
-      "TIONSHIP_AWAY_TEAM\020\014*;\n\022InvalidRequestTy" +
-      "pe\022%\n!INVALID_REQUEST_DATE_OUT_OF_RANGE\020" +
-      "\001*\310\002\n\rEventCategory\022\030\n\024EVENT_CATEGORY_SP" +
-      "ORT\020\001\022\033\n\027EVENT_CATEGORY_POLITICS\020\002\022\"\n\036EV" +
-      "ENT_CATEGORY_CURRENT_AFFAIRS\020\003\022\'\n#EVENT_" +
-      "CATEGORY_TV_AND_ENTERTAINMENT\020\004\022\032\n\026EVENT" +
-      "_CATEGORY_GENERIC\020\005\022\033\n\027EVENT_CATEGORY_FO" +
-      "OTBALL\020\006\022\031\n\025EVENT_CATEGORY_TENNIS\020\007\022\037\n\033E" +
-      "VENT_CATEGORY_HORSE_RACING\020\010\022$\n EVENT_CA",
-      "TEGORY_AMERICAN_FOOTBALL\020\t\022\030\n\024EVENT_CATE" +
-      "GORY_RUGBY\020\n*\242\001\n\013OrderStatus\022\025\n\021ORDER_ST" +
-      "ATUS_LIVE\020\001\022!\n\035ORDER_STATUS_PARTIALLY_FI" +
-      "LLED\020\002\022\027\n\023ORDER_STATUS_FILLED\020\003\022$\n ORDER" +
-      "_STATUS_PARTIALLY_CANCELLED\020\004\022\032\n\026ORDER_S" +
-      "TATUS_CANCELLED\020\005*.\n\010Currency\022\020\n\014CURRENC" +
-      "Y_GBP\020\001\022\020\n\014CURRENCY_EUR\020\002"
+      "untState\0224\n\016downtime_alert\030\032 \001(\0132\034.smark" +
+      "ets.seto.DowntimeAlert\"\'\n\007Uuid128\022\013\n\003low" +
+      "\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\";\n\005Login\022\020\n\010user" +
+      "name\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006cookie\030\003" +
+      " \001(\014\"\355\002\n\013OrderCreate\022,\n\004type\030\001 \002(\0162\036.sma" +
+      "rkets.seto.OrderCreateType\022&\n\006market\030\002 \002" +
+      "(\0132\026.smarkets.seto.Uuid128\022(\n\010contract\030\003" +
+      " \002(\0132\026.smarkets.seto.Uuid128\022!\n\004side\030\004 \002",
+      "(\0162\023.smarkets.seto.Side\0222\n\rquantity_type" +
+      "\030\005 \002(\0162\033.smarkets.seto.QuantityType\022\020\n\010q" +
+      "uantity\030\006 \002(\r\022,\n\nprice_type\030\007 \001(\0162\030.smar" +
+      "kets.seto.PriceType\022\r\n\005price\030\010 \001(\r\022\013\n\003ma" +
+      "q\030\t \001(\r\022+\n\003tif\030\n \001(\0162\036.smarkets.seto.Tim" +
+      "eInForceType\"P\n\rOrderRejected\022\013\n\003seq\030\001 \002" +
+      "(\004\0222\n\006reason\030\002 \002(\0162\".smarkets.seto.Order" +
+      "RejectedReason\"\\\n\023OrderCancelRejected\022\013\n" +
+      "\003seq\030\001 \002(\004\0228\n\006reason\030\002 \002(\0162(.smarkets.se" +
+      "to.OrderCancelRejectedReason\"C\n\rOrderAcc",
+      "epted\022\013\n\003seq\030\001 \002(\004\022%\n\005order\030\002 \002(\0132\026.smar" +
+      "kets.seto.Uuid128\"\245\001\n\rOrderExecuted\022%\n\005o" +
+      "rder\030\001 \002(\0132\026.smarkets.seto.Uuid128\022\r\n\005pr" +
+      "ice\030\002 \002(\r\0222\n\rquantity_type\030\003 \002(\0162\033.smark" +
+      "ets.seto.QuantityType\022\020\n\010quantity\030\004 \002(\r\022" +
+      "\030\n\020account_sequence\030\005 \001(\r\"4\n\013OrderCancel" +
+      "\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid128\"" +
+      "l\n\016OrderCancelled\022%\n\005order\030\001 \002(\0132\026.smark" +
+      "ets.seto.Uuid128\0223\n\006reason\030\002 \002(\0162#.smark" +
+      "ets.seto.OrderCancelledReason\"O\n\014OrderIn",
+      "valid\022\013\n\003seq\030\001 \002(\004\0222\n\007reasons\030\002 \003(\0162!.sm" +
+      "arkets.seto.OrderInvalidReason\"9\n\017Market" +
+      "Subscribe\022&\n\006market\030\001 \002(\0132\026.smarkets.set" +
+      "o.Uuid128\";\n\021MarketUnsubscribe\022&\n\006market" +
+      "\030\001 \002(\0132\026.smarkets.seto.Uuid128\"=\n\023Market" +
+      "QuotesRequest\022&\n\006market\030\001 \002(\0132\026.smarkets" +
+      ".seto.Uuid128\"\320\001\n\014MarketQuotes\022&\n\006market" +
+      "\030\001 \002(\0132\026.smarkets.seto.Uuid128\0226\n\017contra" +
+      "ct_quotes\030\002 \003(\0132\035.smarkets.seto.Contract" +
+      "Quotes\022,\n\nprice_type\030\003 \002(\0162\030.smarkets.se",
+      "to.PriceType\0222\n\rquantity_type\030\004 \002(\0162\033.sm" +
+      "arkets.seto.QuantityType\"\344\001\n\016ContractQuo" +
+      "tes\022(\n\010contract\030\001 \002(\0132\026.smarkets.seto.Uu" +
+      "id128\022\"\n\004bids\030\002 \003(\0132\024.smarkets.seto.Quot" +
+      "e\022$\n\006offers\030\003 \003(\0132\024.smarkets.seto.Quote\022" +
+      ",\n\nexecutions\030\004 \003(\0132\030.smarkets.seto.Exec" +
+      "ution\0220\n\016last_execution\030\005 \001(\0132\030.smarkets" +
+      ".seto.Execution\"(\n\005Quote\022\r\n\005price\030\001 \002(\r\022" +
+      "\020\n\010quantity\030\002 \002(\r\"j\n\tExecution\022\r\n\005price\030" +
+      "\001 \002(\r\022\020\n\010quantity\030\002 \002(\r\022&\n\tliquidity\030\003 \002",
+      "(\0162\023.smarkets.seto.Side\022\024\n\014microseconds\030" +
+      "\004 \002(\004\"\244\001\n\rEventsRequest\022.\n\004type\030\001 \002(\0162 ." +
+      "smarkets.seto.EventsRequestType\0220\n\014conte" +
+      "nt_type\030\002 \002(\0162\032.smarkets.seto.ContentTyp" +
+      "e\0221\n\rsport_by_date\030\003 \001(\0132\032.smarkets.seto" +
+      ".SportByDate\"^\n\013SportByDate\022,\n\004type\030\001 \002(" +
+      "\0162\036.smarkets.seto.SportByDateType\022!\n\004dat" +
+      "e\030\002 \002(\0132\023.smarkets.seto.Date\"c\n\006Events\022." +
+      "\n\014with_markets\030\001 \003(\0132\030.smarkets.seto.Eve" +
+      "ntInfo\022)\n\007parents\030\002 \003(\0132\030.smarkets.seto.",
+      "EventInfo\"\344\003\n\tEventInfo\022%\n\005event\030\001 \002(\0132\026" +
+      ".smarkets.seto.Uuid128\022&\n\004type\030\002 \002(\0162\030.s" +
+      "markets.seto.EventType\022.\n\010category\030\003 \002(\016" +
+      "2\034.smarkets.seto.EventCategory\022\014\n\004slug\030\004" +
+      " \002(\t\022\014\n\004name\030\005 \002(\t\022&\n\006parent\030\006 \001(\0132\026.sma" +
+      "rkets.seto.Uuid128\022\'\n\nstart_date\030\007 \001(\0132\023" +
+      ".smarkets.seto.Date\022\'\n\nstart_time\030\010 \001(\0132" +
+      "\023.smarkets.seto.Time\022%\n\010end_date\030\t \001(\0132\023" +
+      ".smarkets.seto.Date\022%\n\010end_time\030\n \001(\0132\023." +
+      "smarkets.seto.Time\0223\n\010entities\030\013 \003(\0132!.s",
+      "markets.seto.EntityRelationship\022*\n\007marke" +
+      "ts\030\014 \003(\0132\031.smarkets.seto.MarketInfo\022\023\n\013d" +
+      "escription\030\r \001(\t\"\350\002\n\nMarketInfo\022&\n\006marke" +
+      "t\030\001 \002(\0132\026.smarkets.seto.Uuid128\022.\n\tcontr" +
+      "acts\030\002 \003(\0132\033.smarkets.seto.ContractInfo\022" +
+      "\014\n\004slug\030\003 \002(\t\022\014\n\004name\030\004 \002(\t\022\'\n\nstart_dat" +
+      "e\030\005 \001(\0132\023.smarkets.seto.Date\022\'\n\nstart_ti" +
+      "me\030\006 \001(\0132\023.smarkets.seto.Time\022%\n\010end_dat" +
+      "e\030\007 \001(\0132\023.smarkets.seto.Date\022%\n\010end_time" +
+      "\030\010 \001(\0132\023.smarkets.seto.Time\0223\n\010entities\030",
+      "\t \003(\0132!.smarkets.seto.EntityRelationship" +
+      "\022\021\n\tshortname\030\n \001(\t\"\307\001\n\014ContractInfo\022(\n\010" +
+      "contract\030\001 \002(\0132\026.smarkets.seto.Uuid128\022)" +
+      "\n\004type\030\002 \002(\0162\033.smarkets.seto.ContractTyp" +
+      "e\022\014\n\004slug\030\003 \002(\t\022\014\n\004name\030\004 \002(\t\0223\n\010entitie" +
+      "s\030\005 \003(\0132!.smarkets.seto.EntityRelationsh" +
+      "ip\022\021\n\tshortname\030\006 \001(\t\"y\n\022EntityRelations" +
+      "hip\022&\n\006entity\030\001 \002(\0132\026.smarkets.seto.Uuid" +
+      "128\022;\n\014relationship\030\002 \002(\0162%.smarkets.set" +
+      "o.EntityRelationshipType\"%\n\tHttpFound\022\013\n",
+      "\003seq\030\001 \002(\004\022\013\n\003url\030\002 \002(\t\"N\n\016InvalidReques" +
+      "t\022\013\n\003seq\030\001 \002(\004\022/\n\004type\030\002 \002(\0162!.smarkets." +
+      "seto.InvalidRequestType\"0\n\004Date\022\014\n\004year\030" +
+      "\001 \002(\r\022\r\n\005month\030\002 \002(\r\022\013\n\003day\030\003 \002(\r\"$\n\004Tim" +
+      "e\022\014\n\004hour\030\001 \002(\r\022\016\n\006minute\030\002 \002(\r\"\034\n\032order" +
+      "s_for_account_request\"G\n\022orders_for_acco" +
+      "unt\0221\n\007markets\030\001 \003(\0132 .smarkets.seto.ord" +
+      "ers_for_market\"C\n\031orders_for_market_requ" +
+      "est\022&\n\006market\030\001 \002(\0132\026.smarkets.seto.Uuid" +
+      "128\"\240\001\n\021orders_for_market\022&\n\006market\030\001 \002(",
+      "\0132\026.smarkets.seto.Uuid128\022,\n\nprice_type\030" +
+      "\002 \002(\0162\030.smarkets.seto.PriceType\0225\n\tcontr" +
+      "acts\030\003 \003(\0132\".smarkets.seto.orders_for_co" +
+      "ntract\"\237\001\n\023orders_for_contract\022(\n\010contra" +
+      "ct\030\001 \002(\0132\026.smarkets.seto.Uuid128\022-\n\004bids" +
+      "\030\002 \003(\0132\037.smarkets.seto.orders_for_price\022" +
+      "/\n\006offers\030\003 \003(\0132\037.smarkets.seto.orders_f" +
+      "or_price\"L\n\020orders_for_price\022\r\n\005price\030\001 " +
+      "\002(\r\022)\n\006orders\030\002 \003(\0132\031.smarkets.seto.Orde" +
+      "rState\"\215\002\n\nOrderState\022%\n\005order\030\001 \002(\0132\026.s",
+      "markets.seto.Uuid128\022,\n\004type\030\002 \002(\0162\036.sma" +
+      "rkets.seto.OrderCreateType\022*\n\006status\030\003 \002" +
+      "(\0162\032.smarkets.seto.OrderStatus\0222\n\rquanti" +
+      "ty_type\030\004 \002(\0162\033.smarkets.seto.QuantityTy" +
+      "pe\022\020\n\010quantity\030\005 \002(\r\022\034\n\024created_microsec" +
+      "onds\030\006 \002(\004\022\032\n\017quantity_filled\030\007 \001(\r:\0010\">" +
+      "\n\023AccountStateRequest\022\'\n\007account\030\001 \001(\0132\026" +
+      ".smarkets.seto.Uuid128\"\331\001\n\014AccountState\022" +
+      "\'\n\007account\030\001 \002(\0132\026.smarkets.seto.Uuid128" +
+      "\022)\n\010currency\030\002 \002(\0162\027.smarkets.seto.Curre",
+      "ncy\022$\n\004cash\030\003 \002(\0132\026.smarkets.seto.Decima" +
+      "l\022%\n\005bonus\030\004 \002(\0132\026.smarkets.seto.Decimal" +
+      "\022(\n\010exposure\030\005 \002(\0132\026.smarkets.seto.Decim" +
+      "al\"\'\n\007account\022\013\n\003low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004" +
+      ":\0010\"-\n\007Decimal\022\r\n\005value\030\001 \002(\022\022\023\n\010exponen" +
+      "t\030\002 \001(\r:\0012\"?\n\rDowntimeAlert\022.\n\004type\030\001 \002(" +
+      "\0162 .smarkets.seto.DowntimeAlertType*\346\005\n\013" +
+      "PayloadType\022\017\n\013PAYLOAD_ETO\020\001\022\021\n\rPAYLOAD_" +
+      "LOGIN\020\002\022\030\n\024PAYLOAD_ORDER_CREATE\020\003\022\032\n\026PAY" +
+      "LOAD_ORDER_REJECTED\020\004\022\032\n\026PAYLOAD_ORDER_A",
+      "CCEPTED\020\005\022\032\n\026PAYLOAD_ORDER_EXECUTED\020\006\022\030\n" +
+      "\024PAYLOAD_ORDER_CANCEL\020\007\022\033\n\027PAYLOAD_ORDER" +
+      "_CANCELLED\020\010\022\031\n\025PAYLOAD_ORDER_INVALID\020\t\022" +
+      "\034\n\030PAYLOAD_MARKET_SUBSCRIBE\020\n\022\036\n\032PAYLOAD" +
+      "_MARKET_UNSUBSCRIBE\020\013\022!\n\035PAYLOAD_MARKET_" +
+      "QUOTES_REQUEST\020\014\022\031\n\025PAYLOAD_MARKET_QUOTE" +
+      "S\020\r\022\033\n\027PAYLOAD_CONTRACT_QUOTES\020\016\022\032\n\026PAYL" +
+      "OAD_EVENTS_REQUEST\020\017\022\026\n\022PAYLOAD_HTTP_FOU" +
+      "ND\020\020\022\033\n\027PAYLOAD_INVALID_REQUEST\020\021\022!\n\035PAY" +
+      "LOAD_ORDER_CANCEL_REJECTED\020\022\022&\n\"PAYLOAD_",
+      "ORDERS_FOR_ACCOUNT_REQUEST\020\023\022\036\n\032PAYLOAD_" +
+      "ORDERS_FOR_ACCOUNT\020\024\022%\n!PAYLOAD_ORDERS_F" +
+      "OR_MARKET_REQUEST\020\025\022\035\n\031PAYLOAD_ORDERS_FO" +
+      "R_MARKET\020\026\022!\n\035PAYLOAD_ACCOUNT_STATE_REQU" +
+      "EST\020\027\022\031\n\025PAYLOAD_ACCOUNT_STATE\020\030\022\032\n\026PAYL" +
+      "OAD_DOWNTIME_ALERT\020\031*)\n\017OrderCreateType\022" +
+      "\026\n\022ORDER_CREATE_LIMIT\020\001*B\n\017TimeInForceTy" +
+      "pe\022\026\n\022GOOD_TIL_CANCELLED\020\001\022\027\n\023IMMEDIATE_" +
+      "OR_CANCEL\020\002*\217\003\n\023OrderRejectedReason\022%\n!O" +
+      "RDER_REJECTED_INSUFFICIENT_FUNDS\020\001\022!\n\035OR",
+      "DER_REJECTED_LIMIT_EXCEEDED\020\002\022\"\n\036ORDER_R" +
+      "EJECTED_MARKET_NOT_OPEN\020\003\022!\n\035ORDER_REJEC" +
+      "TED_MARKET_SETTLED\020\004\022 \n\034ORDER_REJECTED_M" +
+      "ARKET_HALTED\020\005\022\037\n\033ORDER_REJECTED_CROSSED" +
+      "_SELF\020\006\022#\n\037ORDER_REJECTED_MARKET_NOT_FOU" +
+      "ND\020\007\0222\n.ORDER_REJECTED_SERVICE_TEMPORARI" +
+      "LY_UNAVAILABLE\020\010\022%\n!ORDER_REJECTED_CONTR" +
+      "ACT_NOT_FOUND\020\t\022$\n ORDER_REJECTED_ACCOUN" +
+      "T_SUSPENDED\020\n*d\n\031OrderCancelRejectedReas" +
+      "on\022#\n\037ORDER_CANCEL_REJECTED_NOT_FOUND\020\001\022",
+      "\"\n\036ORDER_CANCEL_REJECTED_NOT_LIVE\020\002*\213\001\n\024" +
+      "OrderCancelledReason\022$\n ORDER_CANCELLED_" +
+      "MEMBER_REQUESTED\020\001\022!\n\035ORDER_CANCELLED_MA" +
+      "RKET_HALTED\020\002\022*\n&ORDER_CANCELLED_INSUFFI" +
+      "CIENT_LIQUIDITY\020\003*Y\n\022OrderInvalidReason\022" +
+      "\037\n\033ORDER_INVALID_INVALID_PRICE\020\001\022\"\n\036ORDE" +
+      "R_INVALID_INVALID_QUANTITY\020\002*,\n\014Quantity" +
+      "Type\022\034\n\030QUANTITY_PAYOFF_CURRENCY\020\001*#\n\tPr" +
+      "iceType\022\026\n\022PRICE_PERCENT_ODDS\020\001*#\n\004Side\022" +
+      "\014\n\010SIDE_BUY\020\001\022\r\n\tSIDE_SELL\020\002*(\n\013ContentT",
+      "ype\022\031\n\025CONTENT_TYPE_PROTOBUF\020\001*\277\001\n\021Event" +
+      "sRequestType\022\033\n\027EVENTS_REQUEST_POLITICS\020" +
+      "\001\022\"\n\036EVENTS_REQUEST_CURRENT_AFFAIRS\020\002\022\'\n" +
+      "#EVENTS_REQUEST_TV_AND_ENTERTAINMENT\020\003\022 " +
+      "\n\034EVENTS_REQUEST_SPORT_BY_DATE\020\004\022\036\n\032EVEN" +
+      "TS_REQUEST_SPORT_OTHER\020\005*\322\002\n\017SportByDate" +
+      "Type\022\032\n\026SPORT_BY_DATE_FOOTBALL\020\001\022\036\n\032SPOR" +
+      "T_BY_DATE_HORSE_RACING\020\002\022\030\n\024SPORT_BY_DAT" +
+      "E_TENNIS\020\003\022\034\n\030SPORT_BY_DATE_BASKETBALL\020\004" +
+      "\022\"\n\036SPORT_BY_DATE_AMERICANFOOTBALL\020\005\022\032\n\026",
+      "SPORT_BY_DATE_BASEBALL\020\006\022\031\n\025SPORT_BY_DAT" +
+      "E_CRICKET\020\007\022\032\n\026SPORT_BY_DATE_HANDBALL\020\010\022" +
+      "\027\n\023SPORT_BY_DATE_RUGBY\020\t\022\035\n\031SPORT_BY_DAT" +
+      "E_RUGBYLEAGUE\020\n\022\034\n\030SPORT_BY_DATE_VOLLEYB" +
+      "ALL\020\013*\245\001\n\014ContractType\022 \n\034CONTRACT_HALF_" +
+      "TIME_FULL_TIME\020\001\022\032\n\026CONTRACT_CORRECT_SCO" +
+      "RE\020\002\022\024\n\020CONTRACT_GENERIC\020\003\022\023\n\017CONTRACT_W" +
+      "INNER\020\004\022\023\n\017CONTRACT_BINARY\020\005\022\027\n\023CONTRACT" +
+      "_OVER_UNDER\020\006*\271\007\n\tEventType\022\030\n\024EVENT_FOO" +
+      "TBALL_MATCH\020\001\022\031\n\025EVENT_FOOTBALL_SEASON\020\002",
+      "\022\022\n\016EVENT_FOOTBALL\020\003\022\021\n\rEVENT_GENERIC\020\004\022" +
+      "\032\n\026EVENT_FOOTBALL_GENERIC\020\005\022\025\n\021EVENT_GOL" +
+      "F_SEASON\020\006\022\027\n\023EVENT_BOXING_SEASON\020\007\022\030\n\024E" +
+      "VENT_FORMULA_1_RACE\020\010\022\032\n\026EVENT_FORMULA_1" +
+      "_SEASON\020\t\022\033\n\027EVENT_HORSE_RACING_RACE\020\n\022\035" +
+      "\n\031EVENT_HORSE_RACING_COURSE\020\013\022\026\n\022EVENT_H" +
+      "ORSE_RACING\020\014\022\026\n\022EVENT_GOLF_GENERIC\020\r\022\033\n" +
+      "\027EVENT_EUROVISION_SEASON\020\016\022\026\n\022EVENT_TENN" +
+      "IS_ROUND\020\017\022\027\n\023EVENT_TENNIS_FORMAT\020\020\022\033\n\027E" +
+      "VENT_TENNIS_TOURNAMENT\020\021\022\030\n\024EVENT_CYCLIN",
+      "G_SEASON\020\022\022\026\n\022EVENT_CYCLING_RACE\020\023\022\027\n\023EV" +
+      "ENT_MOTOGP_SEASON\020\024\022\026\n\022EVENT_BOXING_MATC" +
+      "H\020\025\022!\n\035EVENT_AMERICAN_FOOTBALL_MATCH\020\026\022\033" +
+      "\n\027EVENT_RUGBY_UNION_MATCH\020\027\022\032\n\026EVENT_BAS" +
+      "KETBALL_MATCH\020\030\022\033\n\027EVENT_BASKETBALL_SEAS" +
+      "ON\020\031\022\027\n\023EVENT_CRICKET_MATCH\020\032\022\030\n\024EVENT_C" +
+      "RICKET_SEASON\020\033\022\032\n\026EVENT_VOLLEYBALL_MATC" +
+      "H\020\034\022\030\n\024EVENT_HANDBALL_MATCH\020\035\022\034\n\030EVENT_R" +
+      "UGBY_UNION_SEASON\020\036\022\034\n\030EVENT_RUGBY_LEAGU" +
+      "E_MATCH\020\037\022\035\n\031EVENT_RUGBY_LEAGUE_SEASON\020 ",
+      "\022\"\n\036EVENT_AMERICAN_FOOTBALL_SEASON\020!\022\030\n\024" +
+      "EVENT_BASEBALL_MATCH\020\"\022\031\n\025EVENT_BASEBALL" +
+      "_SEASON\020#*\212\004\n\026EntityRelationshipType\022*\n&" +
+      "ENTITY_RELATIONSHIP_FOOTBALL_HOME_TEAM\020\001" +
+      "\022*\n&ENTITY_RELATIONSHIP_FOOTBALL_AWAY_TE" +
+      "AM\020\002\022,\n(ENTITY_RELATIONSHIP_FOOTBALL_COM" +
+      "PETITION\020\003\022+\n\'ENTITY_RELATIONSHIP_HORSE_" +
+      "RACING_COURSE\020\004\022*\n&ENTITY_RELATIONSHIP_H" +
+      "ORSE_RACING_HORSE\020\005\022+\n\'ENTITY_RELATIONSH" +
+      "IP_HORSE_RACING_JOCKEY\020\006\022+\n\'ENTITY_RELAT",
+      "IONSHIP_CONTRACT_ASSOCIATED\020\007\022\037\n\033ENTITY_" +
+      "RELATIONSHIP_GENERIC\020\010\022\'\n#ENTITY_RELATIO" +
+      "NSHIP_TENNIS_PLAYER_A\020\t\022\'\n#ENTITY_RELATI" +
+      "ONSHIP_TENNIS_PLAYER_B\020\n\022!\n\035ENTITY_RELAT" +
+      "IONSHIP_HOME_TEAM\020\013\022!\n\035ENTITY_RELATIONSH" +
+      "IP_AWAY_TEAM\020\014*;\n\022InvalidRequestType\022%\n!" +
+      "INVALID_REQUEST_DATE_OUT_OF_RANGE\020\001*\310\002\n\r" +
+      "EventCategory\022\030\n\024EVENT_CATEGORY_SPORT\020\001\022" +
+      "\033\n\027EVENT_CATEGORY_POLITICS\020\002\022\"\n\036EVENT_CA" +
+      "TEGORY_CURRENT_AFFAIRS\020\003\022\'\n#EVENT_CATEGO",
+      "RY_TV_AND_ENTERTAINMENT\020\004\022\032\n\026EVENT_CATEG" +
+      "ORY_GENERIC\020\005\022\033\n\027EVENT_CATEGORY_FOOTBALL" +
+      "\020\006\022\031\n\025EVENT_CATEGORY_TENNIS\020\007\022\037\n\033EVENT_C" +
+      "ATEGORY_HORSE_RACING\020\010\022$\n EVENT_CATEGORY" +
+      "_AMERICAN_FOOTBALL\020\t\022\030\n\024EVENT_CATEGORY_R" +
+      "UGBY\020\n*\242\001\n\013OrderStatus\022\025\n\021ORDER_STATUS_L" +
+      "IVE\020\001\022!\n\035ORDER_STATUS_PARTIALLY_FILLED\020\002" +
+      "\022\027\n\023ORDER_STATUS_FILLED\020\003\022$\n ORDER_STATU" +
+      "S_PARTIALLY_CANCELLED\020\004\022\032\n\026ORDER_STATUS_" +
+      "CANCELLED\020\005*.\n\010Currency\022\020\n\014CURRENCY_GBP\020",
+      "\001\022\020\n\014CURRENCY_EUR\020\002*4\n\021DowntimeAlertType" +
+      "\022\037\n\033DOWNTIME_ALERT_ORDER_CREATE\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34383,7 +35305,7 @@ public final class SmarketsSetoPiqi {
           internal_static_smarkets_seto_Payload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_smarkets_seto_Payload_descriptor,
-              new java.lang.String[] { "Type", "EtoPayload", "Login", "OrderCreate", "OrderRejected", "OrderAccepted", "OrderExecuted", "OrderCancel", "OrderCancelled", "OrderInvalid", "MarketSubscribe", "MarketUnsubscribe", "MarketQuotesRequest", "MarketQuotes", "ContractQuotes", "EventsRequest", "HttpFound", "InvalidRequest", "OrderCancelRejected", "OrdersForAccountRequest", "OrdersForAccount", "OrdersForMarketRequest", "OrdersForMarket", "AccountStateRequest", "AccountState", },
+              new java.lang.String[] { "Type", "EtoPayload", "Login", "OrderCreate", "OrderRejected", "OrderAccepted", "OrderExecuted", "OrderCancel", "OrderCancelled", "OrderInvalid", "MarketSubscribe", "MarketUnsubscribe", "MarketQuotesRequest", "MarketQuotes", "ContractQuotes", "EventsRequest", "HttpFound", "InvalidRequest", "OrderCancelRejected", "OrdersForAccountRequest", "OrdersForAccount", "OrdersForMarketRequest", "OrdersForMarket", "AccountStateRequest", "AccountState", "DowntimeAlert", },
               smarkets.seto.SmarketsSetoPiqi.Payload.class,
               smarkets.seto.SmarketsSetoPiqi.Payload.Builder.class);
           internal_static_smarkets_seto_Uuid128_descriptor =
@@ -34407,7 +35329,7 @@ public final class SmarketsSetoPiqi {
           internal_static_smarkets_seto_OrderCreate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_smarkets_seto_OrderCreate_descriptor,
-              new java.lang.String[] { "Type", "Market", "Contract", "Side", "QuantityType", "Quantity", "PriceType", "Price", },
+              new java.lang.String[] { "Type", "Market", "Contract", "Side", "QuantityType", "Quantity", "PriceType", "Price", "Maq", "Tif", },
               smarkets.seto.SmarketsSetoPiqi.OrderCreate.class,
               smarkets.seto.SmarketsSetoPiqi.OrderCreate.Builder.class);
           internal_static_smarkets_seto_OrderRejected_descriptor =
@@ -34439,7 +35361,7 @@ public final class SmarketsSetoPiqi {
           internal_static_smarkets_seto_OrderExecuted_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_smarkets_seto_OrderExecuted_descriptor,
-              new java.lang.String[] { "Order", "Price", "QuantityType", "Quantity", },
+              new java.lang.String[] { "Order", "Price", "QuantityType", "Quantity", "AccountSequence", },
               smarkets.seto.SmarketsSetoPiqi.OrderExecuted.class,
               smarkets.seto.SmarketsSetoPiqi.OrderExecuted.Builder.class);
           internal_static_smarkets_seto_OrderCancel_descriptor =
@@ -34698,6 +35620,14 @@ public final class SmarketsSetoPiqi {
               new java.lang.String[] { "Value", "Exponent", },
               smarkets.seto.SmarketsSetoPiqi.Decimal.class,
               smarkets.seto.SmarketsSetoPiqi.Decimal.Builder.class);
+          internal_static_smarkets_seto_DowntimeAlert_descriptor =
+            getDescriptor().getMessageTypes().get(45);
+          internal_static_smarkets_seto_DowntimeAlert_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_smarkets_seto_DowntimeAlert_descriptor,
+              new java.lang.String[] { "Type", },
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.class,
+              smarkets.seto.SmarketsSetoPiqi.DowntimeAlert.Builder.class);
           return null;
         }
       };
