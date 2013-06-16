@@ -10,8 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.smarkets.android.SmkConfig;
 
 public class JsonEventsSource {
@@ -26,7 +24,6 @@ public class JsonEventsSource {
 	public static JsonEventsSource fetchViaHttp(String jsonUrl) throws IOException, JSONException {
 		jsonUrl = CONFIG.smkRestApiRoot + jsonUrl;
 
-		Log.i("smk_jsonsource", "Url for json: " + jsonUrl);
 		URL url = new URL(jsonUrl);
 		URLConnection conn = url.openConnection();
 
