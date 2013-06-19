@@ -27,7 +27,7 @@ public class StreamingApiResponsesParsingInvestigationTest {
 		assertThat(loginResponse.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO));
 		assertThat(loginResponse.getEtoPayload().getType(), is(SmarketsEtoPiqi.PayloadType.PAYLOAD_LOGIN_RESPONSE));
 		assertThat(loginResponse.getEtoPayload().getSeq(), is(1L));
-		assertThat(loginResponse.getEtoPayload().getLoginResponseOrBuilder().getSession(), is("session2123"));
+		assertThat(loginResponse.getEtoPayload().getLoginResponse().getSession(), is("session2123"));
 	}
 
 	private SmarketsSetoPiqi.Payload loginResponse() {

@@ -36,11 +36,6 @@ public class StreamingApiClient {
 		}
 	}
 
-	public SmarketsSetoPiqi.Payload getSmkResponseViaHttp(String url) {
-//		String realUrl = url.replace("vagrant-dev.corp.smarkets.com", "api-sandbox.smarkets.com");
-		return null;
-	}
-
 	private byte[] padding(int byteCount) throws IOException {
 		// padding = '\x00' * max(0, 3 - byte_count);
 		ByteString.Output out = ByteString.newOutput();

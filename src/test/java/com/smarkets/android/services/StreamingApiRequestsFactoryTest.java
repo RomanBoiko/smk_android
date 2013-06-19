@@ -47,9 +47,9 @@ public class StreamingApiRequestsFactoryTest {
 
 	@Test
 	public void shouldCreateRequestsWithSequentialNumbers() throws InvalidProtocolBufferException {
-		assertThat(loginRequest().getEtoPayloadOrBuilder().getSeq(), is(1L));
-		assertThat(loginRequest().getEtoPayloadOrBuilder().getSeq(), is(2L));
-		assertThat(loginRequest().getEtoPayloadOrBuilder().getSeq(), is(3L));
+		assertThat(loginRequest().getEtoPayload().getSeq(), is(1L));
+		assertThat(loginRequest().getEtoPayload().getSeq(), is(2L));
+		assertThat(loginRequest().getEtoPayload().getSeq(), is(3L));
 	}
 
 	@Test
@@ -57,8 +57,8 @@ public class StreamingApiRequestsFactoryTest {
 		Payload loginRequest = loginRequest();
 		log.debug(loginRequest);
 		assertThat(loginRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_LOGIN));
-		assertThat(loginRequest.getLoginOrBuilder().getUsername(), is(USER));
-		assertThat(loginRequest.getLoginOrBuilder().getPassword(), is(PASSWORD));
+		assertThat(loginRequest.getLogin().getUsername(), is(USER));
+		assertThat(loginRequest.getLogin().getPassword(), is(PASSWORD));
 		assertThat(loginRequest.getEtoPayload().getType(), is(SmarketsEtoPiqi.PayloadType.PAYLOAD_LOGIN));
 		assertThat(loginRequest.getEtoPayload().getSeq(), is(1L));
 	}

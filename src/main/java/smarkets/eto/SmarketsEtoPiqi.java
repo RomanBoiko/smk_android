@@ -22,17 +22,6 @@ public final class SmarketsEtoPiqi {
     PAYLOAD_DOWNTIME_ALERT(9, 10),
     ;
     
-    public static final int PAYLOAD_NONE_VALUE = 1;
-    public static final int PAYLOAD_PING_VALUE = 2;
-    public static final int PAYLOAD_PONG_VALUE = 3;
-    public static final int PAYLOAD_GAPFILL_VALUE = 4;
-    public static final int PAYLOAD_HEARTBEAT_VALUE = 5;
-    public static final int PAYLOAD_REPLAY_VALUE = 6;
-    public static final int PAYLOAD_LOGIN_VALUE = 7;
-    public static final int PAYLOAD_LOGIN_RESPONSE_VALUE = 8;
-    public static final int PAYLOAD_LOGOUT_VALUE = 9;
-    public static final int PAYLOAD_DOWNTIME_ALERT_VALUE = 10;
-    
     
     public final int getNumber() { return value; }
     
@@ -60,8 +49,8 @@ public final class SmarketsEtoPiqi {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PayloadType>() {
             public PayloadType findValueByNumber(int number) {
-              return PayloadType.valueOf(number);
-            }
+              return PayloadType.valueOf(number)
+    ;        }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -80,7 +69,6 @@ public final class SmarketsEtoPiqi {
     private static final PayloadType[] VALUES = {
       PAYLOAD_NONE, PAYLOAD_PING, PAYLOAD_PONG, PAYLOAD_GAPFILL, PAYLOAD_HEARTBEAT, PAYLOAD_REPLAY, PAYLOAD_LOGIN, PAYLOAD_LOGIN_RESPONSE, PAYLOAD_LOGOUT, PAYLOAD_DOWNTIME_ALERT, 
     };
-    
     public static PayloadType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -89,13 +77,15 @@ public final class SmarketsEtoPiqi {
       }
       return VALUES[desc.getIndex()];
     }
-    
     private final int index;
     private final int value;
-    
     private PayloadType(int index, int value) {
       this.index = index;
       this.value = value;
+    }
+    
+    static {
+      smarkets.eto.SmarketsEtoPiqi.getDescriptor();
     }
     
     // @@protoc_insertion_point(enum_scope:smarkets.eto.PayloadType)
@@ -113,16 +103,6 @@ public final class SmarketsEtoPiqi {
     LOGOUT_SERVICE_TEMPORARILY_UNAVAILABLE(7, 8),
     LOGOUT_DOWNTIME(8, 9),
     ;
-    
-    public static final int LOGOUT_NONE_VALUE = 1;
-    public static final int LOGOUT_HEARTBEAT_TIMEOUT_VALUE = 2;
-    public static final int LOGOUT_CONFIRMATION_VALUE = 3;
-    public static final int LOGOUT_LOGIN_TIMEOUT_VALUE = 4;
-    public static final int LOGOUT_LOGIN_NOT_FIRST_SEQ_VALUE = 5;
-    public static final int LOGOUT_UNKNOWN_SESSION_VALUE = 6;
-    public static final int LOGOUT_UNAUTHORISED_VALUE = 7;
-    public static final int LOGOUT_SERVICE_TEMPORARILY_UNAVAILABLE_VALUE = 8;
-    public static final int LOGOUT_DOWNTIME_VALUE = 9;
     
     
     public final int getNumber() { return value; }
@@ -150,8 +130,8 @@ public final class SmarketsEtoPiqi {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<LogoutReason>() {
             public LogoutReason findValueByNumber(int number) {
-              return LogoutReason.valueOf(number);
-            }
+              return LogoutReason.valueOf(number)
+    ;        }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -170,7 +150,6 @@ public final class SmarketsEtoPiqi {
     private static final LogoutReason[] VALUES = {
       LOGOUT_NONE, LOGOUT_HEARTBEAT_TIMEOUT, LOGOUT_CONFIRMATION, LOGOUT_LOGIN_TIMEOUT, LOGOUT_LOGIN_NOT_FIRST_SEQ, LOGOUT_UNKNOWN_SESSION, LOGOUT_UNAUTHORISED, LOGOUT_SERVICE_TEMPORARILY_UNAVAILABLE, LOGOUT_DOWNTIME, 
     };
-    
     public static LogoutReason valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -179,13 +158,15 @@ public final class SmarketsEtoPiqi {
       }
       return VALUES[desc.getIndex()];
     }
-    
     private final int index;
     private final int value;
-    
     private LogoutReason(int index, int value) {
       this.index = index;
       this.value = value;
+    }
+    
+    static {
+      smarkets.eto.SmarketsEtoPiqi.getDescriptor();
     }
     
     // @@protoc_insertion_point(enum_scope:smarkets.eto.LogoutReason)
@@ -198,11 +179,6 @@ public final class SmarketsEtoPiqi {
     DOWNTIME_ALERT_CANCELLED(2, 3),
     DOWNTIME_ALERT_SERVICE_RESUMED(3, 4),
     ;
-    
-    public static final int DOWNTIME_ALERT_CONNECTION_VALUE = 1;
-    public static final int DOWNTIME_ALERT_FUNCTIONALITY_VALUE = 2;
-    public static final int DOWNTIME_ALERT_CANCELLED_VALUE = 3;
-    public static final int DOWNTIME_ALERT_SERVICE_RESUMED_VALUE = 4;
     
     
     public final int getNumber() { return value; }
@@ -225,8 +201,8 @@ public final class SmarketsEtoPiqi {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<DowntimeAlertType>() {
             public DowntimeAlertType findValueByNumber(int number) {
-              return DowntimeAlertType.valueOf(number);
-            }
+              return DowntimeAlertType.valueOf(number)
+    ;        }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -245,7 +221,6 @@ public final class SmarketsEtoPiqi {
     private static final DowntimeAlertType[] VALUES = {
       DOWNTIME_ALERT_CONNECTION, DOWNTIME_ALERT_FUNCTIONALITY, DOWNTIME_ALERT_CANCELLED, DOWNTIME_ALERT_SERVICE_RESUMED, 
     };
-    
     public static DowntimeAlertType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -254,64 +229,25 @@ public final class SmarketsEtoPiqi {
       }
       return VALUES[desc.getIndex()];
     }
-    
     private final int index;
     private final int value;
-    
     private DowntimeAlertType(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
+    static {
+      smarkets.eto.SmarketsEtoPiqi.getDescriptor();
+    }
+    
     // @@protoc_insertion_point(enum_scope:smarkets.eto.DowntimeAlertType)
   }
   
-  public interface PayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required uint64 seq = 1;
-    boolean hasSeq();
-    long getSeq();
-    
-    // optional .smarkets.eto.PayloadType type = 2;
-    boolean hasType();
-    smarkets.eto.SmarketsEtoPiqi.PayloadType getType();
-    
-    // optional bool is_replay = 3 [default = false];
-    boolean hasIsReplay();
-    boolean getIsReplay();
-    
-    // optional .smarkets.eto.Replay replay = 4;
-    boolean hasReplay();
-    smarkets.eto.SmarketsEtoPiqi.Replay getReplay();
-    smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder getReplayOrBuilder();
-    
-    // optional .smarkets.eto.Login login = 5;
-    boolean hasLogin();
-    smarkets.eto.SmarketsEtoPiqi.Login getLogin();
-    smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder getLoginOrBuilder();
-    
-    // optional .smarkets.eto.LoginResponse login_response = 6;
-    boolean hasLoginResponse();
-    smarkets.eto.SmarketsEtoPiqi.LoginResponse getLoginResponse();
-    smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder getLoginResponseOrBuilder();
-    
-    // optional .smarkets.eto.Logout logout = 7;
-    boolean hasLogout();
-    smarkets.eto.SmarketsEtoPiqi.Logout getLogout();
-    smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder getLogoutOrBuilder();
-    
-    // optional .smarkets.eto.DowntimeAlert downtime_alert = 8;
-    boolean hasDowntimeAlert();
-    smarkets.eto.SmarketsEtoPiqi.DowntimeAlert getDowntimeAlert();
-    smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder();
-  }
   public static final class Payload extends
-      com.google.protobuf.GeneratedMessage
-      implements PayloadOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Payload.newBuilder() to construct.
-    private Payload(Builder builder) {
-      super(builder);
+    private Payload() {
+      initFields();
     }
     private Payload(boolean noInit) {}
     
@@ -334,175 +270,113 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Payload_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required uint64 seq = 1;
     public static final int SEQ_FIELD_NUMBER = 1;
-    private long seq_;
-    public boolean hasSeq() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getSeq() {
-      return seq_;
-    }
+    private boolean hasSeq;
+    private long seq_ = 0L;
+    public boolean hasSeq() { return hasSeq; }
+    public long getSeq() { return seq_; }
     
     // optional .smarkets.eto.PayloadType type = 2;
     public static final int TYPE_FIELD_NUMBER = 2;
+    private boolean hasType;
     private smarkets.eto.SmarketsEtoPiqi.PayloadType type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.PayloadType getType() {
-      return type_;
-    }
+    public boolean hasType() { return hasType; }
+    public smarkets.eto.SmarketsEtoPiqi.PayloadType getType() { return type_; }
     
     // optional bool is_replay = 3 [default = false];
     public static final int IS_REPLAY_FIELD_NUMBER = 3;
-    private boolean isReplay_;
-    public boolean hasIsReplay() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public boolean getIsReplay() {
-      return isReplay_;
-    }
+    private boolean hasIsReplay;
+    private boolean isReplay_ = false;
+    public boolean hasIsReplay() { return hasIsReplay; }
+    public boolean getIsReplay() { return isReplay_; }
     
     // optional .smarkets.eto.Replay replay = 4;
     public static final int REPLAY_FIELD_NUMBER = 4;
+    private boolean hasReplay;
     private smarkets.eto.SmarketsEtoPiqi.Replay replay_;
-    public boolean hasReplay() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.Replay getReplay() {
-      return replay_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder getReplayOrBuilder() {
-      return replay_;
-    }
+    public boolean hasReplay() { return hasReplay; }
+    public smarkets.eto.SmarketsEtoPiqi.Replay getReplay() { return replay_; }
     
     // optional .smarkets.eto.Login login = 5;
     public static final int LOGIN_FIELD_NUMBER = 5;
+    private boolean hasLogin;
     private smarkets.eto.SmarketsEtoPiqi.Login login_;
-    public boolean hasLogin() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.Login getLogin() {
-      return login_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder getLoginOrBuilder() {
-      return login_;
-    }
+    public boolean hasLogin() { return hasLogin; }
+    public smarkets.eto.SmarketsEtoPiqi.Login getLogin() { return login_; }
     
     // optional .smarkets.eto.LoginResponse login_response = 6;
     public static final int LOGIN_RESPONSE_FIELD_NUMBER = 6;
+    private boolean hasLoginResponse;
     private smarkets.eto.SmarketsEtoPiqi.LoginResponse loginResponse_;
-    public boolean hasLoginResponse() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.LoginResponse getLoginResponse() {
-      return loginResponse_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder getLoginResponseOrBuilder() {
-      return loginResponse_;
-    }
+    public boolean hasLoginResponse() { return hasLoginResponse; }
+    public smarkets.eto.SmarketsEtoPiqi.LoginResponse getLoginResponse() { return loginResponse_; }
     
     // optional .smarkets.eto.Logout logout = 7;
     public static final int LOGOUT_FIELD_NUMBER = 7;
+    private boolean hasLogout;
     private smarkets.eto.SmarketsEtoPiqi.Logout logout_;
-    public boolean hasLogout() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.Logout getLogout() {
-      return logout_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder getLogoutOrBuilder() {
-      return logout_;
-    }
+    public boolean hasLogout() { return hasLogout; }
+    public smarkets.eto.SmarketsEtoPiqi.Logout getLogout() { return logout_; }
     
     // optional .smarkets.eto.DowntimeAlert downtime_alert = 8;
     public static final int DOWNTIME_ALERT_FIELD_NUMBER = 8;
+    private boolean hasDowntimeAlert;
     private smarkets.eto.SmarketsEtoPiqi.DowntimeAlert downtimeAlert_;
-    public boolean hasDowntimeAlert() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert getDowntimeAlert() {
-      return downtimeAlert_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder() {
-      return downtimeAlert_;
-    }
+    public boolean hasDowntimeAlert() { return hasDowntimeAlert; }
+    public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert getDowntimeAlert() { return downtimeAlert_; }
     
     private void initFields() {
-      seq_ = 0L;
       type_ = smarkets.eto.SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE;
-      isReplay_ = false;
       replay_ = smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
       login_ = smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
       loginResponse_ = smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
       logout_ = smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
       downtimeAlert_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasSeq()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
+      if (!hasSeq) return false;
       if (hasReplay()) {
-        if (!getReplay().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+        if (!getReplay().isInitialized()) return false;
       }
       if (hasLogin()) {
-        if (!getLogin().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+        if (!getLogin().isInitialized()) return false;
       }
       if (hasLoginResponse()) {
-        if (!getLoginResponse().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+        if (!getLoginResponse().isInitialized()) return false;
       }
       if (hasDowntimeAlert()) {
-        if (!getDowntimeAlert().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+        if (!getDowntimeAlert().isInitialized()) return false;
       }
-      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, seq_);
+      if (hasSeq()) {
+        output.writeUInt64(1, getSeq());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, type_.getNumber());
+      if (hasType()) {
+        output.writeEnum(2, getType().getNumber());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(3, isReplay_);
+      if (hasIsReplay()) {
+        output.writeBool(3, getIsReplay());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, replay_);
+      if (hasReplay()) {
+        output.writeMessage(4, getReplay());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(5, login_);
+      if (hasLogin()) {
+        output.writeMessage(5, getLogin());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(6, loginResponse_);
+      if (hasLoginResponse()) {
+        output.writeMessage(6, getLoginResponse());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(7, logout_);
+      if (hasLogout()) {
+        output.writeMessage(7, getLogout());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(8, downtimeAlert_);
+      if (hasDowntimeAlert()) {
+        output.writeMessage(8, getDowntimeAlert());
       }
       getUnknownFields().writeTo(output);
     }
@@ -513,48 +387,41 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasSeq()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, seq_);
+          .computeUInt64Size(1, getSeq());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasType()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_.getNumber());
+          .computeEnumSize(2, getType().getNumber());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (hasIsReplay()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, isReplay_);
+          .computeBoolSize(3, getIsReplay());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (hasReplay()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, replay_);
+          .computeMessageSize(4, getReplay());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (hasLogin()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, login_);
+          .computeMessageSize(5, getLogin());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (hasLoginResponse()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, loginResponse_);
+          .computeMessageSize(6, getLoginResponse());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (hasLogout()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, logout_);
+          .computeMessageSize(7, getLogout());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (hasDowntimeAlert()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, downtimeAlert_);
+          .computeMessageSize(8, getDowntimeAlert());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Payload parseFrom(
@@ -631,90 +498,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.PayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Payload_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Payload_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Payload result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Payload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Payload();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getReplayFieldBuilder();
-          getLoginFieldBuilder();
-          getLoginResponseFieldBuilder();
-          getLogoutFieldBuilder();
-          getDowntimeAlertFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Payload internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        seq_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = smarkets.eto.SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        isReplay_ = false;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (replayBuilder_ == null) {
-          replay_ = smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
-        } else {
-          replayBuilder_.clear();
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (loginBuilder_ == null) {
-          login_ = smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
-        } else {
-          loginBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (loginResponseBuilder_ == null) {
-          loginResponse_ = smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
-        } else {
-          loginResponseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        if (logoutBuilder_ == null) {
-          logout_ = smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
-        } else {
-          logoutBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (downtimeAlertBuilder_ == null) {
-          downtimeAlert_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
-        } else {
-          downtimeAlertBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        result = new smarkets.eto.SmarketsEtoPiqi.Payload();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -726,83 +537,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Payload.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Payload build() {
-        smarkets.eto.SmarketsEtoPiqi.Payload result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Payload buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Payload result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Payload buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Payload result = new smarkets.eto.SmarketsEtoPiqi.Payload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.seq_ = seq_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.isReplay_ = isReplay_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (replayBuilder_ == null) {
-          result.replay_ = replay_;
-        } else {
-          result.replay_ = replayBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        if (loginBuilder_ == null) {
-          result.login_ = login_;
-        } else {
-          result.login_ = loginBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        if (loginResponseBuilder_ == null) {
-          result.loginResponse_ = loginResponse_;
-        } else {
-          result.loginResponse_ = loginResponseBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        if (logoutBuilder_ == null) {
-          result.logout_ = logout_;
-        } else {
-          result.logout_ = logoutBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        if (downtimeAlertBuilder_ == null) {
-          result.downtimeAlert_ = downtimeAlert_;
-        } else {
-          result.downtimeAlert_ = downtimeAlertBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Payload returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -844,38 +605,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasSeq()) {
-          
-          return false;
-        }
-        if (hasReplay()) {
-          if (!getReplay().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasLogin()) {
-          if (!getLogin().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasLoginResponse()) {
-          if (!getLoginResponse().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasDowntimeAlert()) {
-          if (!getDowntimeAlert().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -888,20 +617,17 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              seq_ = input.readUInt64();
+              setSeq(input.readUInt64());
               break;
             }
             case 16: {
@@ -910,14 +636,12 @@ public final class SmarketsEtoPiqi {
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
-                bitField0_ |= 0x00000002;
-                type_ = value;
+                setType(value);
               }
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
-              isReplay_ = input.readBool();
+              setIsReplay(input.readBool());
               break;
             }
             case 34: {
@@ -969,522 +693,247 @@ public final class SmarketsEtoPiqi {
         }
       }
       
-      private int bitField0_;
       
       // required uint64 seq = 1;
-      private long seq_ ;
       public boolean hasSeq() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasSeq();
       }
       public long getSeq() {
-        return seq_;
+        return result.getSeq();
       }
       public Builder setSeq(long value) {
-        bitField0_ |= 0x00000001;
-        seq_ = value;
-        onChanged();
+        result.hasSeq = true;
+        result.seq_ = value;
         return this;
       }
       public Builder clearSeq() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        seq_ = 0L;
-        onChanged();
+        result.hasSeq = false;
+        result.seq_ = 0L;
         return this;
       }
       
       // optional .smarkets.eto.PayloadType type = 2;
-      private smarkets.eto.SmarketsEtoPiqi.PayloadType type_ = smarkets.eto.SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE;
       public boolean hasType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasType();
       }
       public smarkets.eto.SmarketsEtoPiqi.PayloadType getType() {
-        return type_;
+        return result.getType();
       }
       public Builder setType(smarkets.eto.SmarketsEtoPiqi.PayloadType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000002;
-        type_ = value;
-        onChanged();
+        result.hasType = true;
+        result.type_ = value;
         return this;
       }
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        type_ = smarkets.eto.SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE;
-        onChanged();
+        result.hasType = false;
+        result.type_ = smarkets.eto.SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE;
         return this;
       }
       
       // optional bool is_replay = 3 [default = false];
-      private boolean isReplay_ ;
       public boolean hasIsReplay() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return result.hasIsReplay();
       }
       public boolean getIsReplay() {
-        return isReplay_;
+        return result.getIsReplay();
       }
       public Builder setIsReplay(boolean value) {
-        bitField0_ |= 0x00000004;
-        isReplay_ = value;
-        onChanged();
+        result.hasIsReplay = true;
+        result.isReplay_ = value;
         return this;
       }
       public Builder clearIsReplay() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        isReplay_ = false;
-        onChanged();
+        result.hasIsReplay = false;
+        result.isReplay_ = false;
         return this;
       }
       
       // optional .smarkets.eto.Replay replay = 4;
-      private smarkets.eto.SmarketsEtoPiqi.Replay replay_ = smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Replay, smarkets.eto.SmarketsEtoPiqi.Replay.Builder, smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder> replayBuilder_;
       public boolean hasReplay() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return result.hasReplay();
       }
       public smarkets.eto.SmarketsEtoPiqi.Replay getReplay() {
-        if (replayBuilder_ == null) {
-          return replay_;
-        } else {
-          return replayBuilder_.getMessage();
-        }
+        return result.getReplay();
       }
       public Builder setReplay(smarkets.eto.SmarketsEtoPiqi.Replay value) {
-        if (replayBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          replay_ = value;
-          onChanged();
-        } else {
-          replayBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000008;
+        result.hasReplay = true;
+        result.replay_ = value;
         return this;
       }
-      public Builder setReplay(
-          smarkets.eto.SmarketsEtoPiqi.Replay.Builder builderForValue) {
-        if (replayBuilder_ == null) {
-          replay_ = builderForValue.build();
-          onChanged();
-        } else {
-          replayBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
+      public Builder setReplay(smarkets.eto.SmarketsEtoPiqi.Replay.Builder builderForValue) {
+        result.hasReplay = true;
+        result.replay_ = builderForValue.build();
         return this;
       }
       public Builder mergeReplay(smarkets.eto.SmarketsEtoPiqi.Replay value) {
-        if (replayBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              replay_ != smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance()) {
-            replay_ =
-              smarkets.eto.SmarketsEtoPiqi.Replay.newBuilder(replay_).mergeFrom(value).buildPartial();
-          } else {
-            replay_ = value;
-          }
-          onChanged();
+        if (result.hasReplay() &&
+            result.replay_ != smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance()) {
+          result.replay_ =
+            smarkets.eto.SmarketsEtoPiqi.Replay.newBuilder(result.replay_).mergeFrom(value).buildPartial();
         } else {
-          replayBuilder_.mergeFrom(value);
+          result.replay_ = value;
         }
-        bitField0_ |= 0x00000008;
+        result.hasReplay = true;
         return this;
       }
       public Builder clearReplay() {
-        if (replayBuilder_ == null) {
-          replay_ = smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
-          onChanged();
-        } else {
-          replayBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        result.hasReplay = false;
+        result.replay_ = smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.Replay.Builder getReplayBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getReplayFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder getReplayOrBuilder() {
-        if (replayBuilder_ != null) {
-          return replayBuilder_.getMessageOrBuilder();
-        } else {
-          return replay_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Replay, smarkets.eto.SmarketsEtoPiqi.Replay.Builder, smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder> 
-          getReplayFieldBuilder() {
-        if (replayBuilder_ == null) {
-          replayBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.Replay, smarkets.eto.SmarketsEtoPiqi.Replay.Builder, smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder>(
-                  replay_,
-                  getParentForChildren(),
-                  isClean());
-          replay_ = null;
-        }
-        return replayBuilder_;
       }
       
       // optional .smarkets.eto.Login login = 5;
-      private smarkets.eto.SmarketsEtoPiqi.Login login_ = smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Login, smarkets.eto.SmarketsEtoPiqi.Login.Builder, smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder> loginBuilder_;
       public boolean hasLogin() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return result.hasLogin();
       }
       public smarkets.eto.SmarketsEtoPiqi.Login getLogin() {
-        if (loginBuilder_ == null) {
-          return login_;
-        } else {
-          return loginBuilder_.getMessage();
-        }
+        return result.getLogin();
       }
       public Builder setLogin(smarkets.eto.SmarketsEtoPiqi.Login value) {
-        if (loginBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          login_ = value;
-          onChanged();
-        } else {
-          loginBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
+        result.hasLogin = true;
+        result.login_ = value;
         return this;
       }
-      public Builder setLogin(
-          smarkets.eto.SmarketsEtoPiqi.Login.Builder builderForValue) {
-        if (loginBuilder_ == null) {
-          login_ = builderForValue.build();
-          onChanged();
-        } else {
-          loginBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000010;
+      public Builder setLogin(smarkets.eto.SmarketsEtoPiqi.Login.Builder builderForValue) {
+        result.hasLogin = true;
+        result.login_ = builderForValue.build();
         return this;
       }
       public Builder mergeLogin(smarkets.eto.SmarketsEtoPiqi.Login value) {
-        if (loginBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              login_ != smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance()) {
-            login_ =
-              smarkets.eto.SmarketsEtoPiqi.Login.newBuilder(login_).mergeFrom(value).buildPartial();
-          } else {
-            login_ = value;
-          }
-          onChanged();
+        if (result.hasLogin() &&
+            result.login_ != smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance()) {
+          result.login_ =
+            smarkets.eto.SmarketsEtoPiqi.Login.newBuilder(result.login_).mergeFrom(value).buildPartial();
         } else {
-          loginBuilder_.mergeFrom(value);
+          result.login_ = value;
         }
-        bitField0_ |= 0x00000010;
+        result.hasLogin = true;
         return this;
       }
       public Builder clearLogin() {
-        if (loginBuilder_ == null) {
-          login_ = smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
-          onChanged();
-        } else {
-          loginBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        result.hasLogin = false;
+        result.login_ = smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.Login.Builder getLoginBuilder() {
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return getLoginFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder getLoginOrBuilder() {
-        if (loginBuilder_ != null) {
-          return loginBuilder_.getMessageOrBuilder();
-        } else {
-          return login_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Login, smarkets.eto.SmarketsEtoPiqi.Login.Builder, smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder> 
-          getLoginFieldBuilder() {
-        if (loginBuilder_ == null) {
-          loginBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.Login, smarkets.eto.SmarketsEtoPiqi.Login.Builder, smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder>(
-                  login_,
-                  getParentForChildren(),
-                  isClean());
-          login_ = null;
-        }
-        return loginBuilder_;
       }
       
       // optional .smarkets.eto.LoginResponse login_response = 6;
-      private smarkets.eto.SmarketsEtoPiqi.LoginResponse loginResponse_ = smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.LoginResponse, smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder, smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder> loginResponseBuilder_;
       public boolean hasLoginResponse() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return result.hasLoginResponse();
       }
       public smarkets.eto.SmarketsEtoPiqi.LoginResponse getLoginResponse() {
-        if (loginResponseBuilder_ == null) {
-          return loginResponse_;
-        } else {
-          return loginResponseBuilder_.getMessage();
-        }
+        return result.getLoginResponse();
       }
       public Builder setLoginResponse(smarkets.eto.SmarketsEtoPiqi.LoginResponse value) {
-        if (loginResponseBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          loginResponse_ = value;
-          onChanged();
-        } else {
-          loginResponseBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000020;
+        result.hasLoginResponse = true;
+        result.loginResponse_ = value;
         return this;
       }
-      public Builder setLoginResponse(
-          smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder builderForValue) {
-        if (loginResponseBuilder_ == null) {
-          loginResponse_ = builderForValue.build();
-          onChanged();
-        } else {
-          loginResponseBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000020;
+      public Builder setLoginResponse(smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder builderForValue) {
+        result.hasLoginResponse = true;
+        result.loginResponse_ = builderForValue.build();
         return this;
       }
       public Builder mergeLoginResponse(smarkets.eto.SmarketsEtoPiqi.LoginResponse value) {
-        if (loginResponseBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
-              loginResponse_ != smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance()) {
-            loginResponse_ =
-              smarkets.eto.SmarketsEtoPiqi.LoginResponse.newBuilder(loginResponse_).mergeFrom(value).buildPartial();
-          } else {
-            loginResponse_ = value;
-          }
-          onChanged();
+        if (result.hasLoginResponse() &&
+            result.loginResponse_ != smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance()) {
+          result.loginResponse_ =
+            smarkets.eto.SmarketsEtoPiqi.LoginResponse.newBuilder(result.loginResponse_).mergeFrom(value).buildPartial();
         } else {
-          loginResponseBuilder_.mergeFrom(value);
+          result.loginResponse_ = value;
         }
-        bitField0_ |= 0x00000020;
+        result.hasLoginResponse = true;
         return this;
       }
       public Builder clearLoginResponse() {
-        if (loginResponseBuilder_ == null) {
-          loginResponse_ = smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
-          onChanged();
-        } else {
-          loginResponseBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        result.hasLoginResponse = false;
+        result.loginResponse_ = smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder getLoginResponseBuilder() {
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return getLoginResponseFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder getLoginResponseOrBuilder() {
-        if (loginResponseBuilder_ != null) {
-          return loginResponseBuilder_.getMessageOrBuilder();
-        } else {
-          return loginResponse_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.LoginResponse, smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder, smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder> 
-          getLoginResponseFieldBuilder() {
-        if (loginResponseBuilder_ == null) {
-          loginResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.LoginResponse, smarkets.eto.SmarketsEtoPiqi.LoginResponse.Builder, smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder>(
-                  loginResponse_,
-                  getParentForChildren(),
-                  isClean());
-          loginResponse_ = null;
-        }
-        return loginResponseBuilder_;
       }
       
       // optional .smarkets.eto.Logout logout = 7;
-      private smarkets.eto.SmarketsEtoPiqi.Logout logout_ = smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Logout, smarkets.eto.SmarketsEtoPiqi.Logout.Builder, smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder> logoutBuilder_;
       public boolean hasLogout() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return result.hasLogout();
       }
       public smarkets.eto.SmarketsEtoPiqi.Logout getLogout() {
-        if (logoutBuilder_ == null) {
-          return logout_;
-        } else {
-          return logoutBuilder_.getMessage();
-        }
+        return result.getLogout();
       }
       public Builder setLogout(smarkets.eto.SmarketsEtoPiqi.Logout value) {
-        if (logoutBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          logout_ = value;
-          onChanged();
-        } else {
-          logoutBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000040;
+        result.hasLogout = true;
+        result.logout_ = value;
         return this;
       }
-      public Builder setLogout(
-          smarkets.eto.SmarketsEtoPiqi.Logout.Builder builderForValue) {
-        if (logoutBuilder_ == null) {
-          logout_ = builderForValue.build();
-          onChanged();
-        } else {
-          logoutBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000040;
+      public Builder setLogout(smarkets.eto.SmarketsEtoPiqi.Logout.Builder builderForValue) {
+        result.hasLogout = true;
+        result.logout_ = builderForValue.build();
         return this;
       }
       public Builder mergeLogout(smarkets.eto.SmarketsEtoPiqi.Logout value) {
-        if (logoutBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040) &&
-              logout_ != smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance()) {
-            logout_ =
-              smarkets.eto.SmarketsEtoPiqi.Logout.newBuilder(logout_).mergeFrom(value).buildPartial();
-          } else {
-            logout_ = value;
-          }
-          onChanged();
+        if (result.hasLogout() &&
+            result.logout_ != smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance()) {
+          result.logout_ =
+            smarkets.eto.SmarketsEtoPiqi.Logout.newBuilder(result.logout_).mergeFrom(value).buildPartial();
         } else {
-          logoutBuilder_.mergeFrom(value);
+          result.logout_ = value;
         }
-        bitField0_ |= 0x00000040;
+        result.hasLogout = true;
         return this;
       }
       public Builder clearLogout() {
-        if (logoutBuilder_ == null) {
-          logout_ = smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
-          onChanged();
-        } else {
-          logoutBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        result.hasLogout = false;
+        result.logout_ = smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.Logout.Builder getLogoutBuilder() {
-        bitField0_ |= 0x00000040;
-        onChanged();
-        return getLogoutFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder getLogoutOrBuilder() {
-        if (logoutBuilder_ != null) {
-          return logoutBuilder_.getMessageOrBuilder();
-        } else {
-          return logout_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Logout, smarkets.eto.SmarketsEtoPiqi.Logout.Builder, smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder> 
-          getLogoutFieldBuilder() {
-        if (logoutBuilder_ == null) {
-          logoutBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.Logout, smarkets.eto.SmarketsEtoPiqi.Logout.Builder, smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder>(
-                  logout_,
-                  getParentForChildren(),
-                  isClean());
-          logout_ = null;
-        }
-        return logoutBuilder_;
       }
       
       // optional .smarkets.eto.DowntimeAlert downtime_alert = 8;
-      private smarkets.eto.SmarketsEtoPiqi.DowntimeAlert downtimeAlert_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.DowntimeAlert, smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder, smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder> downtimeAlertBuilder_;
       public boolean hasDowntimeAlert() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return result.hasDowntimeAlert();
       }
       public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert getDowntimeAlert() {
-        if (downtimeAlertBuilder_ == null) {
-          return downtimeAlert_;
-        } else {
-          return downtimeAlertBuilder_.getMessage();
-        }
+        return result.getDowntimeAlert();
       }
       public Builder setDowntimeAlert(smarkets.eto.SmarketsEtoPiqi.DowntimeAlert value) {
-        if (downtimeAlertBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          downtimeAlert_ = value;
-          onChanged();
-        } else {
-          downtimeAlertBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000080;
+        result.hasDowntimeAlert = true;
+        result.downtimeAlert_ = value;
         return this;
       }
-      public Builder setDowntimeAlert(
-          smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder builderForValue) {
-        if (downtimeAlertBuilder_ == null) {
-          downtimeAlert_ = builderForValue.build();
-          onChanged();
-        } else {
-          downtimeAlertBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000080;
+      public Builder setDowntimeAlert(smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder builderForValue) {
+        result.hasDowntimeAlert = true;
+        result.downtimeAlert_ = builderForValue.build();
         return this;
       }
       public Builder mergeDowntimeAlert(smarkets.eto.SmarketsEtoPiqi.DowntimeAlert value) {
-        if (downtimeAlertBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              downtimeAlert_ != smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance()) {
-            downtimeAlert_ =
-              smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.newBuilder(downtimeAlert_).mergeFrom(value).buildPartial();
-          } else {
-            downtimeAlert_ = value;
-          }
-          onChanged();
+        if (result.hasDowntimeAlert() &&
+            result.downtimeAlert_ != smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance()) {
+          result.downtimeAlert_ =
+            smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.newBuilder(result.downtimeAlert_).mergeFrom(value).buildPartial();
         } else {
-          downtimeAlertBuilder_.mergeFrom(value);
+          result.downtimeAlert_ = value;
         }
-        bitField0_ |= 0x00000080;
+        result.hasDowntimeAlert = true;
         return this;
       }
       public Builder clearDowntimeAlert() {
-        if (downtimeAlertBuilder_ == null) {
-          downtimeAlert_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
-          onChanged();
-        } else {
-          downtimeAlertBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        result.hasDowntimeAlert = false;
+        result.downtimeAlert_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder getDowntimeAlertBuilder() {
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return getDowntimeAlertFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder getDowntimeAlertOrBuilder() {
-        if (downtimeAlertBuilder_ != null) {
-          return downtimeAlertBuilder_.getMessageOrBuilder();
-        } else {
-          return downtimeAlert_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.DowntimeAlert, smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder, smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder> 
-          getDowntimeAlertFieldBuilder() {
-        if (downtimeAlertBuilder_ == null) {
-          downtimeAlertBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.DowntimeAlert, smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.Builder, smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder>(
-                  downtimeAlert_,
-                  getParentForChildren(),
-                  isClean());
-          downtimeAlert_ = null;
-        }
-        return downtimeAlertBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:smarkets.eto.Payload)
@@ -1492,25 +941,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Payload(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Payload)
   }
   
-  public interface ReplayOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required uint64 seq = 1;
-    boolean hasSeq();
-    long getSeq();
-  }
   public static final class Replay extends
-      com.google.protobuf.GeneratedMessage
-      implements ReplayOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Replay.newBuilder() to construct.
-    private Replay(Builder builder) {
-      super(builder);
+    private Replay() {
+      initFields();
     }
     private Replay(boolean noInit) {}
     
@@ -1533,38 +975,25 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Replay_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required uint64 seq = 1;
     public static final int SEQ_FIELD_NUMBER = 1;
-    private long seq_;
-    public boolean hasSeq() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getSeq() {
-      return seq_;
-    }
+    private boolean hasSeq;
+    private long seq_ = 0L;
+    public boolean hasSeq() { return hasSeq; }
+    public long getSeq() { return seq_; }
     
     private void initFields() {
-      seq_ = 0L;
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasSeq()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasSeq) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, seq_);
+      if (hasSeq()) {
+        output.writeUInt64(1, getSeq());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1575,20 +1004,13 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasSeq()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, seq_);
+          .computeUInt64Size(1, getSeq());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Replay parseFrom(
@@ -1665,51 +1087,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.ReplayOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Replay_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Replay_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Replay result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Replay.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Replay();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Replay internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        seq_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.Replay();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1721,35 +1126,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Replay.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Replay build() {
-        smarkets.eto.SmarketsEtoPiqi.Replay result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Replay buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Replay result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Replay buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Replay result = new smarkets.eto.SmarketsEtoPiqi.Replay(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.seq_ = seq_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Replay returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1770,14 +1173,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasSeq()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1790,46 +1185,39 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              seq_ = input.readUInt64();
+              setSeq(input.readUInt64());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // required uint64 seq = 1;
-      private long seq_ ;
       public boolean hasSeq() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasSeq();
       }
       public long getSeq() {
-        return seq_;
+        return result.getSeq();
       }
       public Builder setSeq(long value) {
-        bitField0_ |= 0x00000001;
-        seq_ = value;
-        onChanged();
+        result.hasSeq = true;
+        result.seq_ = value;
         return this;
       }
       public Builder clearSeq() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        seq_ = 0L;
-        onChanged();
+        result.hasSeq = false;
+        result.seq_ = 0L;
         return this;
       }
       
@@ -1838,25 +1226,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Replay(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Replay)
   }
   
-  public interface LoginOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required string session = 1;
-    boolean hasSession();
-    String getSession();
-  }
   public static final class Login extends
-      com.google.protobuf.GeneratedMessage
-      implements LoginOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Login.newBuilder() to construct.
-    private Login(Builder builder) {
-      super(builder);
+    private Login() {
+      initFields();
     }
     private Login(boolean noInit) {}
     
@@ -1879,60 +1260,25 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Login_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required string session = 1;
     public static final int SESSION_FIELD_NUMBER = 1;
-    private java.lang.Object session_;
-    public boolean hasSession() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public String getSession() {
-      java.lang.Object ref = session_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          session_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getSessionBytes() {
-      java.lang.Object ref = session_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        session_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
+    private boolean hasSession;
+    private java.lang.String session_ = "";
+    public boolean hasSession() { return hasSession; }
+    public java.lang.String getSession() { return session_; }
     
     private void initFields() {
-      session_ = "";
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasSession()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasSession) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getSessionBytes());
+      if (hasSession()) {
+        output.writeString(1, getSession());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1943,20 +1289,13 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasSession()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getSessionBytes());
+          .computeStringSize(1, getSession());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Login parseFrom(
@@ -2033,51 +1372,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.LoginOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Login_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Login_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Login result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Login.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Login();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Login internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        session_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.Login();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -2089,35 +1411,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Login.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Login build() {
-        smarkets.eto.SmarketsEtoPiqi.Login result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Login buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Login result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Login buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Login result = new smarkets.eto.SmarketsEtoPiqi.Login(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.session_ = session_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Login returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2138,14 +1458,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasSession()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2158,62 +1470,43 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 10: {
-              bitField0_ |= 0x00000001;
-              session_ = input.readBytes();
+              setSession(input.readString());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // required string session = 1;
-      private java.lang.Object session_ = "";
       public boolean hasSession() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasSession();
       }
-      public String getSession() {
-        java.lang.Object ref = session_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          session_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public java.lang.String getSession() {
+        return result.getSession();
       }
-      public Builder setSession(String value) {
+      public Builder setSession(java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        session_ = value;
-        onChanged();
+  result.hasSession = true;
+        result.session_ = value;
         return this;
       }
       public Builder clearSession() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        session_ = getDefaultInstance().getSession();
-        onChanged();
+        result.hasSession = false;
+        result.session_ = getDefaultInstance().getSession();
         return this;
-      }
-      void setSession(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
-        session_ = value;
-        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:smarkets.eto.Login)
@@ -2221,29 +1514,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Login(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Login)
   }
   
-  public interface LoginResponseOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required string session = 1;
-    boolean hasSession();
-    String getSession();
-    
-    // optional uint64 reset = 2;
-    boolean hasReset();
-    long getReset();
-  }
   public static final class LoginResponse extends
-      com.google.protobuf.GeneratedMessage
-      implements LoginResponseOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use LoginResponse.newBuilder() to construct.
-    private LoginResponse(Builder builder) {
-      super(builder);
+    private LoginResponse() {
+      initFields();
     }
     private LoginResponse(boolean noInit) {}
     
@@ -2266,74 +1548,35 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_LoginResponse_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required string session = 1;
     public static final int SESSION_FIELD_NUMBER = 1;
-    private java.lang.Object session_;
-    public boolean hasSession() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public String getSession() {
-      java.lang.Object ref = session_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          session_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getSessionBytes() {
-      java.lang.Object ref = session_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        session_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
+    private boolean hasSession;
+    private java.lang.String session_ = "";
+    public boolean hasSession() { return hasSession; }
+    public java.lang.String getSession() { return session_; }
     
     // optional uint64 reset = 2;
     public static final int RESET_FIELD_NUMBER = 2;
-    private long reset_;
-    public boolean hasReset() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public long getReset() {
-      return reset_;
-    }
+    private boolean hasReset;
+    private long reset_ = 0L;
+    public boolean hasReset() { return hasReset; }
+    public long getReset() { return reset_; }
     
     private void initFields() {
-      session_ = "";
-      reset_ = 0L;
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasSession()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasSession) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getSessionBytes());
+      if (hasSession()) {
+        output.writeString(1, getSession());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(2, reset_);
+      if (hasReset()) {
+        output.writeUInt64(2, getReset());
       }
       getUnknownFields().writeTo(output);
     }
@@ -2344,24 +1587,17 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasSession()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getSessionBytes());
+          .computeStringSize(1, getSession());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasReset()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, reset_);
+          .computeUInt64Size(2, getReset());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.LoginResponse parseFrom(
@@ -2438,53 +1674,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.LoginResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_LoginResponse_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_LoginResponse_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.LoginResponse result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.LoginResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.LoginResponse();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.LoginResponse internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        session_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        reset_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.LoginResponse();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -2496,39 +1713,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.LoginResponse.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.LoginResponse build() {
-        smarkets.eto.SmarketsEtoPiqi.LoginResponse result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.LoginResponse buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.LoginResponse result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.LoginResponse buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.LoginResponse result = new smarkets.eto.SmarketsEtoPiqi.LoginResponse(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.session_ = session_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.reset_ = reset_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.LoginResponse returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2552,14 +1763,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasSession()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2572,87 +1775,64 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 10: {
-              bitField0_ |= 0x00000001;
-              session_ = input.readBytes();
+              setSession(input.readString());
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              reset_ = input.readUInt64();
+              setReset(input.readUInt64());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // required string session = 1;
-      private java.lang.Object session_ = "";
       public boolean hasSession() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasSession();
       }
-      public String getSession() {
-        java.lang.Object ref = session_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          session_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public java.lang.String getSession() {
+        return result.getSession();
       }
-      public Builder setSession(String value) {
+      public Builder setSession(java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        session_ = value;
-        onChanged();
+  result.hasSession = true;
+        result.session_ = value;
         return this;
       }
       public Builder clearSession() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        session_ = getDefaultInstance().getSession();
-        onChanged();
+        result.hasSession = false;
+        result.session_ = getDefaultInstance().getSession();
         return this;
-      }
-      void setSession(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
-        session_ = value;
-        onChanged();
       }
       
       // optional uint64 reset = 2;
-      private long reset_ ;
       public boolean hasReset() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasReset();
       }
       public long getReset() {
-        return reset_;
+        return result.getReset();
       }
       public Builder setReset(long value) {
-        bitField0_ |= 0x00000002;
-        reset_ = value;
-        onChanged();
+        result.hasReset = true;
+        result.reset_ = value;
         return this;
       }
       public Builder clearReset() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        reset_ = 0L;
-        onChanged();
+        result.hasReset = false;
+        result.reset_ = 0L;
         return this;
       }
       
@@ -2661,25 +1841,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new LoginResponse(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.LoginResponse)
   }
   
-  public interface LogoutOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional .smarkets.eto.LogoutReason reason = 1;
-    boolean hasReason();
-    smarkets.eto.SmarketsEtoPiqi.LogoutReason getReason();
-  }
   public static final class Logout extends
-      com.google.protobuf.GeneratedMessage
-      implements LogoutOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Logout.newBuilder() to construct.
-    private Logout(Builder builder) {
-      super(builder);
+    private Logout() {
+      initFields();
     }
     private Logout(boolean noInit) {}
     
@@ -2702,34 +1875,25 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Logout_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // optional .smarkets.eto.LogoutReason reason = 1;
     public static final int REASON_FIELD_NUMBER = 1;
+    private boolean hasReason;
     private smarkets.eto.SmarketsEtoPiqi.LogoutReason reason_;
-    public boolean hasReason() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.LogoutReason getReason() {
-      return reason_;
-    }
+    public boolean hasReason() { return hasReason; }
+    public smarkets.eto.SmarketsEtoPiqi.LogoutReason getReason() { return reason_; }
     
     private void initFields() {
       reason_ = smarkets.eto.SmarketsEtoPiqi.LogoutReason.LOGOUT_NONE;
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, reason_.getNumber());
+      if (hasReason()) {
+        output.writeEnum(1, getReason().getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -2740,20 +1904,13 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasReason()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, reason_.getNumber());
+          .computeEnumSize(1, getReason().getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Logout parseFrom(
@@ -2830,51 +1987,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.LogoutOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Logout_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Logout_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Logout result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Logout.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Logout();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Logout internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        reason_ = smarkets.eto.SmarketsEtoPiqi.LogoutReason.LOGOUT_NONE;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.Logout();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -2886,35 +2026,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Logout.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Logout build() {
-        smarkets.eto.SmarketsEtoPiqi.Logout result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Logout buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Logout result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Logout buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Logout result = new smarkets.eto.SmarketsEtoPiqi.Logout(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.reason_ = reason_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Logout returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2935,10 +2073,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2951,13 +2085,11 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
@@ -2968,8 +2100,7 @@ public final class SmarketsEtoPiqi {
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
-                reason_ = value;
+                setReason(value);
               }
               break;
             }
@@ -2977,29 +2108,25 @@ public final class SmarketsEtoPiqi {
         }
       }
       
-      private int bitField0_;
       
       // optional .smarkets.eto.LogoutReason reason = 1;
-      private smarkets.eto.SmarketsEtoPiqi.LogoutReason reason_ = smarkets.eto.SmarketsEtoPiqi.LogoutReason.LOGOUT_NONE;
       public boolean hasReason() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasReason();
       }
       public smarkets.eto.SmarketsEtoPiqi.LogoutReason getReason() {
-        return reason_;
+        return result.getReason();
       }
       public Builder setReason(smarkets.eto.SmarketsEtoPiqi.LogoutReason value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
-        reason_ = value;
-        onChanged();
+        result.hasReason = true;
+        result.reason_ = value;
         return this;
       }
       public Builder clearReason() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        reason_ = smarkets.eto.SmarketsEtoPiqi.LogoutReason.LOGOUT_NONE;
-        onChanged();
+        result.hasReason = false;
+        result.reason_ = smarkets.eto.SmarketsEtoPiqi.LogoutReason.LOGOUT_NONE;
         return this;
       }
       
@@ -3008,34 +2135,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Logout(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Logout)
   }
   
-  public interface DowntimeAlertOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional .smarkets.eto.DowntimeAlertType type = 1;
-    boolean hasType();
-    smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType getType();
-    
-    // optional .smarkets.eto.DateTime datetime = 2;
-    boolean hasDatetime();
-    smarkets.eto.SmarketsEtoPiqi.DateTime getDatetime();
-    smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder getDatetimeOrBuilder();
-    
-    // optional string description = 3;
-    boolean hasDescription();
-    String getDescription();
-  }
   public static final class DowntimeAlert extends
-      com.google.protobuf.GeneratedMessage
-      implements DowntimeAlertOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use DowntimeAlert.newBuilder() to construct.
-    private DowntimeAlert(Builder builder) {
-      super(builder);
+    private DowntimeAlert() {
+      initFields();
     }
     private DowntimeAlert(boolean noInit) {}
     
@@ -3058,93 +2169,49 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DowntimeAlert_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // optional .smarkets.eto.DowntimeAlertType type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
+    private boolean hasType;
     private smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType getType() {
-      return type_;
-    }
+    public boolean hasType() { return hasType; }
+    public smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType getType() { return type_; }
     
     // optional .smarkets.eto.DateTime datetime = 2;
     public static final int DATETIME_FIELD_NUMBER = 2;
+    private boolean hasDatetime;
     private smarkets.eto.SmarketsEtoPiqi.DateTime datetime_;
-    public boolean hasDatetime() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DateTime getDatetime() {
-      return datetime_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder getDatetimeOrBuilder() {
-      return datetime_;
-    }
+    public boolean hasDatetime() { return hasDatetime; }
+    public smarkets.eto.SmarketsEtoPiqi.DateTime getDatetime() { return datetime_; }
     
     // optional string description = 3;
     public static final int DESCRIPTION_FIELD_NUMBER = 3;
-    private java.lang.Object description_;
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
+    private boolean hasDescription;
+    private java.lang.String description_ = "";
+    public boolean hasDescription() { return hasDescription; }
+    public java.lang.String getDescription() { return description_; }
     
     private void initFields() {
       type_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType.DOWNTIME_ALERT_CONNECTION;
       datetime_ = smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
-      description_ = "";
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
       if (hasDatetime()) {
-        if (!getDatetime().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+        if (!getDatetime().isInitialized()) return false;
       }
-      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
+      if (hasType()) {
+        output.writeEnum(1, getType().getNumber());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, datetime_);
+      if (hasDatetime()) {
+        output.writeMessage(2, getDatetime());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDescriptionBytes());
+      if (hasDescription()) {
+        output.writeString(3, getDescription());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3155,28 +2222,21 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasType()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
+          .computeEnumSize(1, getType().getNumber());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasDatetime()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, datetime_);
+          .computeMessageSize(2, getDatetime());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (hasDescription()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDescriptionBytes());
+          .computeStringSize(3, getDescription());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.DowntimeAlert parseFrom(
@@ -3253,60 +2313,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.DowntimeAlertOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DowntimeAlert_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DowntimeAlert_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.DowntimeAlert result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.DowntimeAlert();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getDatetimeFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.DowntimeAlert internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        type_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType.DOWNTIME_ALERT_CONNECTION;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (datetimeBuilder_ == null) {
-          datetime_ = smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
-        } else {
-          datetimeBuilder_.clear();
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        result = new smarkets.eto.SmarketsEtoPiqi.DowntimeAlert();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -3318,47 +2352,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.DowntimeAlert.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert build() {
-        smarkets.eto.SmarketsEtoPiqi.DowntimeAlert result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.DowntimeAlert buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.DowntimeAlert result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.DowntimeAlert buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.DowntimeAlert result = new smarkets.eto.SmarketsEtoPiqi.DowntimeAlert(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (datetimeBuilder_ == null) {
-          result.datetime_ = datetime_;
-        } else {
-          result.datetime_ = datetimeBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.description_ = description_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.DowntimeAlert returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3385,16 +2405,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (hasDatetime()) {
-          if (!getDatetime().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3407,13 +2417,11 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
@@ -3424,8 +2432,7 @@ public final class SmarketsEtoPiqi {
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
-                type_ = value;
+                setType(value);
               }
               break;
             }
@@ -3439,164 +2446,91 @@ public final class SmarketsEtoPiqi {
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000004;
-              description_ = input.readBytes();
+              setDescription(input.readString());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // optional .smarkets.eto.DowntimeAlertType type = 1;
-      private smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType type_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType.DOWNTIME_ALERT_CONNECTION;
       public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasType();
       }
       public smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType getType() {
-        return type_;
+        return result.getType();
       }
       public Builder setType(smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
+        result.hasType = true;
+        result.type_ = value;
         return this;
       }
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType.DOWNTIME_ALERT_CONNECTION;
-        onChanged();
+        result.hasType = false;
+        result.type_ = smarkets.eto.SmarketsEtoPiqi.DowntimeAlertType.DOWNTIME_ALERT_CONNECTION;
         return this;
       }
       
       // optional .smarkets.eto.DateTime datetime = 2;
-      private smarkets.eto.SmarketsEtoPiqi.DateTime datetime_ = smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.DateTime, smarkets.eto.SmarketsEtoPiqi.DateTime.Builder, smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder> datetimeBuilder_;
       public boolean hasDatetime() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasDatetime();
       }
       public smarkets.eto.SmarketsEtoPiqi.DateTime getDatetime() {
-        if (datetimeBuilder_ == null) {
-          return datetime_;
-        } else {
-          return datetimeBuilder_.getMessage();
-        }
+        return result.getDatetime();
       }
       public Builder setDatetime(smarkets.eto.SmarketsEtoPiqi.DateTime value) {
-        if (datetimeBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          datetime_ = value;
-          onChanged();
-        } else {
-          datetimeBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000002;
+        result.hasDatetime = true;
+        result.datetime_ = value;
         return this;
       }
-      public Builder setDatetime(
-          smarkets.eto.SmarketsEtoPiqi.DateTime.Builder builderForValue) {
-        if (datetimeBuilder_ == null) {
-          datetime_ = builderForValue.build();
-          onChanged();
-        } else {
-          datetimeBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
+      public Builder setDatetime(smarkets.eto.SmarketsEtoPiqi.DateTime.Builder builderForValue) {
+        result.hasDatetime = true;
+        result.datetime_ = builderForValue.build();
         return this;
       }
       public Builder mergeDatetime(smarkets.eto.SmarketsEtoPiqi.DateTime value) {
-        if (datetimeBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              datetime_ != smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance()) {
-            datetime_ =
-              smarkets.eto.SmarketsEtoPiqi.DateTime.newBuilder(datetime_).mergeFrom(value).buildPartial();
-          } else {
-            datetime_ = value;
-          }
-          onChanged();
+        if (result.hasDatetime() &&
+            result.datetime_ != smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance()) {
+          result.datetime_ =
+            smarkets.eto.SmarketsEtoPiqi.DateTime.newBuilder(result.datetime_).mergeFrom(value).buildPartial();
         } else {
-          datetimeBuilder_.mergeFrom(value);
+          result.datetime_ = value;
         }
-        bitField0_ |= 0x00000002;
+        result.hasDatetime = true;
         return this;
       }
       public Builder clearDatetime() {
-        if (datetimeBuilder_ == null) {
-          datetime_ = smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
-          onChanged();
-        } else {
-          datetimeBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        result.hasDatetime = false;
+        result.datetime_ = smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.DateTime.Builder getDatetimeBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getDatetimeFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder getDatetimeOrBuilder() {
-        if (datetimeBuilder_ != null) {
-          return datetimeBuilder_.getMessageOrBuilder();
-        } else {
-          return datetime_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.DateTime, smarkets.eto.SmarketsEtoPiqi.DateTime.Builder, smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder> 
-          getDatetimeFieldBuilder() {
-        if (datetimeBuilder_ == null) {
-          datetimeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.DateTime, smarkets.eto.SmarketsEtoPiqi.DateTime.Builder, smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder>(
-                  datetime_,
-                  getParentForChildren(),
-                  isClean());
-          datetime_ = null;
-        }
-        return datetimeBuilder_;
       }
       
       // optional string description = 3;
-      private java.lang.Object description_ = "";
       public boolean hasDescription() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return result.hasDescription();
       }
-      public String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public java.lang.String getDescription() {
+        return result.getDescription();
       }
-      public Builder setDescription(String value) {
+      public Builder setDescription(java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        description_ = value;
-        onChanged();
+  result.hasDescription = true;
+        result.description_ = value;
         return this;
       }
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
+        result.hasDescription = false;
+        result.description_ = getDefaultInstance().getDescription();
         return this;
-      }
-      void setDescription(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
-        description_ = value;
-        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:smarkets.eto.DowntimeAlert)
@@ -3604,33 +2538,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new DowntimeAlert(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.DowntimeAlert)
   }
   
-  public interface DateOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required uint32 year = 1;
-    boolean hasYear();
-    int getYear();
-    
-    // required uint32 month = 2;
-    boolean hasMonth();
-    int getMonth();
-    
-    // required uint32 day = 3;
-    boolean hasDay();
-    int getDay();
-  }
   public static final class Date extends
-      com.google.protobuf.GeneratedMessage
-      implements DateOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Date.newBuilder() to construct.
-    private Date(Builder builder) {
-      super(builder);
+    private Date() {
+      initFields();
     }
     private Date(boolean noInit) {}
     
@@ -3653,74 +2572,47 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Date_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required uint32 year = 1;
     public static final int YEAR_FIELD_NUMBER = 1;
-    private int year_;
-    public boolean hasYear() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getYear() {
-      return year_;
-    }
+    private boolean hasYear;
+    private int year_ = 0;
+    public boolean hasYear() { return hasYear; }
+    public int getYear() { return year_; }
     
     // required uint32 month = 2;
     public static final int MONTH_FIELD_NUMBER = 2;
-    private int month_;
-    public boolean hasMonth() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public int getMonth() {
-      return month_;
-    }
+    private boolean hasMonth;
+    private int month_ = 0;
+    public boolean hasMonth() { return hasMonth; }
+    public int getMonth() { return month_; }
     
     // required uint32 day = 3;
     public static final int DAY_FIELD_NUMBER = 3;
-    private int day_;
-    public boolean hasDay() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getDay() {
-      return day_;
-    }
+    private boolean hasDay;
+    private int day_ = 0;
+    public boolean hasDay() { return hasDay; }
+    public int getDay() { return day_; }
     
     private void initFields() {
-      year_ = 0;
-      month_ = 0;
-      day_ = 0;
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasYear()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMonth()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasDay()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasYear) return false;
+      if (!hasMonth) return false;
+      if (!hasDay) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, year_);
+      if (hasYear()) {
+        output.writeUInt32(1, getYear());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, month_);
+      if (hasMonth()) {
+        output.writeUInt32(2, getMonth());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, day_);
+      if (hasDay()) {
+        output.writeUInt32(3, getDay());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3731,28 +2623,21 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasYear()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, year_);
+          .computeUInt32Size(1, getYear());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasMonth()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, month_);
+          .computeUInt32Size(2, getMonth());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (hasDay()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, day_);
+          .computeUInt32Size(3, getDay());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Date parseFrom(
@@ -3829,55 +2714,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.DateOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Date_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Date_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Date result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Date.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Date();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Date internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        year_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        month_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        day_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.Date();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -3889,43 +2753,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Date build() {
-        smarkets.eto.SmarketsEtoPiqi.Date result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Date buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Date result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Date buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Date result = new smarkets.eto.SmarketsEtoPiqi.Date(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.year_ = year_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.month_ = month_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.day_ = day_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Date returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3952,22 +2806,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasYear()) {
-          
-          return false;
-        }
-        if (!hasMonth()) {
-          
-          return false;
-        }
-        if (!hasDay()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3980,98 +2818,83 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              year_ = input.readUInt32();
+              setYear(input.readUInt32());
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              month_ = input.readUInt32();
+              setMonth(input.readUInt32());
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
-              day_ = input.readUInt32();
+              setDay(input.readUInt32());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // required uint32 year = 1;
-      private int year_ ;
       public boolean hasYear() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasYear();
       }
       public int getYear() {
-        return year_;
+        return result.getYear();
       }
       public Builder setYear(int value) {
-        bitField0_ |= 0x00000001;
-        year_ = value;
-        onChanged();
+        result.hasYear = true;
+        result.year_ = value;
         return this;
       }
       public Builder clearYear() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        year_ = 0;
-        onChanged();
+        result.hasYear = false;
+        result.year_ = 0;
         return this;
       }
       
       // required uint32 month = 2;
-      private int month_ ;
       public boolean hasMonth() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasMonth();
       }
       public int getMonth() {
-        return month_;
+        return result.getMonth();
       }
       public Builder setMonth(int value) {
-        bitField0_ |= 0x00000002;
-        month_ = value;
-        onChanged();
+        result.hasMonth = true;
+        result.month_ = value;
         return this;
       }
       public Builder clearMonth() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        month_ = 0;
-        onChanged();
+        result.hasMonth = false;
+        result.month_ = 0;
         return this;
       }
       
       // required uint32 day = 3;
-      private int day_ ;
       public boolean hasDay() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return result.hasDay();
       }
       public int getDay() {
-        return day_;
+        return result.getDay();
       }
       public Builder setDay(int value) {
-        bitField0_ |= 0x00000004;
-        day_ = value;
-        onChanged();
+        result.hasDay = true;
+        result.day_ = value;
         return this;
       }
       public Builder clearDay() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        day_ = 0;
-        onChanged();
+        result.hasDay = false;
+        result.day_ = 0;
         return this;
       }
       
@@ -4080,29 +2903,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Date(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Date)
   }
   
-  public interface TimeOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required uint32 hour = 1;
-    boolean hasHour();
-    int getHour();
-    
-    // required uint32 minute = 2;
-    boolean hasMinute();
-    int getMinute();
-  }
   public static final class Time extends
-      com.google.protobuf.GeneratedMessage
-      implements TimeOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use Time.newBuilder() to construct.
-    private Time(Builder builder) {
-      super(builder);
+    private Time() {
+      initFields();
     }
     private Time(boolean noInit) {}
     
@@ -4125,56 +2937,36 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Time_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required uint32 hour = 1;
     public static final int HOUR_FIELD_NUMBER = 1;
-    private int hour_;
-    public boolean hasHour() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getHour() {
-      return hour_;
-    }
+    private boolean hasHour;
+    private int hour_ = 0;
+    public boolean hasHour() { return hasHour; }
+    public int getHour() { return hour_; }
     
     // required uint32 minute = 2;
     public static final int MINUTE_FIELD_NUMBER = 2;
-    private int minute_;
-    public boolean hasMinute() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public int getMinute() {
-      return minute_;
-    }
+    private boolean hasMinute;
+    private int minute_ = 0;
+    public boolean hasMinute() { return hasMinute; }
+    public int getMinute() { return minute_; }
     
     private void initFields() {
-      hour_ = 0;
-      minute_ = 0;
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasHour()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMinute()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasHour) return false;
+      if (!hasMinute) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, hour_);
+      if (hasHour()) {
+        output.writeUInt32(1, getHour());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, minute_);
+      if (hasMinute()) {
+        output.writeUInt32(2, getMinute());
       }
       getUnknownFields().writeTo(output);
     }
@@ -4185,24 +2977,17 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasHour()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, hour_);
+          .computeUInt32Size(1, getHour());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasMinute()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, minute_);
+          .computeUInt32Size(2, getMinute());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.Time parseFrom(
@@ -4279,53 +3064,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Time_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_Time_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.Time result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.Time.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.Time();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.Time internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        hour_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        minute_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new smarkets.eto.SmarketsEtoPiqi.Time();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -4337,39 +3103,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.Time build() {
-        smarkets.eto.SmarketsEtoPiqi.Time result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.Time buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.Time result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.Time buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.Time result = new smarkets.eto.SmarketsEtoPiqi.Time(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        result.hour_ = hour_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.minute_ = minute_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.Time returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4393,18 +3153,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasHour()) {
-          
-          return false;
-        }
-        if (!hasMinute()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4417,72 +3165,61 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              hour_ = input.readUInt32();
+              setHour(input.readUInt32());
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              minute_ = input.readUInt32();
+              setMinute(input.readUInt32());
               break;
             }
           }
         }
       }
       
-      private int bitField0_;
       
       // required uint32 hour = 1;
-      private int hour_ ;
       public boolean hasHour() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasHour();
       }
       public int getHour() {
-        return hour_;
+        return result.getHour();
       }
       public Builder setHour(int value) {
-        bitField0_ |= 0x00000001;
-        hour_ = value;
-        onChanged();
+        result.hasHour = true;
+        result.hour_ = value;
         return this;
       }
       public Builder clearHour() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        hour_ = 0;
-        onChanged();
+        result.hasHour = false;
+        result.hour_ = 0;
         return this;
       }
       
       // required uint32 minute = 2;
-      private int minute_ ;
       public boolean hasMinute() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasMinute();
       }
       public int getMinute() {
-        return minute_;
+        return result.getMinute();
       }
       public Builder setMinute(int value) {
-        bitField0_ |= 0x00000002;
-        minute_ = value;
-        onChanged();
+        result.hasMinute = true;
+        result.minute_ = value;
         return this;
       }
       public Builder clearMinute() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        minute_ = 0;
-        onChanged();
+        result.hasMinute = false;
+        result.minute_ = 0;
         return this;
       }
       
@@ -4491,31 +3228,18 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new Time(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:smarkets.eto.Time)
   }
   
-  public interface DateTimeOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required .smarkets.eto.Date date = 1;
-    boolean hasDate();
-    smarkets.eto.SmarketsEtoPiqi.Date getDate();
-    smarkets.eto.SmarketsEtoPiqi.DateOrBuilder getDateOrBuilder();
-    
-    // required .smarkets.eto.Time time = 2;
-    boolean hasTime();
-    smarkets.eto.SmarketsEtoPiqi.Time getTime();
-    smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder getTimeOrBuilder();
-  }
   public static final class DateTime extends
-      com.google.protobuf.GeneratedMessage
-      implements DateTimeOrBuilder {
+      com.google.protobuf.GeneratedMessage {
     // Use DateTime.newBuilder() to construct.
-    private DateTime(Builder builder) {
-      super(builder);
+    private DateTime() {
+      initFields();
     }
     private DateTime(boolean noInit) {}
     
@@ -4538,70 +3262,40 @@ public final class SmarketsEtoPiqi {
       return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DateTime_fieldAccessorTable;
     }
     
-    private int bitField0_;
     // required .smarkets.eto.Date date = 1;
     public static final int DATE_FIELD_NUMBER = 1;
+    private boolean hasDate;
     private smarkets.eto.SmarketsEtoPiqi.Date date_;
-    public boolean hasDate() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.Date getDate() {
-      return date_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.DateOrBuilder getDateOrBuilder() {
-      return date_;
-    }
+    public boolean hasDate() { return hasDate; }
+    public smarkets.eto.SmarketsEtoPiqi.Date getDate() { return date_; }
     
     // required .smarkets.eto.Time time = 2;
     public static final int TIME_FIELD_NUMBER = 2;
+    private boolean hasTime;
     private smarkets.eto.SmarketsEtoPiqi.Time time_;
-    public boolean hasTime() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public smarkets.eto.SmarketsEtoPiqi.Time getTime() {
-      return time_;
-    }
-    public smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder getTimeOrBuilder() {
-      return time_;
-    }
+    public boolean hasTime() { return hasTime; }
+    public smarkets.eto.SmarketsEtoPiqi.Time getTime() { return time_; }
     
     private void initFields() {
       date_ = smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
       time_ = smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
     }
-    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasDate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getDate().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getTime().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
+      if (!hasDate) return false;
+      if (!hasTime) return false;
+      if (!getDate().isInitialized()) return false;
+      if (!getTime().isInitialized()) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, date_);
+      if (hasDate()) {
+        output.writeMessage(1, getDate());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, time_);
+      if (hasTime()) {
+        output.writeMessage(2, getTime());
       }
       getUnknownFields().writeTo(output);
     }
@@ -4612,24 +3306,17 @@ public final class SmarketsEtoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (hasDate()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, date_);
+          .computeMessageSize(1, getDate());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (hasTime()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, time_);
+          .computeMessageSize(2, getTime());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
     }
     
     public static smarkets.eto.SmarketsEtoPiqi.DateTime parseFrom(
@@ -4706,63 +3393,34 @@ public final class SmarketsEtoPiqi {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements smarkets.eto.SmarketsEtoPiqi.DateTimeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DateTime_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return smarkets.eto.SmarketsEtoPiqi.internal_static_smarkets_eto_DateTime_fieldAccessorTable;
-      }
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private smarkets.eto.SmarketsEtoPiqi.DateTime result;
       
       // Construct using smarkets.eto.SmarketsEtoPiqi.DateTime.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new smarkets.eto.SmarketsEtoPiqi.DateTime();
+        return builder;
       }
       
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getDateFieldBuilder();
-          getTimeFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
+      protected smarkets.eto.SmarketsEtoPiqi.DateTime internalGetResult() {
+        return result;
       }
       
       public Builder clear() {
-        super.clear();
-        if (dateBuilder_ == null) {
-          date_ = smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
-        } else {
-          dateBuilder_.clear();
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (timeBuilder_ == null) {
-          time_ = smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
-        } else {
-          timeBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        result = new smarkets.eto.SmarketsEtoPiqi.DateTime();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(buildPartial());
+        return create().mergeFrom(result);
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -4774,47 +3432,33 @@ public final class SmarketsEtoPiqi {
         return smarkets.eto.SmarketsEtoPiqi.DateTime.getDefaultInstance();
       }
       
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
       public smarkets.eto.SmarketsEtoPiqi.DateTime build() {
-        smarkets.eto.SmarketsEtoPiqi.DateTime result = buildPartial();
-        if (!result.isInitialized()) {
+        if (result != null && !isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return result;
+        return buildPartial();
       }
       
       private smarkets.eto.SmarketsEtoPiqi.DateTime buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        smarkets.eto.SmarketsEtoPiqi.DateTime result = buildPartial();
-        if (!result.isInitialized()) {
+        if (!isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return result;
+        return buildPartial();
       }
       
       public smarkets.eto.SmarketsEtoPiqi.DateTime buildPartial() {
-        smarkets.eto.SmarketsEtoPiqi.DateTime result = new smarkets.eto.SmarketsEtoPiqi.DateTime(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
         }
-        if (dateBuilder_ == null) {
-          result.date_ = date_;
-        } else {
-          result.date_ = dateBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (timeBuilder_ == null) {
-          result.time_ = time_;
-        } else {
-          result.time_ = timeBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
+        smarkets.eto.SmarketsEtoPiqi.DateTime returnMe = result;
+        result = null;
+        return returnMe;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4838,26 +3482,6 @@ public final class SmarketsEtoPiqi {
         return this;
       }
       
-      public final boolean isInitialized() {
-        if (!hasDate()) {
-          
-          return false;
-        }
-        if (!hasTime()) {
-          
-          return false;
-        }
-        if (!getDate().isInitialized()) {
-          
-          return false;
-        }
-        if (!getTime().isInitialized()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4870,13 +3494,11 @@ public final class SmarketsEtoPiqi {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
-              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
-                onChanged();
                 return this;
               }
               break;
@@ -4903,186 +3525,79 @@ public final class SmarketsEtoPiqi {
         }
       }
       
-      private int bitField0_;
       
       // required .smarkets.eto.Date date = 1;
-      private smarkets.eto.SmarketsEtoPiqi.Date date_ = smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Date, smarkets.eto.SmarketsEtoPiqi.Date.Builder, smarkets.eto.SmarketsEtoPiqi.DateOrBuilder> dateBuilder_;
       public boolean hasDate() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return result.hasDate();
       }
       public smarkets.eto.SmarketsEtoPiqi.Date getDate() {
-        if (dateBuilder_ == null) {
-          return date_;
-        } else {
-          return dateBuilder_.getMessage();
-        }
+        return result.getDate();
       }
       public Builder setDate(smarkets.eto.SmarketsEtoPiqi.Date value) {
-        if (dateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          date_ = value;
-          onChanged();
-        } else {
-          dateBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
+        result.hasDate = true;
+        result.date_ = value;
         return this;
       }
-      public Builder setDate(
-          smarkets.eto.SmarketsEtoPiqi.Date.Builder builderForValue) {
-        if (dateBuilder_ == null) {
-          date_ = builderForValue.build();
-          onChanged();
-        } else {
-          dateBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
+      public Builder setDate(smarkets.eto.SmarketsEtoPiqi.Date.Builder builderForValue) {
+        result.hasDate = true;
+        result.date_ = builderForValue.build();
         return this;
       }
       public Builder mergeDate(smarkets.eto.SmarketsEtoPiqi.Date value) {
-        if (dateBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              date_ != smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance()) {
-            date_ =
-              smarkets.eto.SmarketsEtoPiqi.Date.newBuilder(date_).mergeFrom(value).buildPartial();
-          } else {
-            date_ = value;
-          }
-          onChanged();
+        if (result.hasDate() &&
+            result.date_ != smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance()) {
+          result.date_ =
+            smarkets.eto.SmarketsEtoPiqi.Date.newBuilder(result.date_).mergeFrom(value).buildPartial();
         } else {
-          dateBuilder_.mergeFrom(value);
+          result.date_ = value;
         }
-        bitField0_ |= 0x00000001;
+        result.hasDate = true;
         return this;
       }
       public Builder clearDate() {
-        if (dateBuilder_ == null) {
-          date_ = smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
-          onChanged();
-        } else {
-          dateBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
+        result.hasDate = false;
+        result.date_ = smarkets.eto.SmarketsEtoPiqi.Date.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.Date.Builder getDateBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getDateFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.DateOrBuilder getDateOrBuilder() {
-        if (dateBuilder_ != null) {
-          return dateBuilder_.getMessageOrBuilder();
-        } else {
-          return date_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Date, smarkets.eto.SmarketsEtoPiqi.Date.Builder, smarkets.eto.SmarketsEtoPiqi.DateOrBuilder> 
-          getDateFieldBuilder() {
-        if (dateBuilder_ == null) {
-          dateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.Date, smarkets.eto.SmarketsEtoPiqi.Date.Builder, smarkets.eto.SmarketsEtoPiqi.DateOrBuilder>(
-                  date_,
-                  getParentForChildren(),
-                  isClean());
-          date_ = null;
-        }
-        return dateBuilder_;
       }
       
       // required .smarkets.eto.Time time = 2;
-      private smarkets.eto.SmarketsEtoPiqi.Time time_ = smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Time, smarkets.eto.SmarketsEtoPiqi.Time.Builder, smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder> timeBuilder_;
       public boolean hasTime() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return result.hasTime();
       }
       public smarkets.eto.SmarketsEtoPiqi.Time getTime() {
-        if (timeBuilder_ == null) {
-          return time_;
-        } else {
-          return timeBuilder_.getMessage();
-        }
+        return result.getTime();
       }
       public Builder setTime(smarkets.eto.SmarketsEtoPiqi.Time value) {
-        if (timeBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          time_ = value;
-          onChanged();
-        } else {
-          timeBuilder_.setMessage(value);
+        if (value == null) {
+          throw new NullPointerException();
         }
-        bitField0_ |= 0x00000002;
+        result.hasTime = true;
+        result.time_ = value;
         return this;
       }
-      public Builder setTime(
-          smarkets.eto.SmarketsEtoPiqi.Time.Builder builderForValue) {
-        if (timeBuilder_ == null) {
-          time_ = builderForValue.build();
-          onChanged();
-        } else {
-          timeBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
+      public Builder setTime(smarkets.eto.SmarketsEtoPiqi.Time.Builder builderForValue) {
+        result.hasTime = true;
+        result.time_ = builderForValue.build();
         return this;
       }
       public Builder mergeTime(smarkets.eto.SmarketsEtoPiqi.Time value) {
-        if (timeBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              time_ != smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance()) {
-            time_ =
-              smarkets.eto.SmarketsEtoPiqi.Time.newBuilder(time_).mergeFrom(value).buildPartial();
-          } else {
-            time_ = value;
-          }
-          onChanged();
+        if (result.hasTime() &&
+            result.time_ != smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance()) {
+          result.time_ =
+            smarkets.eto.SmarketsEtoPiqi.Time.newBuilder(result.time_).mergeFrom(value).buildPartial();
         } else {
-          timeBuilder_.mergeFrom(value);
+          result.time_ = value;
         }
-        bitField0_ |= 0x00000002;
+        result.hasTime = true;
         return this;
       }
       public Builder clearTime() {
-        if (timeBuilder_ == null) {
-          time_ = smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
-          onChanged();
-        } else {
-          timeBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        result.hasTime = false;
+        result.time_ = smarkets.eto.SmarketsEtoPiqi.Time.getDefaultInstance();
         return this;
-      }
-      public smarkets.eto.SmarketsEtoPiqi.Time.Builder getTimeBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getTimeFieldBuilder().getBuilder();
-      }
-      public smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder getTimeOrBuilder() {
-        if (timeBuilder_ != null) {
-          return timeBuilder_.getMessageOrBuilder();
-        } else {
-          return time_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          smarkets.eto.SmarketsEtoPiqi.Time, smarkets.eto.SmarketsEtoPiqi.Time.Builder, smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder> 
-          getTimeFieldBuilder() {
-        if (timeBuilder_ == null) {
-          timeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              smarkets.eto.SmarketsEtoPiqi.Time, smarkets.eto.SmarketsEtoPiqi.Time.Builder, smarkets.eto.SmarketsEtoPiqi.TimeOrBuilder>(
-                  time_,
-                  getParentForChildren(),
-                  isClean());
-          time_ = null;
-        }
-        return timeBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:smarkets.eto.DateTime)
@@ -5090,6 +3605,7 @@ public final class SmarketsEtoPiqi {
     
     static {
       defaultInstance = new DateTime(true);
+      smarkets.eto.SmarketsEtoPiqi.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -5273,6 +3789,8 @@ public final class SmarketsEtoPiqi {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
+  
+  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }
