@@ -12,7 +12,7 @@ public class JsonEventsSourceITest {
 
 	@Test
 	public void shouldRetrieveAndParseJsonContentFromHttpSource() throws JSONException, IOException {
-		JsonEventsSource jsonEventsSource = JsonEventsSource.fetchViaHttp("https://api.smarkets.com/events/sport/football");
+		JsonEventsSource jsonEventsSource = JsonEventsSource.fetchViaHttp("/events");
 		assertThat(jsonEventsSource.getChildEventsAsJsonArray().length(), greaterThan(0));
 	}
 }

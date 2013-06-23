@@ -62,10 +62,16 @@ public class SmkEvent implements NamedItemWithParent {
 			if (null == markets) {
 				longRunningActionAlert.show();
 				markets = new LinkedList<SmkMarket>();
-				JSONArray events = JsonEventsSource.fetchViaHttp(url).getMarketsAsJsonArray();
-				for (int i = 0; i < events.length(); i++) {
-					JSONObject jsonEvent = events.getJSONObject(i);
-					markets.add(new SmkMarket(jsonEvent.getString("name"), jsonEvent.getString("id"), this));
+				JSONArray jsonMarkets = JsonEventsSource.fetchViaHttp(url).getMarketsAsJsonArray();
+				for (int i = 0; i < jsonMarkets.length(); i++) {
+					JSONObject jsonMarket = jsonMarkets.getJSONObject(i);
+					SmkMarket smkMarket = new SmkMarket(jsonMarket.getString("name"), jsonMarket.getString("id"), this);
+					JSONArray jsonContracts = jsonMarket.getJSONArray("contracts");
+					for (int contractNum = 0; contractNum < jsonContracts.length(); contractNum++) {
+						JSONObject jsonContract = jsonContracts.getJSONObject(contractNum);
+						smkMarket.addContract(new SmkContract(jsonContract.getString("name"), jsonContract.getString("id")));
+					}
+					markets.add(smkMarket);
 				}
 			}
 			return new ArrayList<SmkMarket>(markets);

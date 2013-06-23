@@ -3,8 +3,6 @@ package com.smarkets.android.services;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Calendar;
-
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -80,36 +78,6 @@ public class StreamingApiRequestsFactoryTest {
 		assertThat(accountStateRequest.getEtoPayload().getType(), is(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE));
 		assertThat(accountStateRequest.getEtoPayload().getSeq(), is(1L));
 	}
-
-	@Test
-	public void shouldGenerateFootballEventsByDateRequest() throws InvalidProtocolBufferException {
-		Payload eventsRequest = requestsFactory.todaysFootballEventsRequest();
-		log.debug(eventsRequest);
-		assertThat(eventsRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_EVENTS_REQUEST));
-		assertThat(eventsRequest.getEtoPayload().getType(), is(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE));
-		assertThat(eventsRequest.getEtoPayload().getSeq(), is(1L));
-		assertThat(eventsRequest.getEventsRequest().getType(), is(SmarketsSetoPiqi.EventsRequestType.EVENTS_REQUEST_SPORT_BY_DATE));
-		assertThat(eventsRequest.getEventsRequest().getContentType(), is(SmarketsSetoPiqi.ContentType.CONTENT_TYPE_PROTOBUF));
-		assertThat(eventsRequest.getEventsRequest().getSportByDate().getType(), is(SmarketsSetoPiqi.SportByDateType.SPORT_BY_DATE_FOOTBALL));
-		Calendar cal = Calendar.getInstance();
-		int day = cal.get(Calendar.DATE);
-		int month = cal.get(Calendar.MONTH) + 1;
-		int year = cal.get(Calendar.YEAR);
-		assertThat(eventsRequest.getEventsRequest().getSportByDate().getDate(), is(SmarketsSetoPiqi.Date.newBuilder().setYear(year).setMonth(month).setDay(day).build()));
-	}
-//	type: PAYLOAD_EVENTS_REQUEST
-//	events_request {
-//	  type: EVENTS_REQUEST_SPORT_BY_DATE
-//	  content_type: CONTENT_TYPE_PROTOBUF
-//	  sport_by_date {
-//	    type: SPORT_BY_DATE_FOOTBALL
-//	    date {
-//	      year: 2013
-//	      month: 5
-//	      day: 16
-//	    }
-//	  }
-//	}
 
 	private Payload loginRequest() {
 		return requestsFactory.loginRequest(USER, PASSWORD);

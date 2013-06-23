@@ -12,9 +12,11 @@ import com.google.protobuf.CodedOutputStream;
 
 public class StreamingApiClient {
 	private Socket smkSocket;
+	private final StreamingApiRequestsFactory factory;
 
-	public StreamingApiClient(Socket smkSocket) {
+	public StreamingApiClient(Socket smkSocket, StreamingApiRequestsFactory factory) {
 		this.smkSocket = smkSocket;
+		this.factory = factory;
 	}
 
 	public SmarketsSetoPiqi.Payload getSmkResponse(SmarketsSetoPiqi.Payload requestPayload) throws UnknownHostException, IOException {
