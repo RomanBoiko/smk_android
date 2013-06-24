@@ -5,4 +5,12 @@
 	<ListView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/contractsList" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
+	<Spinner android:id="@+id/buySellSpinner" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	<EditText android:id="@+id/betPrice"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:hint="Price(percents)" android:inputType="number" />
+	<EditText android:id="@+id/betAmount"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:hint="Bet amount" android:inputType="number" />
 </LinearLayout>

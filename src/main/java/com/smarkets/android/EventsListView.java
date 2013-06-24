@@ -51,7 +51,7 @@ public class EventsListView {
 						.setNegativeButton("Place Bet", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								SmkMarket market = (SmkMarket)objectUnderAction;
-								new PlaceBetDialog(parentActivity).showDialog(smkService, market);
+								new PlaceBetDialog(parentActivity, smkService).showDialog(market);
 							}
 						}).create().show();
 				} else {
