@@ -14,8 +14,12 @@ public class StreamingApiClient {
 	private Socket smkSocket;
 	private final StreamingApiRequestsFactory factory;
 
-	public StreamingApiClient(Socket smkSocket, StreamingApiRequestsFactory factory) {
-		this.smkSocket = smkSocket;
+	public StreamingApiClient(String streamingApiHost, Integer streamingApiPort,
+			Boolean smkStreamingSslEnabled, StreamingApiRequestsFactory factory) throws UnknownHostException, IOException {
+
+		this.smkSocket = smkStreamingSslEnabled ?
+				new SslConnectionFactory().factoryWhichTrustsEveryone().createSocket(streamingApiHost, streamingApiPort)
+				: new Socket(streamingApiHost, streamingApiPort);
 		this.factory = factory;
 	}
 
@@ -63,4 +67,5 @@ public class StreamingApiClient {
 	public String toString() {
 		return smkSocket.toString() + ", " + factory.toString();
 	}
+
 }

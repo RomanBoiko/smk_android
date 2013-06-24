@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
-import java.net.Socket;
 import java.net.UnknownHostException;
 
 import org.apache.log4j.Logger;
@@ -96,7 +95,7 @@ public class SmarketsStreamingApiITest {
 	}
 
 	private StreamingApiClient streamingApiClient(StreamingApiRequestsFactory factory) throws UnknownHostException, IOException {
-		return new StreamingApiClient(new Socket(smkConfig.smkStreamingApiHost, smkConfig.smkStreamingApiPort), factory);
+		return new StreamingApiClient(smkConfig.smkStreamingApiHost, smkConfig.smkStreamingApiPort, smkConfig.smkStreamingApiSslEnabled, factory);
 	}
 	
 	private void logoutFromSmk(StreamingApiClient streamingApi, StreamingApiRequestsFactory factory) throws UnknownHostException, IOException, InterruptedException {
