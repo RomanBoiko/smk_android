@@ -38,13 +38,13 @@ public class RestApiITest {
 		if (children.isEmpty()) {
 			List<SmkMarket> markets = parentEvent.getMarkets(alert);
 			log.info(format("REST Markets: %s", markets));
-			assertThat(markets.size(), is(greaterThan(0)));
-			SmkMarket market = markets.get(0);
+			assertThat(markets.size(), is(greaterThan(1)));
+			SmkMarket market = markets.get(1);
 			List<SmkContract> contracts = market.getContracts();
 			log.info(format("REST Contracts: %s", contracts));
 			assertThat(contracts.size(), is(greaterThan(0)));
 		} else {
-			walkThroughEventChildren(children.get(0));
+			walkThroughEventChildren(children.get(1));
 		}
 	}
 }

@@ -33,12 +33,12 @@ public class CurrentBetsViewDialog {
 		currentBetsDialog.show();
 	}
 
-	public void showBets(SmkStreamingService smkService) {
+	public void showBets(final SmkStreamingService smkService) {
 		final ListView betsList = (ListView) currentBetsDialog.findViewById(R.id.betsList);
 		betsList.setAdapter(betsSourceAdapter(smkService.currentBets()));
 		betsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Bet betUnderAction = (Bet)(betsList.getAdapter().getItem(position));
+				final Bet betUnderAction = (Bet)(betsList.getAdapter().getItem(position));
 				new AlertDialog.Builder(parentActivity)
 					.setTitle("Bet Details")
 					.setMessage(betUnderAction.toDetailedString())
@@ -47,7 +47,12 @@ public class CurrentBetsViewDialog {
 					})
 					.setNegativeButton("Cancel Bet", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							Toast.makeText(parentActivity, "show 'Confirm' dialog for bet cancellation", Toast.LENGTH_SHORT).show();
+							if (betUnderAction.cancel()) {
+								betsList.setAdapter(betsSourceAdapter(smkService.currentBets()));
+								Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
+							} else {
+								Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
+							}
 						}
 					}).create().show();
 			}

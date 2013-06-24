@@ -1,0 +1,35 @@
+{
+  "event": [
+    {
+      "description": null, 
+      "end_date": "2013-06-30", 
+      "id": 125256, 
+      "category": "sports", 
+      "name": "Argentina Primera Divisi\u00f3n 2012-2013", 
+      "url": "/events/sport/football/argentina-primera-division-2012-2013", 
+      "type": "Football season", 
+      "children": [
+        {
+          "url": "/events/sport/football/argentina-primera-division/2013/06/23/ca-san-lorenzo-de-almagro-vs-ca-lanus", 
+          "name": "San Lorenzo vs. Lan\u00fas", 
+          "id": 125265
+        }, 
+        {
+          "url": "/events/sport/football/argentina-primera-division/2013/06/23/arsenal-de-sarandi-vs-ca-all-boys", 
+          "name": "Arsenal vs. All Boys", 
+          "id": 125264
+        }, 
+        {
+          "url": "/events/sport/football/argentina-primera-division/2013/06/24/godoy-cruz-antonio-tomba-vs-ca-boca-juniors", 
+          "name": "Godoy Cruz vs. Boca Juniors", 
+          "id": 125266
+        }
+      ], 
+      "parent_id": 125062, 
+      "state": "upcoming", 
+      "parent_url": "/events/sport/football", 
+      "markets": [], 
+      "start_date": "2012-08-04"
+    }
+  ]
+}

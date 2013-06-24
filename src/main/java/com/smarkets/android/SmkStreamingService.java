@@ -6,9 +6,12 @@ import static com.smarkets.android.domain.BetType.SELL;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 import smarkets.seto.SmarketsSetoPiqi.Currency;
@@ -17,12 +20,19 @@ import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
 import com.smarkets.android.domain.AccountFunds;
 import com.smarkets.android.domain.Bet;
+import com.smarkets.android.domain.BetType;
 
 public class SmkStreamingService {
+
+	private Long betSequence = 1012L;
+	private final Set<Bet> bets = new HashSet<Bet>(Arrays.asList(
+			new Bet(BUY, 211L, 212L, 213L, new BigDecimal("23.12"), new BigDecimal("30.0"), new Date(), this),
+			new Bet(SELL, 311L, 312L, 313L, new BigDecimal("15.13"), new BigDecimal("40.0"), new Date(), this)));
+
 	public boolean login(String username, String password) {
 		return username.equals("u") && password.equals("p");
 	}
-	
+
 	public AccountFunds getAccountStatus() throws UnknownHostException, IOException {
 //		SmkConfig smkConfig = new SmkConfig();
 //		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
@@ -43,17 +53,24 @@ public class SmkStreamingService {
 	}
 
 	public String contractNameForId(Long contractId) {
-		return "SomeContractName";
+		return "ContractNameToBeFetched";
 	}
 
 	public String marketNameForId(Long marketId) {
-		return "Over/under 5.5 for Botafogo vs. CRB";
+		return "MarketNameToBeFetched";
 	}
 
 	public List<Bet> currentBets() {
-		return Arrays.asList(
-				new Bet(BUY, 111L, 112L, 113L, new BigDecimal("12.23"), new BigDecimal("25.0"), new Date(), this),
-				new Bet(BUY, 211L, 212L, 213L, new BigDecimal("23.12"), new BigDecimal("30.0"), new Date(), this),
-				new Bet(SELL, 311L, 312L, 313L, new BigDecimal("15.13"), new BigDecimal("40.0"), new Date(), this));
+		return new ArrayList<Bet>(bets);
+	}
+
+	public Bet placeBet(BetType type, Long marketId, Long contractId, BigDecimal quantity, BigDecimal price) {
+		Bet placeBetResult = new Bet(type, marketId, contractId, betSequence++, quantity, price, new Date(), this);
+		bets.add(placeBetResult);
+		return placeBetResult;
+	}
+
+	public boolean cancelBet(Bet bet) {
+		return bets.remove(bet);
 	}
 }

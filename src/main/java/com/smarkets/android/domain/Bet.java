@@ -39,11 +39,16 @@ public class Bet {
 		}
 		return marketName;
 	}
+
 	public String contractName() {
 		if (null == contractName) {
 			contractName = smkService.contractNameForId(contractId);
 		}
 		return contractName;
+	}
+
+	public boolean cancel() {
+		return this.smkService.cancelBet(this);
 	}
 
 	public String toString() {
@@ -56,5 +61,27 @@ public class Bet {
 				"Contract: %s(id=%s)\n" +
 				"Order: %s GBP for %s%%\n" +
 				"Created at: %s", type, betId, marketName(), marketId, contractName(), contractId, quantity, price, createdDate);
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((betId == null) ? 0 : betId.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bet other = (Bet) obj;
+		return this.betId.equals(other.betId);
 	}
 }

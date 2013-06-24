@@ -60,4 +60,7 @@ public class StreamingApiClient {
 		return out.toByteString().toByteArray();
 	}
 
+	public String toString() {
+		return smkSocket.toString() + ", " + factory.toString();
+	}
 }

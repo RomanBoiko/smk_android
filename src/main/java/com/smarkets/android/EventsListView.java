@@ -25,9 +25,11 @@ import com.smarkets.android.domain.SmkEvent;
 public class EventsListView {
 
 	private Activity parentActivity;
+	private final SmkStreamingService smkService;
 
-	public EventsListView(Activity parentActivity) {
+	public EventsListView(Activity parentActivity, SmkStreamingService smkService) {
 		this.parentActivity = parentActivity;
+		this.smkService = smkService;
 	}
 
 	public void showEventsList() {
@@ -37,7 +39,7 @@ public class EventsListView {
 		listview.setAdapter(eventsSourceAdapter(getEventsRoot().getChildren(new LongRunningActionAlert(parentActivity))));
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Object objectUnderAction = listview.getAdapter().getItem(position);
+				final Object objectUnderAction = listview.getAdapter().getItem(position);
 				if (objectUnderAction instanceof SmkMarket) {
 					new AlertDialog.Builder(parentActivity)
 						.setTitle("Market Actions")
@@ -48,7 +50,8 @@ public class EventsListView {
 						})
 						.setNegativeButton("Place Bet", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Toast.makeText(parentActivity, "show 'Place Bet' dialog", Toast.LENGTH_SHORT).show();
+								SmkMarket market = (SmkMarket)objectUnderAction;
+								new PlaceBetDialog(parentActivity).showDialog(smkService, market);
 							}
 						}).create().show();
 				} else {

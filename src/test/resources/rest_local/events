@@ -1,0 +1,286 @@
+{
+  "event": [
+    {
+      "description": null, 
+      "end_date": null, 
+      "id": 125083, 
+      "category": "sports", 
+      "name": "Horse Racing", 
+      "url": "/events/sport/horse-racing", 
+      "type": "Horse racing sport", 
+      "children": [
+        {
+          "url": "/events/sport/horse-racing/wolverhampton", 
+          "name": "Wolverhampton", 
+          "id": 125091
+        }, 
+        {
+          "url": "/events/sport/horse-racing/southwell", 
+          "name": "Southwell", 
+          "id": 125090
+        }, 
+        {
+          "url": "/events/sport/horse-racing/carlisle", 
+          "name": "Carlisle", 
+          "id": 125089
+        }, 
+        {
+          "url": "/events/sport/horse-racing/market-rasen", 
+          "name": "Market Rasen", 
+          "id": 125088
+        }, 
+        {
+          "url": "/events/sport/horse-racing/ffos-las", 
+          "name": "Ffos Las", 
+          "id": 125087
+        }, 
+        {
+          "url": "/events/sport/horse-racing/wincanton", 
+          "name": "Wincanton", 
+          "id": 125086
+        }, 
+        {
+          "url": "/events/sport/horse-racing/lingfield", 
+          "name": "Lingfield", 
+          "id": 125085
+        }, 
+        {
+          "url": "/events/sport/horse-racing/haydock", 
+          "name": "Haydock", 
+          "id": 125084
+        }
+      ], 
+      "parent_id": null, 
+      "state": "upcoming", 
+      "parent_url": "/events/", 
+      "markets": [], 
+      "start_date": null
+    }, 
+    {
+      "description": null, 
+      "end_date": null, 
+      "id": 125062, 
+      "category": "sports", 
+      "name": "Football", 
+      "url": "/events/sport/football", 
+      "type": "Generic", 
+      "children": [
+        {
+          "url": "/events/sport/football/club-friendlies-2013", 
+          "name": "Club Friendlies 2013", 
+          "id": 125672
+        }, 
+        {
+          "url": "/events/sport/football/friendlies-2013", 
+          "name": "Friendlies 2013", 
+          "id": 125665
+        }, 
+        {
+          "url": "/events/sport/football/irish-league-cup-2013", 
+          "name": "Irish League Cup 2013", 
+          "id": 125660
+        }, 
+        {
+          "url": "/events/sport/football/norway-nm-cupen-2013", 
+          "name": "Norway NM Cupen 2013", 
+          "id": 125655
+        }, 
+        {
+          "url": "/events/sport/football/u20-world-cup-2013-turkey", 
+          "name": "U20 World Cup 2013 Turkey", 
+          "id": 125618
+        }, 
+        {
+          "url": "/events/sport/football/confederations-cup-2013-brazil", 
+          "name": "Confederations Cup 2013 Brazil", 
+          "id": 125612
+        }, 
+        {
+          "url": "/events/sport/football/south-america-copa-libertadores-2013", 
+          "name": "South America Copa Libertadores 2013", 
+          "id": 125607
+        }, 
+        {
+          "url": "/events/sport/football/brazil-copa-do-brasil-2013", 
+          "name": "Brazil Copa do Brasil 2013", 
+          "id": 125600
+        }, 
+        {
+          "url": "/events/sport/football/japan-j-league-cup-2013", 
+          "name": "Japan J-League Cup 2013", 
+          "id": 125591
+        }, 
+        {
+          "url": "/events/sport/football/sweden-division-1-2013", 
+          "name": "Sweden Division 1 2013", 
+          "id": 125561
+        }, 
+        {
+          "url": "/events/sport/football/brazil-serie-c-2013", 
+          "name": "Brazil Serie C 2013", 
+          "id": 125553
+        }, 
+        {
+          "url": "/events/sport/football/finland-kakkonen-2013", 
+          "name": "Finland Kakkonen 2013", 
+          "id": 125510
+        }, 
+        {
+          "url": "/events/sport/football/romania-liga-ii-2012-2013", 
+          "name": "Romania Liga II 2012-2013", 
+          "id": 125508
+        }, 
+        {
+          "url": "/events/sport/football/canada-canadian-soccer-league-2013", 
+          "name": "Canada Canadian Soccer League 2013", 
+          "id": 125493
+        }, 
+        {
+          "url": "/events/sport/football/russia-fnl-2013-2014", 
+          "name": "Russia FNL 2013-2014", 
+          "id": 125482
+        }, 
+        {
+          "url": "/events/sport/football/japan-j2-league-2013", 
+          "name": "Japan J2 League 2013", 
+          "id": 125448
+        }, 
+        {
+          "url": "/events/sport/football/brazil-serie-b-2013", 
+          "name": "Brazil Serie B 2013", 
+          "id": 125439
+        }, 
+        {
+          "url": "/events/sport/football/irish-first-division-2013", 
+          "name": "Irish First Division 2013", 
+          "id": 125430
+        }, 
+        {
+          "url": "/events/sport/football/iceland-1-deild-2013", 
+          "name": "Iceland 1. Deild 2013", 
+          "id": 125411
+        }, 
+        {
+          "url": "/events/sport/football/sweden-superettan-2013", 
+          "name": "Sweden Superettan 2013", 
+          "id": 125395
+        }, 
+        {
+          "url": "/events/sport/football/norway-1-division-2013", 
+          "name": "Norway 1. Division 2013", 
+          "id": 125376
+        }, 
+        {
+          "url": "/events/sport/football/finland-ykkonen-2013", 
+          "name": "Finland Ykk\u00f6nen 2013", 
+          "id": 125362
+        }, 
+        {
+          "url": "/events/sport/football/spain-segunda-division-2012-2013", 
+          "name": "Spain Segunda Divisi\u00f3n 2012-2013", 
+          "id": 125359
+        }, 
+        {
+          "url": "/events/sport/football/singapore-league-cup-2013", 
+          "name": "Singapore League Cup 2013", 
+          "id": 125357
+        }, 
+        {
+          "url": "/events/sport/football/singapore-sleague-2013", 
+          "name": "Singapore S.League 2013", 
+          "id": 125344
+        }, 
+        {
+          "url": "/events/sport/football/korea-republic-k-league-classic-2013", 
+          "name": "Korea Republic K League Classic 2013", 
+          "id": 125319
+        }, 
+        {
+          "url": "/events/sport/football/lithuania-a-lyga-2013", 
+          "name": "Lithuania A Lyga 2013", 
+          "id": 125309
+        }, 
+        {
+          "url": "/events/sport/football/latvia-virsliga-2013", 
+          "name": "Latvia Virsliga 2013", 
+          "id": 125300
+        }, 
+        {
+          "url": "/events/sport/football/estonia-meistriliiga-2013", 
+          "name": "Estonia Meistriliiga 2013", 
+          "id": 125296
+        }, 
+        {
+          "url": "/events/sport/football/japan-j1-league-2013", 
+          "name": "Japan J1 League 2013", 
+          "id": 125286
+        }, 
+        {
+          "url": "/events/sport/football/colombia-primera-a-2013", 
+          "name": "Colombia Primera A 2013", 
+          "id": 125267
+        }, 
+        {
+          "url": "/events/sport/football/argentina-primera-division-2012-2013", 
+          "name": "Argentina Primera Divisi\u00f3n 2012-2013", 
+          "id": 125256
+        }, 
+        {
+          "url": "/events/sport/football/belarus-premier-league-2013", 
+          "name": "Belarus Premier League 2013", 
+          "id": 125237
+        }, 
+        {
+          "url": "/events/sport/football/china-pr-csl-2013", 
+          "name": "China PR CSL 2013", 
+          "id": 125205
+        }, 
+        {
+          "url": "/events/sport/football/irish-premier-division-2013", 
+          "name": "Irish Premier Division 2013", 
+          "id": 125193
+        }, 
+        {
+          "url": "/events/sport/football/mls-2013", 
+          "name": "MLS 2013", 
+          "id": 125168
+        }, 
+        {
+          "url": "/events/sport/football/iceland-urvalsdeild-2013", 
+          "name": "Iceland \u00darvalsdeild 2013", 
+          "id": 125152
+        }, 
+        {
+          "url": "/events/sport/football/norway-eliteserien-2013", 
+          "name": "Norway Eliteserien 2013", 
+          "id": 125133
+        }, 
+        {
+          "url": "/events/sport/football/sweden-allsvenskan-2013", 
+          "name": "Sweden Allsvenskan 2013", 
+          "id": 125115
+        }, 
+        {
+          "url": "/events/sport/football/brazil-serie-a-2013", 
+          "name": "Brazil Serie A 2013", 
+          "id": 125112
+        }, 
+        {
+          "url": "/events/sport/football/finland-veikkausliiga-2013", 
+          "name": "Finland Veikkausliiga 2013", 
+          "id": 125092
+        }, 
+        {
+          "url": "/events/sport/football/premier-league-2012-2013", 
+          "name": "Premier League 2012-2013", 
+          "id": 125063
+        }
+      ], 
+      "parent_id": null, 
+      "state": "upcoming", 
+      "parent_url": "/events/", 
+      "markets": [], 
+      "start_date": null
+    }
+  ]
+}

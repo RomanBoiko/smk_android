@@ -21,7 +21,7 @@ public class ScreenActivity extends Activity {
 		Log.i(LOG_TAG, "onCreate");
 		new LoginView(this).showLoginView(smkService, new ChangeGuiViewCallback() {
 			public void moveToNextView(Activity parentActivity) {
-				new EventsListView(parentActivity).showEventsList();
+				new EventsListView(parentActivity, smkService).showEventsList();
 			}
 		});
 		// For events development
