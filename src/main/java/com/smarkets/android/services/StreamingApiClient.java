@@ -13,7 +13,6 @@ import com.google.protobuf.CodedOutputStream;
 
 public class StreamingApiClient {
 	private final StreamingApiDaemon apiDaemon;
-	private final StreamingApiRequestsFactory factory;
 
 	public StreamingApiClient(String streamingApiHost,
 			Integer streamingApiPort, Boolean smkStreamingSslEnabled,
@@ -23,8 +22,7 @@ public class StreamingApiClient {
 		Socket smkSocket = smkStreamingSslEnabled ?
 				new SslConnectionFactory().factoryWhichTrustsEveryone().createSocket(streamingApiHost,streamingApiPort)
 				: new Socket(streamingApiHost, streamingApiPort);
-		this.apiDaemon = new StreamingApiDaemon(smkSocket);
-		this.factory = factory;
+		this.apiDaemon = new StreamingApiDaemon(smkSocket, factory);
 		this.apiDaemon.startDaemon();
 	}
 	
@@ -37,9 +35,11 @@ public class StreamingApiClient {
 		private CodedOutputStream outStream;
 		private CodedInputStream inStream;
 		private final Thread serverCommunicationThread = new Thread(this);
+		private final StreamingApiRequestsFactory factory;
 		private Queue<SmkCallback> callbacksQueue = new ArrayBlockingQueue<SmkCallback>(2);
 
-		public StreamingApiDaemon(Socket apiSocket) throws IOException {
+		public StreamingApiDaemon(Socket apiSocket, StreamingApiRequestsFactory factory) throws IOException {
+			this.factory = factory;
 			this.apiSocket = apiSocket;
 			this.outStream = CodedOutputStream.newInstance(this.apiSocket.getOutputStream());
 			this.inStream = CodedInputStream.newInstance(this.apiSocket.getInputStream());
@@ -64,6 +64,7 @@ public class StreamingApiClient {
 			requestPayload.writeTo(outStream);
 			outStream.writeRawBytes(SmkByteUtils.padding(byteCount));
 			outStream.flush();
+			System.out.println("Message2server: " + requestPayload);
 		}
 
 		@Override
@@ -72,12 +73,12 @@ public class StreamingApiClient {
 				while (true) {
 					SmarketsSetoPiqi.Payload response = SmarketsSetoPiqi.Payload
 							.parseFrom(inStream.readBytes());
+					System.out.println("Message2client: " + response);
 					if (response.toString().contains("type: PAYLOAD_HEARTBEAT")) {
-						System.out.println("HEARTBEAT: " + response);
+						pushPayload(factory.heartbeatResponse());
 					} else {
 						callbacksQueue.remove().process(response);
-						if (response.toString()
-								.contains("type: PAYLOAD_LOGOUT")) {
+						if (response.toString().contains("type: PAYLOAD_LOGOUT")) {
 							break;
 						}
 					}

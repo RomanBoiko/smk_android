@@ -35,6 +35,34 @@ public class StreamingApiRequestsFactory {
 				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
 				.build();
 	}
+	
+	public Payload placeBetRequest() {
+		return SmarketsSetoPiqi.Payload
+				.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CREATE)
+				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
+				.setOrderCreate(builderForValue)
+				.build();
+	}
+	
+	
+//	DEBUG:smarkets.session:buffering payload with outgoing sequence 10: type: PAYLOAD_ORDER_CREATE
+//	order_create {
+//	  type: ORDER_CREATE_LIMIT
+//	  market {
+//	    low: 409866
+//	    high: 0
+//	  }
+//	  contract {
+//	    low: 658059
+//	    high: 0
+//	  }
+//	  side: SIDE_BUY
+//	  quantity_type: QUANTITY_PAYOFF_CURRENCY
+//	  quantity: 20000
+//	  price_type: PRICE_PERCENT_ODDS
+//	  price: 5000
+//	}
 
 	private SmarketsEtoPiqi.Payload etoPayload(SmarketsEtoPiqi.PayloadType etoPayloadType) {
 		return SmarketsEtoPiqi.Payload.newBuilder()
@@ -43,10 +71,19 @@ public class StreamingApiRequestsFactory {
 				.build();
 	}
 
-	private class EtoSequence {
+	public Payload heartbeatResponse() {
+		return SmarketsSetoPiqi.Payload
+				.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO)
+				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_HEARTBEAT))
+				.build();
+	}
+
+	private static class EtoSequence {
 		private long currentValue = 0;
-		public long nextValue() {
+		public synchronized long nextValue() {
 			return ++currentValue;
 		}
 	}
+
 }

@@ -79,6 +79,15 @@ public class StreamingApiRequestsFactoryTest {
 		assertThat(accountStateRequest.getEtoPayload().getSeq(), is(1L));
 	}
 
+	@Test
+	public void shouldCreateHeartBeatResponse() throws InvalidProtocolBufferException {
+		Payload heartbeatResponse = requestsFactory.heartbeatResponse();
+		log.debug(heartbeatResponse);
+		assertThat(heartbeatResponse.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO));
+		assertThat(heartbeatResponse.getEtoPayload().getType(), is(SmarketsEtoPiqi.PayloadType.PAYLOAD_HEARTBEAT));
+		assertThat(heartbeatResponse.getEtoPayload().getSeq(), is(1L));
+	}
+
 	private Payload loginRequest() {
 		return requestsFactory.loginRequest(USER, PASSWORD);
 	}

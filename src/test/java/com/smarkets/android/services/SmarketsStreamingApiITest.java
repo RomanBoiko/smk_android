@@ -49,10 +49,15 @@ public class SmarketsStreamingApiITest {
 	public void shouldGetAccountState() throws UnknownHostException, IOException, InterruptedException {
 		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
 		StreamingApiClient streamingApi = loggedInSmkApi(factory);
+		pause(2);
+		streamingApi.request(factory.accountStateRequest(), new SmkCallback() {
+			@Override
+			public void process(Payload response) {
+				log.info("Account state response got: " + response);
+			}
+		});
+		log.info("Pausing to test heartbeats...");
 		pause(15);
-//		SmarketsSetoPiqi.Payload accountStateRequest = factory.accountStateRequest();
-//		log.info("Account state request:" + accountStateRequest.toString());
-//		SmarketsSetoPiqi.Payload accountStateResponse = streamingApi.getSmkResponse(accountStateRequest);
 //		log.info("Account state response:" + accountStateResponse.toString());
 		logoutFromSmk(streamingApi, factory);
 		pause(2);
@@ -96,7 +101,7 @@ public class SmarketsStreamingApiITest {
 		SmarketsSetoPiqi.Payload loginRequest = factory.loginRequest(smkConfig.smkTestUserLogin, smkConfig.smkTestUserPassword);
 		streamingApi.request(loginRequest, new SmkCallback() {
 			public void process(Payload response) {
-				log.info(response);
+				log.info("Login response got: " + response);
 			}
 		});
 		return streamingApi;
@@ -109,7 +114,7 @@ public class SmarketsStreamingApiITest {
 	private void logoutFromSmk(StreamingApiClient streamingApi, StreamingApiRequestsFactory factory) throws UnknownHostException, IOException, InterruptedException {
 		streamingApi.request(factory.logoutRequest(), new SmkCallback() {
 			public void process(Payload response) {
-				log.info(response);
+				log.info("Logout response got: " + response);
 			}
 		});
 	}

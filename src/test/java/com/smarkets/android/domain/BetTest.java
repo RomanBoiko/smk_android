@@ -18,12 +18,12 @@ public class BetTest {
 	@Test
 	public void shouldShowInformativeToString() {
 		assertThat(TEST_BET.toDetailedString(),
-			is("Bet: BUY (id=113):\nMarket: Over/under 5.5 for Botafogo vs. CRB(id=111)\nContract: SomeContractName(id=112)\nOrder: 12.23 GBP for 25.0%\nCreated at: Tue Apr 02 19:28:10 BST 2013"));
+			is("Bet: BUY (id=113):\nMarket: MarketNameToBeFetched(id=111)\nContract: ContractNameToBeFetched(id=112)\nOrder: 12.23 GBP for 25.0%\nCreated at: Tue Apr 02 19:28:10 BST 2013"));
 	}
 	@Test
 	public void shouldShowShortToString() {
 		assertThat(TEST_BET.toString(),
-				is("BUY-Over/under 5.5 for Botafogo vs. CRB, 12.23 for 25.0%"));
+				is("BUY-MarketNameToBeFetched, 12.23 for 25.0%"));
 	}
 
 }
