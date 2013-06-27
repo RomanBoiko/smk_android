@@ -88,6 +88,30 @@ public class StreamingApiRequestsFactoryTest {
 		assertThat(heartbeatResponse.getEtoPayload().getSeq(), is(1L));
 	}
 
+	@Test
+	public void shouldCreatePlaceBetRequest() throws InvalidProtocolBufferException {
+		Payload placeBetRequest = requestsFactory.placeBetRequest(12L, 13L, 12.02, 31.09, true);
+		log.debug(placeBetRequest);
+		assertThat(placeBetRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CREATE));
+		assertThat(placeBetRequest.getEtoPayload().getSeq(), is(1L));
+	}
+
+	@Test
+	public void shouldCreateCurrentBetsRequest() throws InvalidProtocolBufferException {
+		Payload currentBetsRequest = requestsFactory.currentBetsRequest();
+		log.debug(currentBetsRequest);
+		assertThat(currentBetsRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDERS_FOR_ACCOUNT_REQUEST));
+		assertThat(currentBetsRequest.getEtoPayload().getSeq(), is(1L));
+	}
+
+	@Test
+	public void shouldCreateCancelBetRequest() throws InvalidProtocolBufferException {
+		Payload cancelBetRequest = requestsFactory.cancelBetRequest(123L);
+		log.debug(cancelBetRequest);
+		assertThat(cancelBetRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CANCEL));
+		assertThat(cancelBetRequest.getEtoPayload().getSeq(), is(1L));
+	}
+
 	private Payload loginRequest() {
 		return requestsFactory.loginRequest(USER, PASSWORD);
 	}

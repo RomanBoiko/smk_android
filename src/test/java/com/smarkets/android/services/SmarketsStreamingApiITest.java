@@ -21,65 +21,49 @@ public class SmarketsStreamingApiITest {
 	private final Logger log = Logger.getLogger(getClass());
 	private SmkConfig smkConfig = new SmkConfig();
 
-//	@Test
-//	public void shouldLoginToSmk() throws UnknownHostException, IOException, InterruptedException {
-//		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
-//		StreamingApiClient streamingApi = streamingApiClient(factory);
-//		SmarketsSetoPiqi.Payload loginRequest = factory.loginRequest(smkConfig.smkTestUserLogin, smkConfig.smkTestUserPassword);
-//		log.info("Login request:" + loginRequest.toString());
-//		SmarketsSetoPiqi.Payload loginResponse = streamingApi.getSmkResponse(loginRequest);
-//		log.info("Login response:" + loginResponse.toString());
-//		logoutFromSmk(streamingApi, factory);
-//		assertThat(loginResponse.getEtoPayload().getSeq(), is(1L));
-//		assertThat(loginResponse.toString(), containsString("type: PAYLOAD_LOGIN_RESPONSE"));
-//	}
-
-//	@Test
-//	public void shouldLogoutFromSmk() throws UnknownHostException, IOException, InterruptedException {
-//		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
-//		StreamingApiClient streamingApi = loggedInSmkApi(factory);
-//		SmarketsSetoPiqi.Payload logoutRequest = factory.logoutRequest();
-//		log.info("Logout request:" + logoutRequest.toString());
-//		SmarketsSetoPiqi.Payload logoutResponse = streamingApi.getSmkResponse(logoutRequest);
-//		log.info("Logout response:" + logoutResponse.toString());
-//		assertThat(logoutResponse.toString(), containsString("reason: LOGOUT_CONFIRMATION"));
-//	}
-//
 	@Test
 	public void shouldGetAccountState() throws UnknownHostException, IOException, InterruptedException {
 		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
+		log.info("============LOGIN===============");
 		StreamingApiClient streamingApi = loggedInSmkApi(factory);
 		pause(2);
+
+		log.info("============AccountState===============");
 		streamingApi.request(factory.accountStateRequest(), new SmkCallback() {
 			@Override
 			public void process(Payload response) {
 				log.info("Account state response got: " + response);
 			}
 		});
+		pause(2);
+
+		log.info("============CurrentBets===============");
+		streamingApi.request(factory.currentBetsRequest(), new SmkCallback() {
+			@Override
+			public void process(Payload response) {
+				log.info("Current bets response: " + response);
+			}
+		});
+
+		pause(2);
+		log.info("============PlaceBet===============");
+		streamingApi.request(factory.placeBetRequest(23422, 234232, 2.3, 11.2, true), new SmkCallback() {
+			@Override
+			public void process(Payload response) {
+				log.info("Order create response: " + response);
+			}
+		});
+		pause(2);
+
+		log.info("============HeartBeats===============");
 		log.info("Pausing to test heartbeats...");
 		pause(15);
-//		log.info("Account state response:" + accountStateResponse.toString());
+
+		log.info("============Logout===============");
 		logoutFromSmk(streamingApi, factory);
 		pause(2);
-//		assertThat(accountStateResponse.toString(), containsString("currency: CURRENCY_GBP"));
 		
 	}
-
-//	@Test
-//	public void shouldRespondToHeartBeatRequestsPeriadicallyAndNotToBeLoggedOutAfterTimeout() throws Exception {
-//		StreamingApiRequestsFactory factory = new StreamingApiRequestsFactory();
-//		StreamingApiClient streamingApi = loggedInSmkApi(factory);
-//		log.info("Pausing...");
-//		pause(30);
-//		log.info("Pause finished");
-//		SmarketsSetoPiqi.Payload accountStateRequest = factory.accountStateRequest();
-//		log.info("Account state request:" + accountStateRequest.toString());
-//		SmarketsSetoPiqi.Payload accountStateResponse = streamingApi.getSmkResponse(accountStateRequest);
-//		log.info("Account state response:" + accountStateResponse.toString());
-//		logoutFromSmk(streamingApi, factory);
-//		assertThat(accountStateResponse.toString(), containsString("currency: CURRENCY_GBP"));
-//		
-//	}
 
 	private void pause(final int seconds) throws InterruptedException {
 		Thread pauseThread = new Thread(new Runnable() {

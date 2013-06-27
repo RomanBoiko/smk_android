@@ -2,7 +2,12 @@ package com.smarkets.android.services;
 
 import smarkets.eto.SmarketsEtoPiqi;
 import smarkets.seto.SmarketsSetoPiqi;
+import smarkets.seto.SmarketsSetoPiqi.OrderCreateType;
 import smarkets.seto.SmarketsSetoPiqi.Payload;
+import smarkets.seto.SmarketsSetoPiqi.PriceType;
+import smarkets.seto.SmarketsSetoPiqi.QuantityType;
+import smarkets.seto.SmarketsSetoPiqi.Side;
+import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
 public class StreamingApiRequestsFactory {
 	private EtoSequence conversationSequence;
@@ -36,33 +41,34 @@ public class StreamingApiRequestsFactory {
 				.build();
 	}
 	
-	public Payload placeBetRequest() {
+	public Payload placeBetRequest(long marketId, long contractId, double quantity, double price, boolean toBuy) {
 		return SmarketsSetoPiqi.Payload
 				.newBuilder()
 				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CREATE)
 				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
-				.setOrderCreate(builderForValue)
+				.setOrderCreate(SmarketsSetoPiqi.OrderCreate.newBuilder()
+						.setType(OrderCreateType.ORDER_CREATE_LIMIT)
+						.setMarket(Uuid128.newBuilder().setLow(marketId).build())
+						.setContract(Uuid128.newBuilder().setLow(marketId).build())
+						.setSide(toBuy ? Side.SIDE_BUY : Side.SIDE_SELL)
+						.setQuantityType(QuantityType.QUANTITY_PAYOFF_CURRENCY)
+						.setQuantity(new Double(quantity * 10000).intValue())
+						.setPriceType(PriceType.PRICE_PERCENT_ODDS)
+						.setPrice(new Double(price * 100).intValue())
+						.build())
 				.build();
 	}
-	
-	
-//	DEBUG:smarkets.session:buffering payload with outgoing sequence 10: type: PAYLOAD_ORDER_CREATE
-//	order_create {
-//	  type: ORDER_CREATE_LIMIT
-//	  market {
-//	    low: 409866
-//	    high: 0
-//	  }
-//	  contract {
-//	    low: 658059
-//	    high: 0
-//	  }
-//	  side: SIDE_BUY
-//	  quantity_type: QUANTITY_PAYOFF_CURRENCY
-//	  quantity: 20000
-//	  price_type: PRICE_PERCENT_ODDS
-//	  price: 5000
-//	}
+
+	public Payload cancelBetRequest(long l) {
+	}
+
+	public Payload currentBetsRequest() {
+		return SmarketsSetoPiqi.Payload
+				.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDERS_FOR_ACCOUNT_REQUEST)
+				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
+				.build();
+	}
 
 	private SmarketsEtoPiqi.Payload etoPayload(SmarketsEtoPiqi.PayloadType etoPayloadType) {
 		return SmarketsEtoPiqi.Payload.newBuilder()
@@ -85,5 +91,6 @@ public class StreamingApiRequestsFactory {
 			return ++currentValue;
 		}
 	}
+
 
 }
