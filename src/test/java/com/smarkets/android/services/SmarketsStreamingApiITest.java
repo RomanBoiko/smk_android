@@ -1,12 +1,8 @@
 package com.smarkets.android.services;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 import java.io.IOException;
-import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -44,13 +40,31 @@ public class SmarketsStreamingApiITest {
 				log.info("Current bets response: " + response);
 			}
 		});
-
 		pause(2);
+
 		log.info("============PlaceBet===============");
 		streamingApi.request(factory.placeBetRequest(23422, 234232, 2.3, 11.2, true), new SmkCallback() {
 			@Override
 			public void process(Payload response) {
 				log.info("Order create response: " + response);
+			}
+		});
+		pause(2);
+
+		log.info("============CancelBet===============");
+		streamingApi.request(factory.cancelBetRequest(UUID.randomUUID()), new SmkCallback() {
+			@Override
+			public void process(Payload response) {
+				log.info("Order cancel response: " + response);
+			}
+		});
+		pause(2);
+
+		log.info("============MarketPrices===============");
+		streamingApi.request(factory.pricesRequest(123L), new SmkCallback() {
+			@Override
+			public void process(Payload response) {
+				log.info("Market prices response: " + response);
 			}
 		});
 		pause(2);

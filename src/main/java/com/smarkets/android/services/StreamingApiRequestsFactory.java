@@ -1,5 +1,7 @@
 package com.smarkets.android.services;
 
+import java.util.UUID;
+
 import smarkets.eto.SmarketsEtoPiqi;
 import smarkets.seto.SmarketsSetoPiqi;
 import smarkets.seto.SmarketsSetoPiqi.OrderCreateType;
@@ -7,7 +9,6 @@ import smarkets.seto.SmarketsSetoPiqi.Payload;
 import smarkets.seto.SmarketsSetoPiqi.PriceType;
 import smarkets.seto.SmarketsSetoPiqi.QuantityType;
 import smarkets.seto.SmarketsSetoPiqi.Side;
-import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
 public class StreamingApiRequestsFactory {
 	private EtoSequence conversationSequence;
@@ -48,8 +49,8 @@ public class StreamingApiRequestsFactory {
 				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
 				.setOrderCreate(SmarketsSetoPiqi.OrderCreate.newBuilder()
 						.setType(OrderCreateType.ORDER_CREATE_LIMIT)
-						.setMarket(Uuid128.newBuilder().setLow(marketId).build())
-						.setContract(Uuid128.newBuilder().setLow(marketId).build())
+						.setMarket(Uuid.fromLowLong(marketId))
+						.setContract(Uuid.fromLowLong(contractId))
 						.setSide(toBuy ? Side.SIDE_BUY : Side.SIDE_SELL)
 						.setQuantityType(QuantityType.QUANTITY_PAYOFF_CURRENCY)
 						.setQuantity(new Double(quantity * 10000).intValue())
@@ -59,7 +60,26 @@ public class StreamingApiRequestsFactory {
 				.build();
 	}
 
-	public Payload cancelBetRequest(long l) {
+	public Payload cancelBetRequest(UUID betIdToCancel) {
+		return SmarketsSetoPiqi.Payload
+				.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CANCEL)
+				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
+				.setOrderCancel(SmarketsSetoPiqi.OrderCancel.newBuilder()
+						.setOrder(Uuid.fromUuid(betIdToCancel))
+						.build())
+				.build();
+	}
+
+	public Payload pricesRequest(long marketId) {
+		return SmarketsSetoPiqi.Payload
+				.newBuilder()
+				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES_REQUEST)
+				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
+				.setMarketQuotesRequest(SmarketsSetoPiqi.MarketQuotesRequest.newBuilder()
+						.setMarket(Uuid.fromLowLong(marketId))
+						.build())
+				.build();
 	}
 
 	public Payload currentBetsRequest() {
@@ -69,6 +89,7 @@ public class StreamingApiRequestsFactory {
 				.setEtoPayload(etoPayload(SmarketsEtoPiqi.PayloadType.PAYLOAD_NONE))
 				.build();
 	}
+
 
 	private SmarketsEtoPiqi.Payload etoPayload(SmarketsEtoPiqi.PayloadType etoPayloadType) {
 		return SmarketsEtoPiqi.Payload.newBuilder()
@@ -91,6 +112,5 @@ public class StreamingApiRequestsFactory {
 			return ++currentValue;
 		}
 	}
-
 
 }

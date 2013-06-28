@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import smarkets.seto.SmarketsSetoPiqi.AccountState;
 import smarkets.seto.SmarketsSetoPiqi.Currency;
@@ -24,10 +25,9 @@ import com.smarkets.android.domain.BetType;
 
 public class SmkStreamingService {
 
-	private Long betSequence = 1012L;
 	private final Set<Bet> bets = new HashSet<Bet>(Arrays.asList(
-			new Bet(BUY, 211L, 212L, 213L, new BigDecimal("23.12"), new BigDecimal("30.0"), new Date(), this),
-			new Bet(SELL, 311L, 312L, 313L, new BigDecimal("15.13"), new BigDecimal("40.0"), new Date(), this)));
+			new Bet(BUY, 211L, 212L, UUID.randomUUID(), new BigDecimal("23.12"), new BigDecimal("30.0"), new Date(), this),
+			new Bet(SELL, 311L, 312L, UUID.randomUUID(), new BigDecimal("15.13"), new BigDecimal("40.0"), new Date(), this)));
 
 	public boolean login(String username, String password) {
 		return username.equals("u") && password.equals("p");
@@ -65,7 +65,7 @@ public class SmkStreamingService {
 	}
 
 	public Bet placeBet(BetType type, Long marketId, Long contractId, BigDecimal quantity, BigDecimal price) {
-		Bet placeBetResult = new Bet(type, marketId, contractId, betSequence++, quantity, price, new Date(), this);
+		Bet placeBetResult = new Bet(type, marketId, contractId, UUID.randomUUID(), quantity, price, new Date(), this);
 		bets.add(placeBetResult);
 		return placeBetResult;
 	}

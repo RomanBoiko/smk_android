@@ -4,6 +4,7 @@ import static java.lang.String.format;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
 import com.smarkets.android.SmkStreamingService;
 
@@ -12,7 +13,7 @@ public class Bet {
 	public final BetType type;
 	public final Long marketId;
 	public final Long contractId;
-	public final Long betId;
+	public final UUID betId;
 	public final BigDecimal quantity;
 	public final BigDecimal price;
 	public final Date createdDate;
@@ -20,7 +21,7 @@ public class Bet {
 	private String contractName;
 	private final SmkStreamingService smkService;
 
-	public Bet(BetType type, Long marketId, Long contractId, Long betId, BigDecimal quantity, BigDecimal price,
+	public Bet(BetType type, Long marketId, Long contractId, UUID betId, BigDecimal quantity, BigDecimal price,
 			Date createdDate, SmkStreamingService smkService) {
 		this.type = type;
 		this.marketId = marketId;
@@ -56,11 +57,11 @@ public class Bet {
 	}
 
 	public String toDetailedString() {
-		return format("Bet: %s (id=%s):\n" +
+		return format("Bet: %s:\n" +
 				"Market: %s(id=%s)\n" +
 				"Contract: %s(id=%s)\n" +
 				"Order: %s GBP for %s%%\n" +
-				"Created at: %s", type, betId, marketName(), marketId, contractName(), contractId, quantity, price, createdDate);
+				"Created at: %s", type, marketName(), marketId, contractName(), contractId, quantity, price, createdDate);
 	}
 
 

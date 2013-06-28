@@ -3,6 +3,8 @@ package com.smarkets.android.services;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.UUID;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,10 +108,18 @@ public class StreamingApiRequestsFactoryTest {
 
 	@Test
 	public void shouldCreateCancelBetRequest() throws InvalidProtocolBufferException {
-		Payload cancelBetRequest = requestsFactory.cancelBetRequest(123L);
+		Payload cancelBetRequest = requestsFactory.cancelBetRequest(UUID.randomUUID());
 		log.debug(cancelBetRequest);
 		assertThat(cancelBetRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_ORDER_CANCEL));
 		assertThat(cancelBetRequest.getEtoPayload().getSeq(), is(1L));
+	}
+
+	@Test
+	public void shouldCreatePricesRequest() throws InvalidProtocolBufferException {
+		Payload pricesRequest = requestsFactory.pricesRequest(123L);
+		log.debug(pricesRequest);
+		assertThat(pricesRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES_REQUEST));
+		assertThat(pricesRequest.getEtoPayload().getSeq(), is(1L));
 	}
 
 	private Payload loginRequest() {
