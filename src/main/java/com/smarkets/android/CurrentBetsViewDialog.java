@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.smarkets.android.BusinessService.Callback;
 import com.smarkets.android.domain.Bet;
 
 public class CurrentBetsViewDialog {
@@ -33,9 +34,10 @@ public class CurrentBetsViewDialog {
 		currentBetsDialog.show();
 	}
 
-	public void showBets(final SmkStreamingService smkService) {
+	public void showBets(final BusinessService smkService) {
 		final ListView betsList = (ListView) currentBetsDialog.findViewById(R.id.betsList);
-		betsList.setAdapter(betsSourceAdapter(smkService.currentBets()));
+		showBetsList(smkService, betsList);
+		
 		betsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				final Bet betUnderAction = (Bet)(betsList.getAdapter().getItem(position));
@@ -47,11 +49,20 @@ public class CurrentBetsViewDialog {
 					})
 					.setNegativeButton("Cancel Bet", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							if (betUnderAction.cancel()) {
-								betsList.setAdapter(betsSourceAdapter(smkService.currentBets()));
-								Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
-							} else {
-								Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
+							try {
+								betUnderAction.cancel(new Callback<Boolean>() {
+									@Override
+									public void action(Boolean response) {
+										if (response) {
+											showBetsList(smkService, betsList);
+											Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
+										} else {
+											Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
+										}
+									}
+								});
+							} catch (Exception e) {
+								Toast.makeText(parentActivity, "Cancel bet error: " + e.getMessage(), Toast.LENGTH_LONG).show();
 							}
 						}
 					}).create().show();
@@ -60,6 +71,20 @@ public class CurrentBetsViewDialog {
 		});
 
 	}
+
+	private void showBetsList(final BusinessService smkService, final ListView betsList) {
+		try {
+			smkService.currentBets(new Callback<List<Bet>>() {
+				@Override
+				public void action(List<Bet> response) {
+					betsList.setAdapter(betsSourceAdapter(response));
+				}
+			});
+		} catch (Exception e) {
+			Toast.makeText(parentActivity, "Current bets show error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+	}
+
 	private ArrayAdapter<Bet> betsSourceAdapter(List<Bet> bets) {
 		Collections.sort(bets, new Comparator<Bet>() {
 			public int compare(Bet bet1, Bet bet2) {

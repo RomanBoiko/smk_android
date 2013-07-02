@@ -16,7 +16,16 @@ public class AccountFundsTest {
 
 	@Test
 	public void shouldConstructAccountStateFromSetoPayload() {
-		AccountFunds accountFunds = new AccountFunds(accountState());
+		AccountFunds accountFunds = AccountFunds.fromSetoAccountState(accountState());
+		assertThat(accountFunds.getCurrency(), is("GBP"));
+		assertThat(accountFunds.getCash().amount, is(20.0));
+		assertThat(accountFunds.getBonus().amount, is(20.1));
+		assertThat(accountFunds.getExposure().amount, is(20.2));
+	}
+
+	@Test
+	public void shouldConstructAccountStateByConstructor() {
+		AccountFunds accountFunds = new AccountFunds("GBP", 20.0, 20.1, 20.2);
 		assertThat(accountFunds.getCurrency(), is("GBP"));
 		assertThat(accountFunds.getCash().amount, is(20.0));
 		assertThat(accountFunds.getBonus().amount, is(20.1));

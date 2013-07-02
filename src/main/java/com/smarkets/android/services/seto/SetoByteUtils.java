@@ -1,10 +1,10 @@
-package com.smarkets.android.services;
+package com.smarkets.android.services.seto;
 
 import java.io.IOException;
 
 import com.google.protobuf.ByteString;
 
-public class SmkByteUtils {
+public class SetoByteUtils {
 	public static byte[] padding(int byteCount) throws IOException {
 		// padding = '\x00' * max(0, 3 - byte_count);
 		ByteString.Output out = ByteString.newOutput();
@@ -14,7 +14,7 @@ public class SmkByteUtils {
 		return out.toByteString().toByteArray();
 	}
 
-	public static byte[] encodeVarint(int value) throws IOException {
+	public static byte[] encodeRequestHeaderBytes(int value) throws IOException {
 		ByteString.Output out = ByteString.newOutput();
 		int bits = value & 0x7f;
 		value = value >> 7;

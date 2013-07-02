@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.smarkets.android.LongRunningActionAlert;
-import com.smarkets.android.services.JsonEventsSource;
+import com.smarkets.android.services.rest.JsonEventsSource;
 
 public class SmkEvent implements NamedItemWithParent {
 	private final static Pattern DATE_IN_URL_PATTERN = Pattern.compile("(\\d{4}/\\d{2}/\\d{2})");

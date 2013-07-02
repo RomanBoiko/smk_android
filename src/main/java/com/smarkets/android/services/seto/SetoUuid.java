@@ -1,10 +1,10 @@
-package com.smarkets.android.services;
+package com.smarkets.android.services.seto;
 
 import java.util.UUID;
 
 import smarkets.seto.SmarketsSetoPiqi.Uuid128;
 
-public class Uuid {
+public class SetoUuid {
 
 	public static Uuid128 fromUuid(UUID uuid) {
 		return Uuid128.newBuilder()

@@ -22,16 +22,17 @@ import android.widget.Toast;
 import com.smarkets.android.domain.BetType;
 import com.smarkets.android.domain.SmkContract;
 import com.smarkets.android.domain.SmkMarket;
+import com.smarkets.android.domain.actionresults.PlaceBetResult;
 
 public class PlaceBetDialog {
 
 	private final Dialog placeBetDialog;
 	private final Activity parentActivity;
-	private final SmkStreamingService smkService;
+	private final BusinessService smkService;
 	private SmkMarket market;
 	private SmkContract contract;
 
-	public PlaceBetDialog(Activity parentActivity, SmkStreamingService smkService) {
+	public PlaceBetDialog(Activity parentActivity, BusinessService smkService) {
 		this.smkService = smkService;
 		this.parentActivity = parentActivity;
 		placeBetDialog = new AlertDialog.Builder(parentActivity)
@@ -40,13 +41,25 @@ public class PlaceBetDialog {
 				.setPositiveButton("Bet", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						Spinner spinner = ((Spinner)(placeBetDialog.findViewById(R.id.buySellSpinner)));
-						PlaceBetDialog.this.smkService.placeBet(
-								BetType.valueOf(spinner.getItemAtPosition(spinner.getLastVisiblePosition()).toString()),
-								Long.parseLong(market.id),
-								Long.parseLong(contract.id),
-								new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betPrice))).getText().toString()),
-								new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betAmount))).getText().toString()));
-						Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet placed", Toast.LENGTH_SHORT).show();
+						try {
+							PlaceBetDialog.this.smkService.placeBet(
+									BetType.valueOf(spinner.getItemAtPosition(spinner.getLastVisiblePosition()).toString()),
+									Long.parseLong(market.id),
+									Long.parseLong(contract.id),
+									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betPrice))).getText().toString()),
+									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betAmount))).getText().toString()), new BusinessService.Callback<PlaceBetResult>(){
+										@Override
+										public void action(PlaceBetResult response) {
+											if (PlaceBetResult.BET_PLACED.equals(response)) {
+												Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet placed", Toast.LENGTH_LONG).show();
+											} else {
+												Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet can't be placed", Toast.LENGTH_LONG).show();
+											}
+										}
+									});
+						} catch (Exception e) {
+							Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet place error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+						}
 					}
 				})
 				.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

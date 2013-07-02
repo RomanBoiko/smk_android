@@ -15,6 +15,7 @@ import smarkets.seto.SmarketsSetoPiqi.Payload;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.smarkets.android.services.seto.StreamingApiRequestsFactory;
 
 public class StreamingApiRequestsFactoryTest {
 

@@ -19,6 +19,7 @@ import com.smarkets.android.LongRunningActionAlert;
 import com.smarkets.android.domain.SmkContract;
 import com.smarkets.android.domain.SmkEvent;
 import com.smarkets.android.domain.SmkMarket;
+import com.smarkets.android.services.rest.RestApiClient;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RestApiITest {

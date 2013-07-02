@@ -1,5 +1,9 @@
 package com.smarkets.android;
 
+import java.io.IOException;
+
+import com.smarkets.android.domain.actionresults.LoginResult;
+
 import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +17,7 @@ public class LoginView {
 		this.parentActivity = parentActivity;
 	}
 	
-	public void showLoginView(final SmkStreamingService smkService, final ChangeGuiViewCallback changeGuiViewCallback) {
+	public void showLoginView(final BusinessService smkService, final ChangeGuiViewCallback changeGuiViewCallback) {
 		parentActivity.setContentView(R.layout.login);
 		final EditText txtUserName = (EditText) parentActivity.findViewById(R.id.txtUname);
 		final EditText txtPassword = (EditText) parentActivity.findViewById(R.id.txtPwd);
@@ -21,11 +25,20 @@ public class LoginView {
 		Button btnCancel = (Button) parentActivity.findViewById(R.id.btnCancel);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if (smkService.login(txtUserName.getText().toString(), txtPassword.getText().toString())) {
-					Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
-					changeGuiViewCallback.moveToNextView(parentActivity);
-				} else {
-					Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
+				try {
+					smkService.login(txtUserName.getText().toString(), txtPassword.getText().toString(), new BusinessService.Callback<LoginResult>(){
+						@Override
+						public void action(LoginResult response) {
+							if (LoginResult.LOGIN_SUCCESS.equals(response)) {
+								Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
+								changeGuiViewCallback.moveToNextView(parentActivity);
+							} else {
+								Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
+							}
+						}
+					});
+				} catch (IOException e) {
+					Toast.makeText(parentActivity, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 				}
 			}
 		});

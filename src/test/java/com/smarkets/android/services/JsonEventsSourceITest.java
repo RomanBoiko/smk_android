@@ -8,6 +8,8 @@ import java.io.IOException;
 import org.json.JSONException;
 import org.junit.Test;
 
+import com.smarkets.android.services.rest.JsonEventsSource;
+
 public class JsonEventsSourceITest {
 
 	@Test

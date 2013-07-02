@@ -23,16 +23,20 @@ public class AccountStateViewDialog {
 		accountStateDialog.show();
 	}
 
-	public void showFunds(SmkStreamingService smkService) {
-		TextView cash = (TextView) accountStateDialog.findViewById(R.id.cash);
-		TextView bonus = (TextView) accountStateDialog.findViewById(R.id.bonus);
-		TextView exposure = (TextView) accountStateDialog.findViewById(R.id.exposure);
+	public void showFunds(BusinessService smkService) {
+		final TextView cash = (TextView) accountStateDialog.findViewById(R.id.cash);
+		final TextView bonus = (TextView) accountStateDialog.findViewById(R.id.bonus);
+		final TextView exposure = (TextView) accountStateDialog.findViewById(R.id.exposure);
 
 		try {
-			AccountFunds accountFunds = smkService.getAccountStatus();
-			cash.setText(accountFunds.getCash().toString());
-			bonus.setText(accountFunds.getBonus().toString());
-			exposure.setText(accountFunds.getExposure().toString());
+			smkService.getAccountStatus(new BusinessService.Callback<AccountFunds>(){
+				@Override
+				public void action(AccountFunds accountFunds) {
+					cash.setText(accountFunds.getCash().toString());
+					bonus.setText(accountFunds.getBonus().toString());
+					exposure.setText(accountFunds.getExposure().toString());
+				}
+			});
 		} catch (Exception e) {
 			Log.e(ScreenActivity.LOG_TAG, "Account status not retrieved", e);
 			throw new RuntimeException(e);

@@ -7,12 +7,24 @@ import smarkets.seto.SmarketsSetoPiqi.AccountState;
 
 public class AccountFunds {
 
-	private AccountState accountState;
 	private String currency;
+	private Double cash;
+	private Double bonus;
+	private Double exposure;
 
-	public AccountFunds(AccountState accountState) {
-		this.accountState = accountState;
-		this.currency = accountState.getCurrency().toString().replace("CURRENCY_", "");
+	public AccountFunds(String currency, Double cash, Double bonus, Double exposure) {
+		this.currency = currency;
+		this.cash = cash;
+		this.bonus = bonus;
+		this.exposure = exposure;
+	}
+
+	public static AccountFunds fromSetoAccountState(AccountState accountState) {
+		return new AccountFunds(
+				accountState.getCurrency().toString().replace("CURRENCY_", ""),
+				smkCashAmountToReal(accountState.getCash().getValue()),
+				smkCashAmountToReal(accountState.getBonus().getValue()),
+				smkCashAmountToReal(accountState.getExposure().getValue()));
 	}
 
 	public String getCurrency() {
@@ -20,18 +32,18 @@ public class AccountFunds {
 	}
 
 	public CashAmount getCash() {
-		return cashAmountWithCurrency(smkCashAmountToReal(accountState.getCash().getValue()), currency);
+		return cashAmountWithCurrency(cash, currency);
 	}
 
 	public CashAmount getBonus() {
-		return cashAmountWithCurrency(smkCashAmountToReal(accountState.getBonus().getValue()), currency);
+		return cashAmountWithCurrency(bonus, currency);
 	}
 
 	public CashAmount getExposure() {
-		return cashAmountWithCurrency(smkCashAmountToReal(accountState.getExposure().getValue()), currency);
+		return cashAmountWithCurrency(exposure, currency);
 	}
 	
-	private Double smkCashAmountToReal(Long smkAmount) {
+	private static Double smkCashAmountToReal(Long smkAmount) {
 		return smkAmount * 0.0001;
 	}
 }

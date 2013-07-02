@@ -1,4 +1,4 @@
-package com.smarkets.android.services;
+package com.smarkets.android.services.rest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.smarkets.android.SmkConfig;
+import com.smarkets.android.services.SslConnectionFactory;
 
 public class JsonEventsSource {
 	static {
@@ -29,7 +30,7 @@ public class JsonEventsSource {
 	}
 
 	public static JsonEventsSource fetchViaHttp(String jsonUrl) throws IOException, JSONException {
-		jsonUrl = CONFIG.smkRestApiRoot + jsonUrl;
+		jsonUrl = CONFIG.smkRestApiRoot() + jsonUrl;
 
 		URL url = new URL(jsonUrl);
 		URLConnection conn = url.openConnection();

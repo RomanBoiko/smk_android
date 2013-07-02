@@ -1,4 +1,4 @@
-package com.smarkets.android.services;
+package com.smarkets.android.services.seto;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -10,39 +10,41 @@ import smarkets.seto.SmarketsSetoPiqi;
 
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
+import com.smarkets.android.services.SslConnectionFactory;
 
-public class StreamingApiClient {
+public class StreamingApiClientReal implements StreamingApiClient {
 	private final StreamingApiDaemon apiDaemon;
 
-	public StreamingApiClient(String streamingApiHost,
+	public StreamingApiClientReal(String streamingApiHost,
 			Integer streamingApiPort, Boolean smkStreamingSslEnabled,
 			StreamingApiRequestsFactory factory) throws UnknownHostException,
 			IOException {
 
-		Socket smkSocket = smkStreamingSslEnabled ?
-				new SslConnectionFactory().factoryWhichTrustsEveryone().createSocket(streamingApiHost,streamingApiPort)
-				: new Socket(streamingApiHost, streamingApiPort);
-		this.apiDaemon = new StreamingApiDaemon(smkSocket, factory);
-		this.apiDaemon.startDaemon();
+		this.apiDaemon = new StreamingApiDaemon(streamingApiHost,
+				streamingApiPort, smkStreamingSslEnabled, factory);
 	}
 	
-	public void request(SmarketsSetoPiqi.Payload requestPayload, SmkCallback callback) throws IOException {
+	public void request(SmarketsSetoPiqi.Payload requestPayload, StreamingCallback callback) throws IOException {
 		apiDaemon.request(requestPayload, callback);
 	}
 
 	private static class StreamingApiDaemon implements Runnable {
-		private final Socket apiSocket;
+		private Socket apiSocket;
 		private CodedOutputStream outStream;
 		private CodedInputStream inStream;
 		private final Thread serverCommunicationThread = new Thread(this);
 		private final StreamingApiRequestsFactory factory;
-		private Queue<SmkCallback> callbacksQueue = new ArrayBlockingQueue<SmkCallback>(2);
+		private Queue<StreamingCallback> callbacksQueue = new ArrayBlockingQueue<StreamingCallback>(2);
+		private final String streamingApiHost;
+		private final  Integer streamingApiPort;
+		private final Boolean smkStreamingSslEnabled;
 
-		public StreamingApiDaemon(Socket apiSocket, StreamingApiRequestsFactory factory) throws IOException {
+		public StreamingApiDaemon(String streamingApiHost, Integer streamingApiPort,
+				Boolean smkStreamingSslEnabled, StreamingApiRequestsFactory factory) throws IOException {
 			this.factory = factory;
-			this.apiSocket = apiSocket;
-			this.outStream = CodedOutputStream.newInstance(this.apiSocket.getOutputStream());
-			this.inStream = CodedInputStream.newInstance(this.apiSocket.getInputStream());
+			this.streamingApiHost = streamingApiHost;
+			this.streamingApiPort = streamingApiPort;
+			this.smkStreamingSslEnabled = smkStreamingSslEnabled;
 		}
 
 
@@ -51,18 +53,31 @@ public class StreamingApiClient {
 			serverCommunicationThread.start();
 		}
 
-		public void request(SmarketsSetoPiqi.Payload requestPayload, SmkCallback callback) throws IOException {
+		public void request(SmarketsSetoPiqi.Payload requestPayload, StreamingCallback callback) throws IOException {
 			callbacksQueue.add(callback);
 			pushPayload(requestPayload);
 		}
 
+		private void initIfFirstTime() throws IOException {
+			if(null == apiSocket) {
+				if(smkStreamingSslEnabled) {
+					this.apiSocket = new SslConnectionFactory().factoryWhichTrustsEveryone().createSocket(streamingApiHost,streamingApiPort);
+				} else {
+					this.apiSocket = new Socket(streamingApiHost, streamingApiPort);
+				}
+				this.outStream = CodedOutputStream.newInstance(this.apiSocket.getOutputStream());
+				this.inStream = CodedInputStream.newInstance(this.apiSocket.getInputStream());
+				startDaemon();
+			}
+		}
 
 		private synchronized void pushPayload(SmarketsSetoPiqi.Payload requestPayload)
 				throws IOException {
+			initIfFirstTime();
 			int byteCount = requestPayload.getSerializedSize();
-			outStream.writeRawBytes(SmkByteUtils.encodeVarint(byteCount));
+			outStream.writeRawBytes(SetoByteUtils.encodeRequestHeaderBytes(byteCount));
 			requestPayload.writeTo(outStream);
-			outStream.writeRawBytes(SmkByteUtils.padding(byteCount));
+			outStream.writeRawBytes(SetoByteUtils.padding(byteCount));
 			outStream.flush();
 			System.out.println("Message2server: " + requestPayload);
 		}

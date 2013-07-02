@@ -2,11 +2,13 @@ package com.smarkets.android.domain;
 
 import static java.lang.String.format;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-import com.smarkets.android.SmkStreamingService;
+import com.smarkets.android.BusinessService;
+import com.smarkets.android.BusinessService.Callback;
 
 public class Bet {
 
@@ -19,10 +21,10 @@ public class Bet {
 	public final Date createdDate;
 	private String marketName;
 	private String contractName;
-	private final SmkStreamingService smkService;
+	private final BusinessService smkService;
 
 	public Bet(BetType type, Long marketId, Long contractId, UUID betId, BigDecimal quantity, BigDecimal price,
-			Date createdDate, SmkStreamingService smkService) {
+			Date createdDate, BusinessService smkService) {
 		this.type = type;
 		this.marketId = marketId;
 		this.contractId = contractId;
@@ -48,8 +50,8 @@ public class Bet {
 		return contractName;
 	}
 
-	public boolean cancel() {
-		return this.smkService.cancelBet(this);
+	public void cancel(final Callback<Boolean> action) throws IOException {
+		this.smkService.cancelBet(this, action);
 	}
 
 	public String toString() {

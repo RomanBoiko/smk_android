@@ -1,4 +1,4 @@
-package com.smarkets.android.services;
+package com.smarkets.android.services.rest;
 
 import com.smarkets.android.domain.SmkEvent;
 

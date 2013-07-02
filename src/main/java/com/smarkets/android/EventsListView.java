@@ -1,6 +1,6 @@
 package com.smarkets.android;
 
-import static com.smarkets.android.services.RestApiClient.getEventsRoot;
+import static com.smarkets.android.services.rest.RestApiClient.getEventsRoot;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -25,9 +25,9 @@ import com.smarkets.android.domain.SmkEvent;
 public class EventsListView {
 
 	private Activity parentActivity;
-	private final SmkStreamingService smkService;
+	private final BusinessService smkService;
 
-	public EventsListView(Activity parentActivity, SmkStreamingService smkService) {
+	public EventsListView(Activity parentActivity, BusinessService smkService) {
 		this.parentActivity = parentActivity;
 		this.smkService = smkService;
 	}
