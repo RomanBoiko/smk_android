@@ -35,6 +35,9 @@ Development setup (draft):
 -read android logs
 	$ANDROID_HOME/platform-tools/adb logcat
 
+-run tests
+	mvn test -Dsmk.user=<smk push api user> -Dsmk.pass=<smk push api password>
+
 #manual emulator start
 	#../../apps/android-sdk-linux/tools/emulator -avd smk
 #new project

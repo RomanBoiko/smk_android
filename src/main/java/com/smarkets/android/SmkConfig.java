@@ -14,7 +14,4 @@ public class SmkConfig {
 //	public final Integer smkStreamingApiPort = 3700;
 //	public final Boolean smkStreamingApiSslEnabled = false;
 
-	public final String smkTestUserLogin = "";
-	public final String smkTestUserPassword = "";
-
 }

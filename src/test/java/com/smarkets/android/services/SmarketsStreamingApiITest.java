@@ -20,6 +20,8 @@ public class SmarketsStreamingApiITest {
 
 	private final Logger log = Logger.getLogger(getClass());
 	private SmkConfig smkConfig = new SmkConfig();
+	private static final String SMK_TEST_USER_LOGIN = System.getProperty("smk.user");
+	private static final String SMK_TEST_USER_PASSWORD = System.getProperty("smk.pass");
 
 	@Test
 	public void shouldRunSetOfStreamingApiRequests() throws UnknownHostException, IOException, InterruptedException {
@@ -99,7 +101,7 @@ public class SmarketsStreamingApiITest {
 
 	private StreamingApiClient loggedInSmkApi (StreamingApiRequestsFactory factory) throws UnknownHostException, IOException, InterruptedException {
 		StreamingApiClient streamingApi = streamingApiClient(factory);
-		SmarketsSetoPiqi.Payload loginRequest = factory.loginRequest(smkConfig.smkTestUserLogin, smkConfig.smkTestUserPassword);
+		SmarketsSetoPiqi.Payload loginRequest = factory.loginRequest(SMK_TEST_USER_LOGIN, SMK_TEST_USER_PASSWORD);
 		streamingApi.request(loginRequest, new StreamingCallback() {
 			public void process(Payload response) {
 				log.info("Login response got: " + response);
