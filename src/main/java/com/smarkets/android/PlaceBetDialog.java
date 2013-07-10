@@ -2,20 +2,13 @@ package com.smarkets.android;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,7 +23,6 @@ public class PlaceBetDialog {
 	private final Activity parentActivity;
 	private final BusinessService smkService;
 	private SmkMarket market;
-	private SmkContract contract;
 
 	public PlaceBetDialog(Activity parentActivity, BusinessService smkService) {
 		this.smkService = smkService;
@@ -40,12 +32,13 @@ public class PlaceBetDialog {
 				.setTitle("Place Bet")
 				.setPositiveButton("Bet", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
+						Spinner contractSpinner = ((Spinner)(placeBetDialog.findViewById(R.id.contractsSpinner)));
 						Spinner buySellSpinner = ((Spinner)(placeBetDialog.findViewById(R.id.buySellSpinner)));
 						try {
 							PlaceBetDialog.this.smkService.placeBet(
 									BetType.valueOf(buySellSpinner.getItemAtPosition(buySellSpinner.getLastVisiblePosition()).toString()),
 									Long.parseLong(market.id),
-									Long.parseLong(contract.id),
+									Long.parseLong(((SmkContract)contractSpinner.getItemAtPosition(contractSpinner.getLastVisiblePosition())).id),
 									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betPrice))).getText().toString()),
 									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betAmount))).getText().toString()), new BusinessService.Callback<PlaceBetResult>(){
 										@Override
@@ -65,38 +58,24 @@ public class PlaceBetDialog {
 					}
 				})
 				.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						Toast.makeText(PlaceBetDialog.this.parentActivity, "Cancel Bet not implemented, betId=" + id, Toast.LENGTH_LONG).show();
-					}
+					public void onClick(DialogInterface dialog, int id) { }
 				}).create();
 		placeBetDialog.show();
 	}
 
 	public void showDialog(SmkMarket market) {
 		this.market = market;
-		final ListView contractsList = (ListView) placeBetDialog.findViewById(R.id.contractsList);
-		contractsList.setAdapter(contractsSourceAdapter(market.getContracts()));
-		contractsList.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				contract = (SmkContract)(contractsList.getAdapter().getItem(position));
-			}
-
-		});
+		Spinner contractsListSpinner = (Spinner) placeBetDialog.findViewById(R.id.contractsSpinner);
+		ArrayAdapter<SmkContract> contractsAdapter =
+				new ArrayAdapter<SmkContract>(parentActivity, android.R.layout.simple_spinner_item, market.getContracts());
+		contractsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		contractsListSpinner.setAdapter(contractsAdapter);
 		
 		Spinner spinner = (Spinner) placeBetDialog.findViewById(R.id.buySellSpinner);
-		ArrayAdapter<String> adapter =
+		ArrayAdapter<String> buySellAdapter =
 				new ArrayAdapter<String>(parentActivity, android.R.layout.simple_spinner_item, Arrays.asList("BUY", "SELL"));
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
+		buySellAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(buySellAdapter);
 
 	}
-	private ArrayAdapter<SmkContract> contractsSourceAdapter(List<SmkContract> contracts) {
-		Collections.sort(contracts, new Comparator<SmkContract>() {
-			public int compare(SmkContract contract1, SmkContract contract2) {
-				return contract1.getName().compareTo(contract2.getName());
-			}
-		});
-		return new ArrayAdapter<SmkContract>(parentActivity, android.R.layout.simple_list_item_1, contracts);
-	}
-
 }
