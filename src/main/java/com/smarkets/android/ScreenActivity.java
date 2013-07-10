@@ -54,7 +54,30 @@ public class ScreenActivity extends Activity {
 	}
 
 	@Override
+	public void onStop() { 
+		Log.i(LOG_TAG, "onStop");
+		try {
+			smkService.logout(new BusinessService.Callback<Boolean>(){
+				@Override
+				public void action(final Boolean response) {
+					ScreenActivity.this.runOnUiThread(new Runnable() { public void run() {
+						if (response) {
+							Log.i(LOG_TAG, "Logout successful");
+						} else {
+							Log.e(LOG_TAG, "Logout Failed");
+						}
+					}});
+				}
+			});
+		} catch (IOException e) {
+			Log.e(LOG_TAG, "logoutError: " + e.getMessage());
+		}
+		super.onStop();
+	}
+
+	@Override
 	public void onSaveInstanceState(Bundle instanceStateToSave) {
 		Log.i(LOG_TAG, "saveOnShutdown");
 	}
+
 }

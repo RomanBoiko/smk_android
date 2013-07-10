@@ -1,5 +1,6 @@
 package com.smarkets.android;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -36,7 +37,11 @@ public class CurrentBetsViewDialog {
 
 	public void showBets(final BusinessService smkService) {
 		final ListView betsList = (ListView) currentBetsDialog.findViewById(R.id.betsList);
-		showBetsList(smkService, betsList);
+		try {
+			showBetsList(smkService, betsList);
+		} catch (IOException e) {
+			Toast.makeText(parentActivity, "Current bets show error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 		
 		betsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -52,13 +57,15 @@ public class CurrentBetsViewDialog {
 							try {
 								betUnderAction.cancel(new Callback<Boolean>() {
 									@Override
-									public void action(Boolean response) {
-										if (response) {
-											showBetsList(smkService, betsList);
-											Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
-										} else {
-											Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
-										}
+									public void action(final Boolean response) {
+										parentActivity.runOnUiThread(new Runnable() { public void run() {
+											if (response) {
+												showBets(smkService);
+												Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
+											} else {
+												Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
+											}
+										}});
 									}
 								});
 							} catch (Exception e) {
@@ -67,22 +74,18 @@ public class CurrentBetsViewDialog {
 						}
 					}).create().show();
 			}
-
 		});
-
 	}
 
-	private void showBetsList(final BusinessService smkService, final ListView betsList) {
-		try {
-			smkService.currentBets(new Callback<List<Bet>>() {
-				@Override
-				public void action(List<Bet> response) {
+	private void showBetsList(final BusinessService smkService, final ListView betsList) throws IOException {
+		smkService.currentBets(new Callback<List<Bet>>() {
+			@Override
+			public void action(final List<Bet> response) {
+				parentActivity.runOnUiThread(new Runnable() { public void run() {
 					betsList.setAdapter(betsSourceAdapter(response));
-				}
-			});
-		} catch (Exception e) {
-			Toast.makeText(parentActivity, "Current bets show error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-		}
+				}});
+			}
+		});
 	}
 
 	private ArrayAdapter<Bet> betsSourceAdapter(List<Bet> bets) {

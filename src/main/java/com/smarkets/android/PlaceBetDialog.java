@@ -40,21 +40,23 @@ public class PlaceBetDialog {
 				.setTitle("Place Bet")
 				.setPositiveButton("Bet", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						Spinner spinner = ((Spinner)(placeBetDialog.findViewById(R.id.buySellSpinner)));
+						Spinner buySellSpinner = ((Spinner)(placeBetDialog.findViewById(R.id.buySellSpinner)));
 						try {
 							PlaceBetDialog.this.smkService.placeBet(
-									BetType.valueOf(spinner.getItemAtPosition(spinner.getLastVisiblePosition()).toString()),
+									BetType.valueOf(buySellSpinner.getItemAtPosition(buySellSpinner.getLastVisiblePosition()).toString()),
 									Long.parseLong(market.id),
 									Long.parseLong(contract.id),
 									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betPrice))).getText().toString()),
 									new BigDecimal(((EditText)(placeBetDialog.findViewById(R.id.betAmount))).getText().toString()), new BusinessService.Callback<PlaceBetResult>(){
 										@Override
-										public void action(PlaceBetResult response) {
-											if (PlaceBetResult.BET_PLACED.equals(response)) {
-												Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet placed", Toast.LENGTH_LONG).show();
-											} else {
-												Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet can't be placed", Toast.LENGTH_LONG).show();
-											}
+										public void action(final PlaceBetResult response) {
+											PlaceBetDialog.this.parentActivity.runOnUiThread(new Runnable() { public void run() {
+												if (PlaceBetResult.BET_PLACED.equals(response)) {
+													Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet placed", Toast.LENGTH_LONG).show();
+												} else {
+													Toast.makeText(PlaceBetDialog.this.parentActivity, "Bet can't be placed", Toast.LENGTH_LONG).show();
+												}
+											}});
 										}
 									});
 						} catch (Exception e) {
@@ -63,7 +65,9 @@ public class PlaceBetDialog {
 					}
 				})
 				.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {}
+					public void onClick(DialogInterface dialog, int id) {
+						Toast.makeText(PlaceBetDialog.this.parentActivity, "Cancel Bet not implemented, betId=" + id, Toast.LENGTH_LONG).show();
+					}
 				}).create();
 		placeBetDialog.show();
 	}

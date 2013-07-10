@@ -25,6 +25,7 @@ public class BusinessService {
 	private final SmkConfig config;
 	private final StreamingApiRequestsFactory requestFactory;
 	private final StreamingApiClient apiClient;
+	private boolean loggedIn = false;
 
 	public BusinessService() throws IOException {
 		this.config = new SmkConfig();
@@ -47,11 +48,28 @@ public class BusinessService {
 				if (response.getType().equals(SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO) &&
 						response.getEtoPayload().getType().equals(SmarketsEtoPiqi.PayloadType.PAYLOAD_LOGIN_RESPONSE)) {
 					action.action(LoginResult.LOGIN_SUCCESS);
+					loggedIn = true;
 				} else {
 					action.action(LoginResult.LOGIN_FAILURE);
 				}
 			}
 		});
+	}
+
+	public void logout(final Callback<Boolean> action) throws IOException {
+		if(loggedIn) {
+			apiClient.request(requestFactory.logoutRequest(), new StreamingCallback() {
+				@Override
+				public void process(Payload response) {
+					if (response.getType().equals(SmarketsSetoPiqi.PayloadType.PAYLOAD_ETO) &&
+							response.getEtoPayload().getType().equals(SmarketsEtoPiqi.PayloadType.PAYLOAD_LOGOUT)) {
+						action.action(true);
+					} else {
+						action.action(false);
+					}
+				}
+			});
+		}
 	}
 
 	public void getAccountStatus(final Callback<AccountFunds> action) throws IOException {

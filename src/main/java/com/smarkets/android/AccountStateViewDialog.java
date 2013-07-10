@@ -12,8 +12,10 @@ import com.smarkets.android.domain.AccountFunds;
 public class AccountStateViewDialog {
 
 	private final Dialog accountStateDialog;
+	private final Activity parentActivity;
 
 	public AccountStateViewDialog(Activity parentActivity) {
+		this.parentActivity = parentActivity;
 		accountStateDialog = new AlertDialog.Builder(parentActivity)
 			.setView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_account_state, null))
 			.setTitle("Account state")
@@ -31,10 +33,12 @@ public class AccountStateViewDialog {
 		try {
 			smkService.getAccountStatus(new BusinessService.Callback<AccountFunds>(){
 				@Override
-				public void action(AccountFunds accountFunds) {
-					cash.setText(accountFunds.getCash().toString());
-					bonus.setText(accountFunds.getBonus().toString());
-					exposure.setText(accountFunds.getExposure().toString());
+				public void action(final AccountFunds accountFunds) {
+					parentActivity.runOnUiThread(new Runnable() { public void run() {
+						cash.setText(accountFunds.getCash().toString());
+						bonus.setText(accountFunds.getBonus().toString());
+						exposure.setText(accountFunds.getExposure().toString());
+					}});
 				}
 			});
 		} catch (Exception e) {

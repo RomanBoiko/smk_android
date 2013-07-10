@@ -32,7 +32,7 @@ public class LoginView {
 		parentActivity.setContentView(R.layout.login);
 		final EditText txtUserName = (EditText) parentActivity.findViewById(R.id.txtUname);
 		final EditText txtPassword = (EditText) parentActivity.findViewById(R.id.txtPwd);
-		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "");
+		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "jason.trost@smarkets.com");
 		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "");
 		txtUserName.setText(retrievedLogin);
 		txtPassword.setText(retrievedPassword);
@@ -53,15 +53,17 @@ public class LoginView {
 
 					smkService.login(login, password, new BusinessService.Callback<LoginResult>(){
 						@Override
-						public void action(LoginResult response) {
-							if (LoginResult.LOGIN_SUCCESS.equals(response)) {
-								Log.i(LOG_TAG, "Login successful");
-//								Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
-//								changeGuiViewCallback.moveToNextView(parentActivity);
-							} else {
-								Log.i(LOG_TAG, "Login failed");
-//								Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
-							}
+						public void action(final LoginResult response) {
+							parentActivity.runOnUiThread(new Runnable() { public void run() {
+								if (LoginResult.LOGIN_SUCCESS.equals(response)) {
+									Log.i(LOG_TAG, "Login successful");
+									Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
+									changeGuiViewCallback.moveToNextView(parentActivity);
+								} else {
+									Log.i(LOG_TAG, "Login failed");
+									Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
+								}
+							}});
 						}
 					});
 				} catch (IOException e) {
