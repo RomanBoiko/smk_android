@@ -34,7 +34,7 @@ public class StreamingApiClient {
 		private CodedInputStream inStream;
 		private final Thread serverCommunicationThread = new Thread(this);
 		private final StreamingApiRequestsFactory factory;
-		private Queue<StreamingCallback> callbacksQueue = new ArrayBlockingQueue<StreamingCallback>(2);
+		private Queue<StreamingCallback> callbacksQueue = new ArrayBlockingQueue<StreamingCallback>(10);
 		private final String streamingApiHost;
 		private final  Integer streamingApiPort;
 		private final Boolean smkStreamingSslEnabled;

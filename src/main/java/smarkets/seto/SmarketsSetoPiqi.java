@@ -1071,6 +1071,8 @@ public final class SmarketsSetoPiqi {
     EVENT_AMERICAN_FOOTBALL_SEASON(32, 33),
     EVENT_BASEBALL_MATCH(33, 34),
     EVENT_BASEBALL_SEASON(34, 35),
+    EVENT_TENNIS_MATCH(35, 36),
+    EVENT_TENNIS_SEASON(36, 37),
     ;
     
     
@@ -1113,6 +1115,8 @@ public final class SmarketsSetoPiqi {
         case 33: return EVENT_AMERICAN_FOOTBALL_SEASON;
         case 34: return EVENT_BASEBALL_MATCH;
         case 35: return EVENT_BASEBALL_SEASON;
+        case 36: return EVENT_TENNIS_MATCH;
+        case 37: return EVENT_TENNIS_SEASON;
         default: return null;
       }
     }
@@ -1143,7 +1147,7 @@ public final class SmarketsSetoPiqi {
     }
     
     private static final EventType[] VALUES = {
-      EVENT_FOOTBALL_MATCH, EVENT_FOOTBALL_SEASON, EVENT_FOOTBALL, EVENT_GENERIC, EVENT_FOOTBALL_GENERIC, EVENT_GOLF_SEASON, EVENT_BOXING_SEASON, EVENT_FORMULA_1_RACE, EVENT_FORMULA_1_SEASON, EVENT_HORSE_RACING_RACE, EVENT_HORSE_RACING_COURSE, EVENT_HORSE_RACING, EVENT_GOLF_GENERIC, EVENT_EUROVISION_SEASON, EVENT_TENNIS_ROUND, EVENT_TENNIS_FORMAT, EVENT_TENNIS_TOURNAMENT, EVENT_CYCLING_SEASON, EVENT_CYCLING_RACE, EVENT_MOTOGP_SEASON, EVENT_BOXING_MATCH, EVENT_AMERICAN_FOOTBALL_MATCH, EVENT_RUGBY_UNION_MATCH, EVENT_BASKETBALL_MATCH, EVENT_BASKETBALL_SEASON, EVENT_CRICKET_MATCH, EVENT_CRICKET_SEASON, EVENT_VOLLEYBALL_MATCH, EVENT_HANDBALL_MATCH, EVENT_RUGBY_UNION_SEASON, EVENT_RUGBY_LEAGUE_MATCH, EVENT_RUGBY_LEAGUE_SEASON, EVENT_AMERICAN_FOOTBALL_SEASON, EVENT_BASEBALL_MATCH, EVENT_BASEBALL_SEASON, 
+      EVENT_FOOTBALL_MATCH, EVENT_FOOTBALL_SEASON, EVENT_FOOTBALL, EVENT_GENERIC, EVENT_FOOTBALL_GENERIC, EVENT_GOLF_SEASON, EVENT_BOXING_SEASON, EVENT_FORMULA_1_RACE, EVENT_FORMULA_1_SEASON, EVENT_HORSE_RACING_RACE, EVENT_HORSE_RACING_COURSE, EVENT_HORSE_RACING, EVENT_GOLF_GENERIC, EVENT_EUROVISION_SEASON, EVENT_TENNIS_ROUND, EVENT_TENNIS_FORMAT, EVENT_TENNIS_TOURNAMENT, EVENT_CYCLING_SEASON, EVENT_CYCLING_RACE, EVENT_MOTOGP_SEASON, EVENT_BOXING_MATCH, EVENT_AMERICAN_FOOTBALL_MATCH, EVENT_RUGBY_UNION_MATCH, EVENT_BASKETBALL_MATCH, EVENT_BASKETBALL_SEASON, EVENT_CRICKET_MATCH, EVENT_CRICKET_SEASON, EVENT_VOLLEYBALL_MATCH, EVENT_HANDBALL_MATCH, EVENT_RUGBY_UNION_SEASON, EVENT_RUGBY_LEAGUE_MATCH, EVENT_RUGBY_LEAGUE_SEASON, EVENT_AMERICAN_FOOTBALL_SEASON, EVENT_BASEBALL_MATCH, EVENT_BASEBALL_SEASON, EVENT_TENNIS_MATCH, EVENT_TENNIS_SEASON, 
     };
     public static EventType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -1479,6 +1483,7 @@ public final class SmarketsSetoPiqi {
       implements com.google.protobuf.ProtocolMessageEnum {
     CURRENCY_GBP(0, 1),
     CURRENCY_EUR(1, 2),
+    CURRENCY_USD(2, 3),
     ;
     
     
@@ -1488,6 +1493,7 @@ public final class SmarketsSetoPiqi {
       switch (value) {
         case 1: return CURRENCY_GBP;
         case 2: return CURRENCY_EUR;
+        case 3: return CURRENCY_USD;
         default: return null;
       }
     }
@@ -1518,7 +1524,7 @@ public final class SmarketsSetoPiqi {
     }
     
     private static final Currency[] VALUES = {
-      CURRENCY_GBP, CURRENCY_EUR, 
+      CURRENCY_GBP, CURRENCY_EUR, CURRENCY_USD, 
     };
     public static Currency valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -6990,12 +6996,12 @@ public final class SmarketsSetoPiqi {
       return smarkets.seto.SmarketsSetoPiqi.internal_static_smarkets_seto_OrderCancelRejected_fieldAccessorTable;
     }
     
-    // required uint64 seq = 1;
-    public static final int SEQ_FIELD_NUMBER = 1;
-    private boolean hasSeq;
-    private long seq_ = 0L;
-    public boolean hasSeq() { return hasSeq; }
-    public long getSeq() { return seq_; }
+    // required .smarkets.seto.Uuid128 order = 1;
+    public static final int ORDER_FIELD_NUMBER = 1;
+    private boolean hasOrder;
+    private smarkets.seto.SmarketsSetoPiqi.Uuid128 order_;
+    public boolean hasOrder() { return hasOrder; }
+    public smarkets.seto.SmarketsSetoPiqi.Uuid128 getOrder() { return order_; }
     
     // required .smarkets.seto.OrderCancelRejectedReason reason = 2;
     public static final int REASON_FIELD_NUMBER = 2;
@@ -7005,19 +7011,21 @@ public final class SmarketsSetoPiqi {
     public smarkets.seto.SmarketsSetoPiqi.OrderCancelRejectedReason getReason() { return reason_; }
     
     private void initFields() {
+      order_ = smarkets.seto.SmarketsSetoPiqi.Uuid128.getDefaultInstance();
       reason_ = smarkets.seto.SmarketsSetoPiqi.OrderCancelRejectedReason.ORDER_CANCEL_REJECTED_NOT_FOUND;
     }
     public final boolean isInitialized() {
-      if (!hasSeq) return false;
+      if (!hasOrder) return false;
       if (!hasReason) return false;
+      if (!getOrder().isInitialized()) return false;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasSeq()) {
-        output.writeUInt64(1, getSeq());
+      if (hasOrder()) {
+        output.writeMessage(1, getOrder());
       }
       if (hasReason()) {
         output.writeEnum(2, getReason().getNumber());
@@ -7031,9 +7039,9 @@ public final class SmarketsSetoPiqi {
       if (size != -1) return size;
     
       size = 0;
-      if (hasSeq()) {
+      if (hasOrder()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, getSeq());
+          .computeMessageSize(1, getOrder());
       }
       if (hasReason()) {
         size += com.google.protobuf.CodedOutputStream
@@ -7197,8 +7205,8 @@ public final class SmarketsSetoPiqi {
       
       public Builder mergeFrom(smarkets.seto.SmarketsSetoPiqi.OrderCancelRejected other) {
         if (other == smarkets.seto.SmarketsSetoPiqi.OrderCancelRejected.getDefaultInstance()) return this;
-        if (other.hasSeq()) {
-          setSeq(other.getSeq());
+        if (other.hasOrder()) {
+          mergeOrder(other.getOrder());
         }
         if (other.hasReason()) {
           setReason(other.getReason());
@@ -7228,8 +7236,13 @@ public final class SmarketsSetoPiqi {
               }
               break;
             }
-            case 8: {
-              setSeq(input.readUInt64());
+            case 10: {
+              smarkets.seto.SmarketsSetoPiqi.Uuid128.Builder subBuilder = smarkets.seto.SmarketsSetoPiqi.Uuid128.newBuilder();
+              if (hasOrder()) {
+                subBuilder.mergeFrom(getOrder());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setOrder(subBuilder.buildPartial());
               break;
             }
             case 16: {
@@ -7247,21 +7260,40 @@ public final class SmarketsSetoPiqi {
       }
       
       
-      // required uint64 seq = 1;
-      public boolean hasSeq() {
-        return result.hasSeq();
+      // required .smarkets.seto.Uuid128 order = 1;
+      public boolean hasOrder() {
+        return result.hasOrder();
       }
-      public long getSeq() {
-        return result.getSeq();
+      public smarkets.seto.SmarketsSetoPiqi.Uuid128 getOrder() {
+        return result.getOrder();
       }
-      public Builder setSeq(long value) {
-        result.hasSeq = true;
-        result.seq_ = value;
+      public Builder setOrder(smarkets.seto.SmarketsSetoPiqi.Uuid128 value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasOrder = true;
+        result.order_ = value;
         return this;
       }
-      public Builder clearSeq() {
-        result.hasSeq = false;
-        result.seq_ = 0L;
+      public Builder setOrder(smarkets.seto.SmarketsSetoPiqi.Uuid128.Builder builderForValue) {
+        result.hasOrder = true;
+        result.order_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeOrder(smarkets.seto.SmarketsSetoPiqi.Uuid128 value) {
+        if (result.hasOrder() &&
+            result.order_ != smarkets.seto.SmarketsSetoPiqi.Uuid128.getDefaultInstance()) {
+          result.order_ =
+            smarkets.seto.SmarketsSetoPiqi.Uuid128.newBuilder(result.order_).mergeFrom(value).buildPartial();
+        } else {
+          result.order_ = value;
+        }
+        result.hasOrder = true;
+        return this;
+      }
+      public Builder clearOrder() {
+        result.hasOrder = false;
+        result.order_ = smarkets.seto.SmarketsSetoPiqi.Uuid128.getDefaultInstance();
         return this;
       }
       
@@ -22321,231 +22353,234 @@ public final class SmarketsSetoPiqi {
       "q\030\t \001(\r\022+\n\003tif\030\n \001(\0162\036.smarkets.seto.Tim" +
       "eInForceType\"P\n\rOrderRejected\022\013\n\003seq\030\001 \002" +
       "(\004\0222\n\006reason\030\002 \002(\0162\".smarkets.seto.Order" +
-      "RejectedReason\"\\\n\023OrderCancelRejected\022\013\n" +
-      "\003seq\030\001 \002(\004\0228\n\006reason\030\002 \002(\0162(.smarkets.se" +
-      "to.OrderCancelRejectedReason\"C\n\rOrderAcc",
-      "epted\022\013\n\003seq\030\001 \002(\004\022%\n\005order\030\002 \002(\0132\026.smar" +
-      "kets.seto.Uuid128\"\245\001\n\rOrderExecuted\022%\n\005o" +
-      "rder\030\001 \002(\0132\026.smarkets.seto.Uuid128\022\r\n\005pr" +
-      "ice\030\002 \002(\r\0222\n\rquantity_type\030\003 \002(\0162\033.smark" +
-      "ets.seto.QuantityType\022\020\n\010quantity\030\004 \002(\r\022" +
-      "\030\n\020account_sequence\030\005 \001(\r\"4\n\013OrderCancel" +
-      "\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid128\"" +
-      "l\n\016OrderCancelled\022%\n\005order\030\001 \002(\0132\026.smark" +
-      "ets.seto.Uuid128\0223\n\006reason\030\002 \002(\0162#.smark" +
-      "ets.seto.OrderCancelledReason\"O\n\014OrderIn",
-      "valid\022\013\n\003seq\030\001 \002(\004\0222\n\007reasons\030\002 \003(\0162!.sm" +
-      "arkets.seto.OrderInvalidReason\"9\n\017Market" +
-      "Subscribe\022&\n\006market\030\001 \002(\0132\026.smarkets.set" +
-      "o.Uuid128\";\n\021MarketUnsubscribe\022&\n\006market" +
-      "\030\001 \002(\0132\026.smarkets.seto.Uuid128\"=\n\023Market" +
-      "QuotesRequest\022&\n\006market\030\001 \002(\0132\026.smarkets" +
-      ".seto.Uuid128\"\320\001\n\014MarketQuotes\022&\n\006market" +
-      "\030\001 \002(\0132\026.smarkets.seto.Uuid128\0226\n\017contra" +
-      "ct_quotes\030\002 \003(\0132\035.smarkets.seto.Contract" +
-      "Quotes\022,\n\nprice_type\030\003 \002(\0162\030.smarkets.se",
-      "to.PriceType\0222\n\rquantity_type\030\004 \002(\0162\033.sm" +
-      "arkets.seto.QuantityType\"\344\001\n\016ContractQuo" +
-      "tes\022(\n\010contract\030\001 \002(\0132\026.smarkets.seto.Uu" +
-      "id128\022\"\n\004bids\030\002 \003(\0132\024.smarkets.seto.Quot" +
-      "e\022$\n\006offers\030\003 \003(\0132\024.smarkets.seto.Quote\022" +
-      ",\n\nexecutions\030\004 \003(\0132\030.smarkets.seto.Exec" +
-      "ution\0220\n\016last_execution\030\005 \001(\0132\030.smarkets" +
-      ".seto.Execution\"(\n\005Quote\022\r\n\005price\030\001 \002(\r\022" +
-      "\020\n\010quantity\030\002 \002(\r\"j\n\tExecution\022\r\n\005price\030" +
-      "\001 \002(\r\022\020\n\010quantity\030\002 \002(\r\022&\n\tliquidity\030\003 \002",
-      "(\0162\023.smarkets.seto.Side\022\024\n\014microseconds\030" +
-      "\004 \002(\004\"\244\001\n\rEventsRequest\022.\n\004type\030\001 \002(\0162 ." +
-      "smarkets.seto.EventsRequestType\0220\n\014conte" +
-      "nt_type\030\002 \002(\0162\032.smarkets.seto.ContentTyp" +
-      "e\0221\n\rsport_by_date\030\003 \001(\0132\032.smarkets.seto" +
-      ".SportByDate\"^\n\013SportByDate\022,\n\004type\030\001 \002(" +
-      "\0162\036.smarkets.seto.SportByDateType\022!\n\004dat" +
-      "e\030\002 \002(\0132\023.smarkets.seto.Date\"c\n\006Events\022." +
-      "\n\014with_markets\030\001 \003(\0132\030.smarkets.seto.Eve" +
-      "ntInfo\022)\n\007parents\030\002 \003(\0132\030.smarkets.seto.",
-      "EventInfo\"\344\003\n\tEventInfo\022%\n\005event\030\001 \002(\0132\026" +
-      ".smarkets.seto.Uuid128\022&\n\004type\030\002 \002(\0162\030.s" +
-      "markets.seto.EventType\022.\n\010category\030\003 \002(\016" +
-      "2\034.smarkets.seto.EventCategory\022\014\n\004slug\030\004" +
-      " \002(\t\022\014\n\004name\030\005 \002(\t\022&\n\006parent\030\006 \001(\0132\026.sma" +
-      "rkets.seto.Uuid128\022\'\n\nstart_date\030\007 \001(\0132\023" +
-      ".smarkets.seto.Date\022\'\n\nstart_time\030\010 \001(\0132" +
-      "\023.smarkets.seto.Time\022%\n\010end_date\030\t \001(\0132\023" +
-      ".smarkets.seto.Date\022%\n\010end_time\030\n \001(\0132\023." +
-      "smarkets.seto.Time\0223\n\010entities\030\013 \003(\0132!.s",
-      "markets.seto.EntityRelationship\022*\n\007marke" +
-      "ts\030\014 \003(\0132\031.smarkets.seto.MarketInfo\022\023\n\013d" +
-      "escription\030\r \001(\t\"\350\002\n\nMarketInfo\022&\n\006marke" +
-      "t\030\001 \002(\0132\026.smarkets.seto.Uuid128\022.\n\tcontr" +
-      "acts\030\002 \003(\0132\033.smarkets.seto.ContractInfo\022" +
-      "\014\n\004slug\030\003 \002(\t\022\014\n\004name\030\004 \002(\t\022\'\n\nstart_dat" +
-      "e\030\005 \001(\0132\023.smarkets.seto.Date\022\'\n\nstart_ti" +
-      "me\030\006 \001(\0132\023.smarkets.seto.Time\022%\n\010end_dat" +
-      "e\030\007 \001(\0132\023.smarkets.seto.Date\022%\n\010end_time" +
-      "\030\010 \001(\0132\023.smarkets.seto.Time\0223\n\010entities\030",
-      "\t \003(\0132!.smarkets.seto.EntityRelationship" +
-      "\022\021\n\tshortname\030\n \001(\t\"\307\001\n\014ContractInfo\022(\n\010" +
-      "contract\030\001 \002(\0132\026.smarkets.seto.Uuid128\022)" +
-      "\n\004type\030\002 \002(\0162\033.smarkets.seto.ContractTyp" +
-      "e\022\014\n\004slug\030\003 \002(\t\022\014\n\004name\030\004 \002(\t\0223\n\010entitie" +
-      "s\030\005 \003(\0132!.smarkets.seto.EntityRelationsh" +
-      "ip\022\021\n\tshortname\030\006 \001(\t\"y\n\022EntityRelations" +
-      "hip\022&\n\006entity\030\001 \002(\0132\026.smarkets.seto.Uuid" +
-      "128\022;\n\014relationship\030\002 \002(\0162%.smarkets.set" +
-      "o.EntityRelationshipType\"%\n\tHttpFound\022\013\n",
-      "\003seq\030\001 \002(\004\022\013\n\003url\030\002 \002(\t\"N\n\016InvalidReques" +
-      "t\022\013\n\003seq\030\001 \002(\004\022/\n\004type\030\002 \002(\0162!.smarkets." +
-      "seto.InvalidRequestType\"0\n\004Date\022\014\n\004year\030" +
-      "\001 \002(\r\022\r\n\005month\030\002 \002(\r\022\013\n\003day\030\003 \002(\r\"$\n\004Tim" +
-      "e\022\014\n\004hour\030\001 \002(\r\022\016\n\006minute\030\002 \002(\r\"\034\n\032order" +
-      "s_for_account_request\"G\n\022orders_for_acco" +
-      "unt\0221\n\007markets\030\001 \003(\0132 .smarkets.seto.ord" +
-      "ers_for_market\"C\n\031orders_for_market_requ" +
-      "est\022&\n\006market\030\001 \002(\0132\026.smarkets.seto.Uuid" +
-      "128\"\240\001\n\021orders_for_market\022&\n\006market\030\001 \002(",
-      "\0132\026.smarkets.seto.Uuid128\022,\n\nprice_type\030" +
-      "\002 \002(\0162\030.smarkets.seto.PriceType\0225\n\tcontr" +
-      "acts\030\003 \003(\0132\".smarkets.seto.orders_for_co" +
-      "ntract\"\237\001\n\023orders_for_contract\022(\n\010contra" +
-      "ct\030\001 \002(\0132\026.smarkets.seto.Uuid128\022-\n\004bids" +
-      "\030\002 \003(\0132\037.smarkets.seto.orders_for_price\022" +
-      "/\n\006offers\030\003 \003(\0132\037.smarkets.seto.orders_f" +
-      "or_price\"L\n\020orders_for_price\022\r\n\005price\030\001 " +
-      "\002(\r\022)\n\006orders\030\002 \003(\0132\031.smarkets.seto.Orde" +
-      "rState\"\215\002\n\nOrderState\022%\n\005order\030\001 \002(\0132\026.s",
-      "markets.seto.Uuid128\022,\n\004type\030\002 \002(\0162\036.sma" +
-      "rkets.seto.OrderCreateType\022*\n\006status\030\003 \002" +
-      "(\0162\032.smarkets.seto.OrderStatus\0222\n\rquanti" +
-      "ty_type\030\004 \002(\0162\033.smarkets.seto.QuantityTy" +
-      "pe\022\020\n\010quantity\030\005 \002(\r\022\034\n\024created_microsec" +
-      "onds\030\006 \002(\004\022\032\n\017quantity_filled\030\007 \001(\r:\0010\">" +
-      "\n\023AccountStateRequest\022\'\n\007account\030\001 \001(\0132\026" +
-      ".smarkets.seto.Uuid128\"\331\001\n\014AccountState\022" +
-      "\'\n\007account\030\001 \002(\0132\026.smarkets.seto.Uuid128" +
-      "\022)\n\010currency\030\002 \002(\0162\027.smarkets.seto.Curre",
-      "ncy\022$\n\004cash\030\003 \002(\0132\026.smarkets.seto.Decima" +
-      "l\022%\n\005bonus\030\004 \002(\0132\026.smarkets.seto.Decimal" +
-      "\022(\n\010exposure\030\005 \002(\0132\026.smarkets.seto.Decim" +
-      "al\"\'\n\007account\022\013\n\003low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004" +
-      ":\0010\"-\n\007Decimal\022\r\n\005value\030\001 \002(\022\022\023\n\010exponen" +
-      "t\030\002 \001(\r:\0012\"?\n\rDowntimeAlert\022.\n\004type\030\001 \002(" +
-      "\0162 .smarkets.seto.DowntimeAlertType*\346\005\n\013" +
-      "PayloadType\022\017\n\013PAYLOAD_ETO\020\001\022\021\n\rPAYLOAD_" +
-      "LOGIN\020\002\022\030\n\024PAYLOAD_ORDER_CREATE\020\003\022\032\n\026PAY" +
-      "LOAD_ORDER_REJECTED\020\004\022\032\n\026PAYLOAD_ORDER_A",
-      "CCEPTED\020\005\022\032\n\026PAYLOAD_ORDER_EXECUTED\020\006\022\030\n" +
-      "\024PAYLOAD_ORDER_CANCEL\020\007\022\033\n\027PAYLOAD_ORDER" +
-      "_CANCELLED\020\010\022\031\n\025PAYLOAD_ORDER_INVALID\020\t\022" +
-      "\034\n\030PAYLOAD_MARKET_SUBSCRIBE\020\n\022\036\n\032PAYLOAD" +
-      "_MARKET_UNSUBSCRIBE\020\013\022!\n\035PAYLOAD_MARKET_" +
-      "QUOTES_REQUEST\020\014\022\031\n\025PAYLOAD_MARKET_QUOTE" +
-      "S\020\r\022\033\n\027PAYLOAD_CONTRACT_QUOTES\020\016\022\032\n\026PAYL" +
-      "OAD_EVENTS_REQUEST\020\017\022\026\n\022PAYLOAD_HTTP_FOU" +
-      "ND\020\020\022\033\n\027PAYLOAD_INVALID_REQUEST\020\021\022!\n\035PAY" +
-      "LOAD_ORDER_CANCEL_REJECTED\020\022\022&\n\"PAYLOAD_",
-      "ORDERS_FOR_ACCOUNT_REQUEST\020\023\022\036\n\032PAYLOAD_" +
-      "ORDERS_FOR_ACCOUNT\020\024\022%\n!PAYLOAD_ORDERS_F" +
-      "OR_MARKET_REQUEST\020\025\022\035\n\031PAYLOAD_ORDERS_FO" +
-      "R_MARKET\020\026\022!\n\035PAYLOAD_ACCOUNT_STATE_REQU" +
-      "EST\020\027\022\031\n\025PAYLOAD_ACCOUNT_STATE\020\030\022\032\n\026PAYL" +
-      "OAD_DOWNTIME_ALERT\020\031*)\n\017OrderCreateType\022" +
-      "\026\n\022ORDER_CREATE_LIMIT\020\001*B\n\017TimeInForceTy" +
-      "pe\022\026\n\022GOOD_TIL_CANCELLED\020\001\022\027\n\023IMMEDIATE_" +
-      "OR_CANCEL\020\002*\217\003\n\023OrderRejectedReason\022%\n!O" +
-      "RDER_REJECTED_INSUFFICIENT_FUNDS\020\001\022!\n\035OR",
-      "DER_REJECTED_LIMIT_EXCEEDED\020\002\022\"\n\036ORDER_R" +
-      "EJECTED_MARKET_NOT_OPEN\020\003\022!\n\035ORDER_REJEC" +
-      "TED_MARKET_SETTLED\020\004\022 \n\034ORDER_REJECTED_M" +
-      "ARKET_HALTED\020\005\022\037\n\033ORDER_REJECTED_CROSSED" +
-      "_SELF\020\006\022#\n\037ORDER_REJECTED_MARKET_NOT_FOU" +
-      "ND\020\007\0222\n.ORDER_REJECTED_SERVICE_TEMPORARI" +
-      "LY_UNAVAILABLE\020\010\022%\n!ORDER_REJECTED_CONTR" +
-      "ACT_NOT_FOUND\020\t\022$\n ORDER_REJECTED_ACCOUN" +
-      "T_SUSPENDED\020\n*d\n\031OrderCancelRejectedReas" +
-      "on\022#\n\037ORDER_CANCEL_REJECTED_NOT_FOUND\020\001\022",
-      "\"\n\036ORDER_CANCEL_REJECTED_NOT_LIVE\020\002*\213\001\n\024" +
-      "OrderCancelledReason\022$\n ORDER_CANCELLED_" +
-      "MEMBER_REQUESTED\020\001\022!\n\035ORDER_CANCELLED_MA" +
-      "RKET_HALTED\020\002\022*\n&ORDER_CANCELLED_INSUFFI" +
-      "CIENT_LIQUIDITY\020\003*Y\n\022OrderInvalidReason\022" +
-      "\037\n\033ORDER_INVALID_INVALID_PRICE\020\001\022\"\n\036ORDE" +
-      "R_INVALID_INVALID_QUANTITY\020\002*,\n\014Quantity" +
-      "Type\022\034\n\030QUANTITY_PAYOFF_CURRENCY\020\001*#\n\tPr" +
-      "iceType\022\026\n\022PRICE_PERCENT_ODDS\020\001*#\n\004Side\022" +
-      "\014\n\010SIDE_BUY\020\001\022\r\n\tSIDE_SELL\020\002*(\n\013ContentT",
-      "ype\022\031\n\025CONTENT_TYPE_PROTOBUF\020\001*\277\001\n\021Event" +
-      "sRequestType\022\033\n\027EVENTS_REQUEST_POLITICS\020" +
-      "\001\022\"\n\036EVENTS_REQUEST_CURRENT_AFFAIRS\020\002\022\'\n" +
-      "#EVENTS_REQUEST_TV_AND_ENTERTAINMENT\020\003\022 " +
-      "\n\034EVENTS_REQUEST_SPORT_BY_DATE\020\004\022\036\n\032EVEN" +
-      "TS_REQUEST_SPORT_OTHER\020\005*\322\002\n\017SportByDate" +
-      "Type\022\032\n\026SPORT_BY_DATE_FOOTBALL\020\001\022\036\n\032SPOR" +
-      "T_BY_DATE_HORSE_RACING\020\002\022\030\n\024SPORT_BY_DAT" +
-      "E_TENNIS\020\003\022\034\n\030SPORT_BY_DATE_BASKETBALL\020\004" +
-      "\022\"\n\036SPORT_BY_DATE_AMERICANFOOTBALL\020\005\022\032\n\026",
-      "SPORT_BY_DATE_BASEBALL\020\006\022\031\n\025SPORT_BY_DAT" +
-      "E_CRICKET\020\007\022\032\n\026SPORT_BY_DATE_HANDBALL\020\010\022" +
-      "\027\n\023SPORT_BY_DATE_RUGBY\020\t\022\035\n\031SPORT_BY_DAT" +
-      "E_RUGBYLEAGUE\020\n\022\034\n\030SPORT_BY_DATE_VOLLEYB" +
-      "ALL\020\013*\245\001\n\014ContractType\022 \n\034CONTRACT_HALF_" +
-      "TIME_FULL_TIME\020\001\022\032\n\026CONTRACT_CORRECT_SCO" +
-      "RE\020\002\022\024\n\020CONTRACT_GENERIC\020\003\022\023\n\017CONTRACT_W" +
-      "INNER\020\004\022\023\n\017CONTRACT_BINARY\020\005\022\027\n\023CONTRACT" +
-      "_OVER_UNDER\020\006*\271\007\n\tEventType\022\030\n\024EVENT_FOO" +
-      "TBALL_MATCH\020\001\022\031\n\025EVENT_FOOTBALL_SEASON\020\002",
-      "\022\022\n\016EVENT_FOOTBALL\020\003\022\021\n\rEVENT_GENERIC\020\004\022" +
-      "\032\n\026EVENT_FOOTBALL_GENERIC\020\005\022\025\n\021EVENT_GOL" +
-      "F_SEASON\020\006\022\027\n\023EVENT_BOXING_SEASON\020\007\022\030\n\024E" +
-      "VENT_FORMULA_1_RACE\020\010\022\032\n\026EVENT_FORMULA_1" +
-      "_SEASON\020\t\022\033\n\027EVENT_HORSE_RACING_RACE\020\n\022\035" +
-      "\n\031EVENT_HORSE_RACING_COURSE\020\013\022\026\n\022EVENT_H" +
-      "ORSE_RACING\020\014\022\026\n\022EVENT_GOLF_GENERIC\020\r\022\033\n" +
-      "\027EVENT_EUROVISION_SEASON\020\016\022\026\n\022EVENT_TENN" +
-      "IS_ROUND\020\017\022\027\n\023EVENT_TENNIS_FORMAT\020\020\022\033\n\027E" +
-      "VENT_TENNIS_TOURNAMENT\020\021\022\030\n\024EVENT_CYCLIN",
-      "G_SEASON\020\022\022\026\n\022EVENT_CYCLING_RACE\020\023\022\027\n\023EV" +
-      "ENT_MOTOGP_SEASON\020\024\022\026\n\022EVENT_BOXING_MATC" +
-      "H\020\025\022!\n\035EVENT_AMERICAN_FOOTBALL_MATCH\020\026\022\033" +
-      "\n\027EVENT_RUGBY_UNION_MATCH\020\027\022\032\n\026EVENT_BAS" +
-      "KETBALL_MATCH\020\030\022\033\n\027EVENT_BASKETBALL_SEAS" +
-      "ON\020\031\022\027\n\023EVENT_CRICKET_MATCH\020\032\022\030\n\024EVENT_C" +
-      "RICKET_SEASON\020\033\022\032\n\026EVENT_VOLLEYBALL_MATC" +
-      "H\020\034\022\030\n\024EVENT_HANDBALL_MATCH\020\035\022\034\n\030EVENT_R" +
-      "UGBY_UNION_SEASON\020\036\022\034\n\030EVENT_RUGBY_LEAGU" +
-      "E_MATCH\020\037\022\035\n\031EVENT_RUGBY_LEAGUE_SEASON\020 ",
-      "\022\"\n\036EVENT_AMERICAN_FOOTBALL_SEASON\020!\022\030\n\024" +
-      "EVENT_BASEBALL_MATCH\020\"\022\031\n\025EVENT_BASEBALL" +
-      "_SEASON\020#*\212\004\n\026EntityRelationshipType\022*\n&" +
-      "ENTITY_RELATIONSHIP_FOOTBALL_HOME_TEAM\020\001" +
-      "\022*\n&ENTITY_RELATIONSHIP_FOOTBALL_AWAY_TE" +
-      "AM\020\002\022,\n(ENTITY_RELATIONSHIP_FOOTBALL_COM" +
-      "PETITION\020\003\022+\n\'ENTITY_RELATIONSHIP_HORSE_" +
-      "RACING_COURSE\020\004\022*\n&ENTITY_RELATIONSHIP_H" +
-      "ORSE_RACING_HORSE\020\005\022+\n\'ENTITY_RELATIONSH" +
-      "IP_HORSE_RACING_JOCKEY\020\006\022+\n\'ENTITY_RELAT",
-      "IONSHIP_CONTRACT_ASSOCIATED\020\007\022\037\n\033ENTITY_" +
-      "RELATIONSHIP_GENERIC\020\010\022\'\n#ENTITY_RELATIO" +
-      "NSHIP_TENNIS_PLAYER_A\020\t\022\'\n#ENTITY_RELATI" +
-      "ONSHIP_TENNIS_PLAYER_B\020\n\022!\n\035ENTITY_RELAT" +
-      "IONSHIP_HOME_TEAM\020\013\022!\n\035ENTITY_RELATIONSH" +
-      "IP_AWAY_TEAM\020\014*;\n\022InvalidRequestType\022%\n!" +
-      "INVALID_REQUEST_DATE_OUT_OF_RANGE\020\001*\310\002\n\r" +
-      "EventCategory\022\030\n\024EVENT_CATEGORY_SPORT\020\001\022" +
-      "\033\n\027EVENT_CATEGORY_POLITICS\020\002\022\"\n\036EVENT_CA" +
-      "TEGORY_CURRENT_AFFAIRS\020\003\022\'\n#EVENT_CATEGO",
-      "RY_TV_AND_ENTERTAINMENT\020\004\022\032\n\026EVENT_CATEG" +
-      "ORY_GENERIC\020\005\022\033\n\027EVENT_CATEGORY_FOOTBALL" +
-      "\020\006\022\031\n\025EVENT_CATEGORY_TENNIS\020\007\022\037\n\033EVENT_C" +
-      "ATEGORY_HORSE_RACING\020\010\022$\n EVENT_CATEGORY" +
-      "_AMERICAN_FOOTBALL\020\t\022\030\n\024EVENT_CATEGORY_R" +
-      "UGBY\020\n*\242\001\n\013OrderStatus\022\025\n\021ORDER_STATUS_L" +
-      "IVE\020\001\022!\n\035ORDER_STATUS_PARTIALLY_FILLED\020\002" +
-      "\022\027\n\023ORDER_STATUS_FILLED\020\003\022$\n ORDER_STATU" +
-      "S_PARTIALLY_CANCELLED\020\004\022\032\n\026ORDER_STATUS_" +
-      "CANCELLED\020\005*.\n\010Currency\022\020\n\014CURRENCY_GBP\020",
-      "\001\022\020\n\014CURRENCY_EUR\020\002*4\n\021DowntimeAlertType" +
-      "\022\037\n\033DOWNTIME_ALERT_ORDER_CREATE\020\001"
+      "RejectedReason\"v\n\023OrderCancelRejected\022%\n" +
+      "\005order\030\001 \002(\0132\026.smarkets.seto.Uuid128\0228\n\006" +
+      "reason\030\002 \002(\0162(.smarkets.seto.OrderCancel",
+      "RejectedReason\"C\n\rOrderAccepted\022\013\n\003seq\030\001" +
+      " \002(\004\022%\n\005order\030\002 \002(\0132\026.smarkets.seto.Uuid" +
+      "128\"\245\001\n\rOrderExecuted\022%\n\005order\030\001 \002(\0132\026.s" +
+      "markets.seto.Uuid128\022\r\n\005price\030\002 \002(\r\0222\n\rq" +
+      "uantity_type\030\003 \002(\0162\033.smarkets.seto.Quant" +
+      "ityType\022\020\n\010quantity\030\004 \002(\r\022\030\n\020account_seq" +
+      "uence\030\005 \001(\r\"4\n\013OrderCancel\022%\n\005order\030\001 \002(" +
+      "\0132\026.smarkets.seto.Uuid128\"l\n\016OrderCancel" +
+      "led\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.Uuid1" +
+      "28\0223\n\006reason\030\002 \002(\0162#.smarkets.seto.Order",
+      "CancelledReason\"O\n\014OrderInvalid\022\013\n\003seq\030\001" +
+      " \002(\004\0222\n\007reasons\030\002 \003(\0162!.smarkets.seto.Or" +
+      "derInvalidReason\"9\n\017MarketSubscribe\022&\n\006m" +
+      "arket\030\001 \002(\0132\026.smarkets.seto.Uuid128\";\n\021M" +
+      "arketUnsubscribe\022&\n\006market\030\001 \002(\0132\026.smark" +
+      "ets.seto.Uuid128\"=\n\023MarketQuotesRequest\022" +
+      "&\n\006market\030\001 \002(\0132\026.smarkets.seto.Uuid128\"" +
+      "\320\001\n\014MarketQuotes\022&\n\006market\030\001 \002(\0132\026.smark" +
+      "ets.seto.Uuid128\0226\n\017contract_quotes\030\002 \003(" +
+      "\0132\035.smarkets.seto.ContractQuotes\022,\n\npric",
+      "e_type\030\003 \002(\0162\030.smarkets.seto.PriceType\0222" +
+      "\n\rquantity_type\030\004 \002(\0162\033.smarkets.seto.Qu" +
+      "antityType\"\344\001\n\016ContractQuotes\022(\n\010contrac" +
+      "t\030\001 \002(\0132\026.smarkets.seto.Uuid128\022\"\n\004bids\030" +
+      "\002 \003(\0132\024.smarkets.seto.Quote\022$\n\006offers\030\003 " +
+      "\003(\0132\024.smarkets.seto.Quote\022,\n\nexecutions\030" +
+      "\004 \003(\0132\030.smarkets.seto.Execution\0220\n\016last_" +
+      "execution\030\005 \001(\0132\030.smarkets.seto.Executio" +
+      "n\"(\n\005Quote\022\r\n\005price\030\001 \002(\r\022\020\n\010quantity\030\002 " +
+      "\002(\r\"j\n\tExecution\022\r\n\005price\030\001 \002(\r\022\020\n\010quant",
+      "ity\030\002 \002(\r\022&\n\tliquidity\030\003 \002(\0162\023.smarkets." +
+      "seto.Side\022\024\n\014microseconds\030\004 \002(\004\"\244\001\n\rEven" +
+      "tsRequest\022.\n\004type\030\001 \002(\0162 .smarkets.seto." +
+      "EventsRequestType\0220\n\014content_type\030\002 \002(\0162" +
+      "\032.smarkets.seto.ContentType\0221\n\rsport_by_" +
+      "date\030\003 \001(\0132\032.smarkets.seto.SportByDate\"^" +
+      "\n\013SportByDate\022,\n\004type\030\001 \002(\0162\036.smarkets.s" +
+      "eto.SportByDateType\022!\n\004date\030\002 \002(\0132\023.smar" +
+      "kets.seto.Date\"c\n\006Events\022.\n\014with_markets" +
+      "\030\001 \003(\0132\030.smarkets.seto.EventInfo\022)\n\007pare",
+      "nts\030\002 \003(\0132\030.smarkets.seto.EventInfo\"\344\003\n\t" +
+      "EventInfo\022%\n\005event\030\001 \002(\0132\026.smarkets.seto" +
+      ".Uuid128\022&\n\004type\030\002 \002(\0162\030.smarkets.seto.E" +
+      "ventType\022.\n\010category\030\003 \002(\0162\034.smarkets.se" +
+      "to.EventCategory\022\014\n\004slug\030\004 \002(\t\022\014\n\004name\030\005" +
+      " \002(\t\022&\n\006parent\030\006 \001(\0132\026.smarkets.seto.Uui" +
+      "d128\022\'\n\nstart_date\030\007 \001(\0132\023.smarkets.seto" +
+      ".Date\022\'\n\nstart_time\030\010 \001(\0132\023.smarkets.set" +
+      "o.Time\022%\n\010end_date\030\t \001(\0132\023.smarkets.seto" +
+      ".Date\022%\n\010end_time\030\n \001(\0132\023.smarkets.seto.",
+      "Time\0223\n\010entities\030\013 \003(\0132!.smarkets.seto.E" +
+      "ntityRelationship\022*\n\007markets\030\014 \003(\0132\031.sma" +
+      "rkets.seto.MarketInfo\022\023\n\013description\030\r \001" +
+      "(\t\"\350\002\n\nMarketInfo\022&\n\006market\030\001 \002(\0132\026.smar" +
+      "kets.seto.Uuid128\022.\n\tcontracts\030\002 \003(\0132\033.s" +
+      "markets.seto.ContractInfo\022\014\n\004slug\030\003 \002(\t\022" +
+      "\014\n\004name\030\004 \002(\t\022\'\n\nstart_date\030\005 \001(\0132\023.smar" +
+      "kets.seto.Date\022\'\n\nstart_time\030\006 \001(\0132\023.sma" +
+      "rkets.seto.Time\022%\n\010end_date\030\007 \001(\0132\023.smar" +
+      "kets.seto.Date\022%\n\010end_time\030\010 \001(\0132\023.smark",
+      "ets.seto.Time\0223\n\010entities\030\t \003(\0132!.smarke" +
+      "ts.seto.EntityRelationship\022\021\n\tshortname\030" +
+      "\n \001(\t\"\307\001\n\014ContractInfo\022(\n\010contract\030\001 \002(\013" +
+      "2\026.smarkets.seto.Uuid128\022)\n\004type\030\002 \002(\0162\033" +
+      ".smarkets.seto.ContractType\022\014\n\004slug\030\003 \002(" +
+      "\t\022\014\n\004name\030\004 \002(\t\0223\n\010entities\030\005 \003(\0132!.smar" +
+      "kets.seto.EntityRelationship\022\021\n\tshortnam" +
+      "e\030\006 \001(\t\"y\n\022EntityRelationship\022&\n\006entity\030" +
+      "\001 \002(\0132\026.smarkets.seto.Uuid128\022;\n\014relatio" +
+      "nship\030\002 \002(\0162%.smarkets.seto.EntityRelati",
+      "onshipType\"%\n\tHttpFound\022\013\n\003seq\030\001 \002(\004\022\013\n\003" +
+      "url\030\002 \002(\t\"N\n\016InvalidRequest\022\013\n\003seq\030\001 \002(\004" +
+      "\022/\n\004type\030\002 \002(\0162!.smarkets.seto.InvalidRe" +
+      "questType\"0\n\004Date\022\014\n\004year\030\001 \002(\r\022\r\n\005month" +
+      "\030\002 \002(\r\022\013\n\003day\030\003 \002(\r\"$\n\004Time\022\014\n\004hour\030\001 \002(" +
+      "\r\022\016\n\006minute\030\002 \002(\r\"\034\n\032orders_for_account_" +
+      "request\"G\n\022orders_for_account\0221\n\007markets" +
+      "\030\001 \003(\0132 .smarkets.seto.orders_for_market" +
+      "\"C\n\031orders_for_market_request\022&\n\006market\030" +
+      "\001 \002(\0132\026.smarkets.seto.Uuid128\"\240\001\n\021orders",
+      "_for_market\022&\n\006market\030\001 \002(\0132\026.smarkets.s" +
+      "eto.Uuid128\022,\n\nprice_type\030\002 \002(\0162\030.smarke" +
+      "ts.seto.PriceType\0225\n\tcontracts\030\003 \003(\0132\".s" +
+      "markets.seto.orders_for_contract\"\237\001\n\023ord" +
+      "ers_for_contract\022(\n\010contract\030\001 \002(\0132\026.sma" +
+      "rkets.seto.Uuid128\022-\n\004bids\030\002 \003(\0132\037.smark" +
+      "ets.seto.orders_for_price\022/\n\006offers\030\003 \003(" +
+      "\0132\037.smarkets.seto.orders_for_price\"L\n\020or" +
+      "ders_for_price\022\r\n\005price\030\001 \002(\r\022)\n\006orders\030" +
+      "\002 \003(\0132\031.smarkets.seto.OrderState\"\215\002\n\nOrd",
+      "erState\022%\n\005order\030\001 \002(\0132\026.smarkets.seto.U" +
+      "uid128\022,\n\004type\030\002 \002(\0162\036.smarkets.seto.Ord" +
+      "erCreateType\022*\n\006status\030\003 \002(\0162\032.smarkets." +
+      "seto.OrderStatus\0222\n\rquantity_type\030\004 \002(\0162" +
+      "\033.smarkets.seto.QuantityType\022\020\n\010quantity" +
+      "\030\005 \002(\r\022\034\n\024created_microseconds\030\006 \002(\004\022\032\n\017" +
+      "quantity_filled\030\007 \001(\r:\0010\">\n\023AccountState" +
+      "Request\022\'\n\007account\030\001 \001(\0132\026.smarkets.seto" +
+      ".Uuid128\"\331\001\n\014AccountState\022\'\n\007account\030\001 \002" +
+      "(\0132\026.smarkets.seto.Uuid128\022)\n\010currency\030\002",
+      " \002(\0162\027.smarkets.seto.Currency\022$\n\004cash\030\003 " +
+      "\002(\0132\026.smarkets.seto.Decimal\022%\n\005bonus\030\004 \002" +
+      "(\0132\026.smarkets.seto.Decimal\022(\n\010exposure\030\005" +
+      " \002(\0132\026.smarkets.seto.Decimal\"\'\n\007account\022" +
+      "\013\n\003low\030\001 \002(\004\022\017\n\004high\030\002 \001(\004:\0010\"-\n\007Decimal" +
+      "\022\r\n\005value\030\001 \002(\022\022\023\n\010exponent\030\002 \001(\r:\0012\"?\n\r" +
+      "DowntimeAlert\022.\n\004type\030\001 \002(\0162 .smarkets.s" +
+      "eto.DowntimeAlertType*\346\005\n\013PayloadType\022\017\n" +
+      "\013PAYLOAD_ETO\020\001\022\021\n\rPAYLOAD_LOGIN\020\002\022\030\n\024PAY" +
+      "LOAD_ORDER_CREATE\020\003\022\032\n\026PAYLOAD_ORDER_REJ",
+      "ECTED\020\004\022\032\n\026PAYLOAD_ORDER_ACCEPTED\020\005\022\032\n\026P" +
+      "AYLOAD_ORDER_EXECUTED\020\006\022\030\n\024PAYLOAD_ORDER" +
+      "_CANCEL\020\007\022\033\n\027PAYLOAD_ORDER_CANCELLED\020\010\022\031" +
+      "\n\025PAYLOAD_ORDER_INVALID\020\t\022\034\n\030PAYLOAD_MAR" +
+      "KET_SUBSCRIBE\020\n\022\036\n\032PAYLOAD_MARKET_UNSUBS" +
+      "CRIBE\020\013\022!\n\035PAYLOAD_MARKET_QUOTES_REQUEST" +
+      "\020\014\022\031\n\025PAYLOAD_MARKET_QUOTES\020\r\022\033\n\027PAYLOAD" +
+      "_CONTRACT_QUOTES\020\016\022\032\n\026PAYLOAD_EVENTS_REQ" +
+      "UEST\020\017\022\026\n\022PAYLOAD_HTTP_FOUND\020\020\022\033\n\027PAYLOA" +
+      "D_INVALID_REQUEST\020\021\022!\n\035PAYLOAD_ORDER_CAN",
+      "CEL_REJECTED\020\022\022&\n\"PAYLOAD_ORDERS_FOR_ACC" +
+      "OUNT_REQUEST\020\023\022\036\n\032PAYLOAD_ORDERS_FOR_ACC" +
+      "OUNT\020\024\022%\n!PAYLOAD_ORDERS_FOR_MARKET_REQU" +
+      "EST\020\025\022\035\n\031PAYLOAD_ORDERS_FOR_MARKET\020\026\022!\n\035" +
+      "PAYLOAD_ACCOUNT_STATE_REQUEST\020\027\022\031\n\025PAYLO" +
+      "AD_ACCOUNT_STATE\020\030\022\032\n\026PAYLOAD_DOWNTIME_A" +
+      "LERT\020\031*)\n\017OrderCreateType\022\026\n\022ORDER_CREAT" +
+      "E_LIMIT\020\001*B\n\017TimeInForceType\022\026\n\022GOOD_TIL" +
+      "_CANCELLED\020\001\022\027\n\023IMMEDIATE_OR_CANCEL\020\002*\217\003" +
+      "\n\023OrderRejectedReason\022%\n!ORDER_REJECTED_",
+      "INSUFFICIENT_FUNDS\020\001\022!\n\035ORDER_REJECTED_L" +
+      "IMIT_EXCEEDED\020\002\022\"\n\036ORDER_REJECTED_MARKET" +
+      "_NOT_OPEN\020\003\022!\n\035ORDER_REJECTED_MARKET_SET" +
+      "TLED\020\004\022 \n\034ORDER_REJECTED_MARKET_HALTED\020\005" +
+      "\022\037\n\033ORDER_REJECTED_CROSSED_SELF\020\006\022#\n\037ORD" +
+      "ER_REJECTED_MARKET_NOT_FOUND\020\007\0222\n.ORDER_" +
+      "REJECTED_SERVICE_TEMPORARILY_UNAVAILABLE" +
+      "\020\010\022%\n!ORDER_REJECTED_CONTRACT_NOT_FOUND\020" +
+      "\t\022$\n ORDER_REJECTED_ACCOUNT_SUSPENDED\020\n*" +
+      "d\n\031OrderCancelRejectedReason\022#\n\037ORDER_CA",
+      "NCEL_REJECTED_NOT_FOUND\020\001\022\"\n\036ORDER_CANCE" +
+      "L_REJECTED_NOT_LIVE\020\002*\213\001\n\024OrderCancelled" +
+      "Reason\022$\n ORDER_CANCELLED_MEMBER_REQUEST" +
+      "ED\020\001\022!\n\035ORDER_CANCELLED_MARKET_HALTED\020\002\022" +
+      "*\n&ORDER_CANCELLED_INSUFFICIENT_LIQUIDIT" +
+      "Y\020\003*Y\n\022OrderInvalidReason\022\037\n\033ORDER_INVAL" +
+      "ID_INVALID_PRICE\020\001\022\"\n\036ORDER_INVALID_INVA" +
+      "LID_QUANTITY\020\002*,\n\014QuantityType\022\034\n\030QUANTI" +
+      "TY_PAYOFF_CURRENCY\020\001*#\n\tPriceType\022\026\n\022PRI" +
+      "CE_PERCENT_ODDS\020\001*#\n\004Side\022\014\n\010SIDE_BUY\020\001\022",
+      "\r\n\tSIDE_SELL\020\002*(\n\013ContentType\022\031\n\025CONTENT" +
+      "_TYPE_PROTOBUF\020\001*\277\001\n\021EventsRequestType\022\033" +
+      "\n\027EVENTS_REQUEST_POLITICS\020\001\022\"\n\036EVENTS_RE" +
+      "QUEST_CURRENT_AFFAIRS\020\002\022\'\n#EVENTS_REQUES" +
+      "T_TV_AND_ENTERTAINMENT\020\003\022 \n\034EVENTS_REQUE" +
+      "ST_SPORT_BY_DATE\020\004\022\036\n\032EVENTS_REQUEST_SPO" +
+      "RT_OTHER\020\005*\322\002\n\017SportByDateType\022\032\n\026SPORT_" +
+      "BY_DATE_FOOTBALL\020\001\022\036\n\032SPORT_BY_DATE_HORS" +
+      "E_RACING\020\002\022\030\n\024SPORT_BY_DATE_TENNIS\020\003\022\034\n\030" +
+      "SPORT_BY_DATE_BASKETBALL\020\004\022\"\n\036SPORT_BY_D",
+      "ATE_AMERICANFOOTBALL\020\005\022\032\n\026SPORT_BY_DATE_" +
+      "BASEBALL\020\006\022\031\n\025SPORT_BY_DATE_CRICKET\020\007\022\032\n" +
+      "\026SPORT_BY_DATE_HANDBALL\020\010\022\027\n\023SPORT_BY_DA" +
+      "TE_RUGBY\020\t\022\035\n\031SPORT_BY_DATE_RUGBYLEAGUE\020" +
+      "\n\022\034\n\030SPORT_BY_DATE_VOLLEYBALL\020\013*\245\001\n\014Cont" +
+      "ractType\022 \n\034CONTRACT_HALF_TIME_FULL_TIME" +
+      "\020\001\022\032\n\026CONTRACT_CORRECT_SCORE\020\002\022\024\n\020CONTRA" +
+      "CT_GENERIC\020\003\022\023\n\017CONTRACT_WINNER\020\004\022\023\n\017CON" +
+      "TRACT_BINARY\020\005\022\027\n\023CONTRACT_OVER_UNDER\020\006*" +
+      "\352\007\n\tEventType\022\030\n\024EVENT_FOOTBALL_MATCH\020\001\022",
+      "\031\n\025EVENT_FOOTBALL_SEASON\020\002\022\022\n\016EVENT_FOOT" +
+      "BALL\020\003\022\021\n\rEVENT_GENERIC\020\004\022\032\n\026EVENT_FOOTB" +
+      "ALL_GENERIC\020\005\022\025\n\021EVENT_GOLF_SEASON\020\006\022\027\n\023" +
+      "EVENT_BOXING_SEASON\020\007\022\030\n\024EVENT_FORMULA_1" +
+      "_RACE\020\010\022\032\n\026EVENT_FORMULA_1_SEASON\020\t\022\033\n\027E" +
+      "VENT_HORSE_RACING_RACE\020\n\022\035\n\031EVENT_HORSE_" +
+      "RACING_COURSE\020\013\022\026\n\022EVENT_HORSE_RACING\020\014\022" +
+      "\026\n\022EVENT_GOLF_GENERIC\020\r\022\033\n\027EVENT_EUROVIS" +
+      "ION_SEASON\020\016\022\026\n\022EVENT_TENNIS_ROUND\020\017\022\027\n\023" +
+      "EVENT_TENNIS_FORMAT\020\020\022\033\n\027EVENT_TENNIS_TO",
+      "URNAMENT\020\021\022\030\n\024EVENT_CYCLING_SEASON\020\022\022\026\n\022" +
+      "EVENT_CYCLING_RACE\020\023\022\027\n\023EVENT_MOTOGP_SEA" +
+      "SON\020\024\022\026\n\022EVENT_BOXING_MATCH\020\025\022!\n\035EVENT_A" +
+      "MERICAN_FOOTBALL_MATCH\020\026\022\033\n\027EVENT_RUGBY_" +
+      "UNION_MATCH\020\027\022\032\n\026EVENT_BASKETBALL_MATCH\020" +
+      "\030\022\033\n\027EVENT_BASKETBALL_SEASON\020\031\022\027\n\023EVENT_" +
+      "CRICKET_MATCH\020\032\022\030\n\024EVENT_CRICKET_SEASON\020" +
+      "\033\022\032\n\026EVENT_VOLLEYBALL_MATCH\020\034\022\030\n\024EVENT_H" +
+      "ANDBALL_MATCH\020\035\022\034\n\030EVENT_RUGBY_UNION_SEA" +
+      "SON\020\036\022\034\n\030EVENT_RUGBY_LEAGUE_MATCH\020\037\022\035\n\031E",
+      "VENT_RUGBY_LEAGUE_SEASON\020 \022\"\n\036EVENT_AMER" +
+      "ICAN_FOOTBALL_SEASON\020!\022\030\n\024EVENT_BASEBALL" +
+      "_MATCH\020\"\022\031\n\025EVENT_BASEBALL_SEASON\020#\022\026\n\022E" +
+      "VENT_TENNIS_MATCH\020$\022\027\n\023EVENT_TENNIS_SEAS" +
+      "ON\020%*\212\004\n\026EntityRelationshipType\022*\n&ENTIT" +
+      "Y_RELATIONSHIP_FOOTBALL_HOME_TEAM\020\001\022*\n&E" +
+      "NTITY_RELATIONSHIP_FOOTBALL_AWAY_TEAM\020\002\022" +
+      ",\n(ENTITY_RELATIONSHIP_FOOTBALL_COMPETIT" +
+      "ION\020\003\022+\n\'ENTITY_RELATIONSHIP_HORSE_RACIN" +
+      "G_COURSE\020\004\022*\n&ENTITY_RELATIONSHIP_HORSE_",
+      "RACING_HORSE\020\005\022+\n\'ENTITY_RELATIONSHIP_HO" +
+      "RSE_RACING_JOCKEY\020\006\022+\n\'ENTITY_RELATIONSH" +
+      "IP_CONTRACT_ASSOCIATED\020\007\022\037\n\033ENTITY_RELAT" +
+      "IONSHIP_GENERIC\020\010\022\'\n#ENTITY_RELATIONSHIP" +
+      "_TENNIS_PLAYER_A\020\t\022\'\n#ENTITY_RELATIONSHI" +
+      "P_TENNIS_PLAYER_B\020\n\022!\n\035ENTITY_RELATIONSH" +
+      "IP_HOME_TEAM\020\013\022!\n\035ENTITY_RELATIONSHIP_AW" +
+      "AY_TEAM\020\014*;\n\022InvalidRequestType\022%\n!INVAL" +
+      "ID_REQUEST_DATE_OUT_OF_RANGE\020\001*\310\002\n\rEvent" +
+      "Category\022\030\n\024EVENT_CATEGORY_SPORT\020\001\022\033\n\027EV",
+      "ENT_CATEGORY_POLITICS\020\002\022\"\n\036EVENT_CATEGOR" +
+      "Y_CURRENT_AFFAIRS\020\003\022\'\n#EVENT_CATEGORY_TV" +
+      "_AND_ENTERTAINMENT\020\004\022\032\n\026EVENT_CATEGORY_G" +
+      "ENERIC\020\005\022\033\n\027EVENT_CATEGORY_FOOTBALL\020\006\022\031\n" +
+      "\025EVENT_CATEGORY_TENNIS\020\007\022\037\n\033EVENT_CATEGO" +
+      "RY_HORSE_RACING\020\010\022$\n EVENT_CATEGORY_AMER" +
+      "ICAN_FOOTBALL\020\t\022\030\n\024EVENT_CATEGORY_RUGBY\020" +
+      "\n*\242\001\n\013OrderStatus\022\025\n\021ORDER_STATUS_LIVE\020\001" +
+      "\022!\n\035ORDER_STATUS_PARTIALLY_FILLED\020\002\022\027\n\023O" +
+      "RDER_STATUS_FILLED\020\003\022$\n ORDER_STATUS_PAR",
+      "TIALLY_CANCELLED\020\004\022\032\n\026ORDER_STATUS_CANCE" +
+      "LLED\020\005*@\n\010Currency\022\020\n\014CURRENCY_GBP\020\001\022\020\n\014" +
+      "CURRENCY_EUR\020\002\022\020\n\014CURRENCY_USD\020\003*4\n\021Down" +
+      "timeAlertType\022\037\n\033DOWNTIME_ALERT_ORDER_CR" +
+      "EATE\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22637,7 +22672,7 @@ public final class SmarketsSetoPiqi {
           internal_static_smarkets_seto_OrderCancelRejected_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_smarkets_seto_OrderCancelRejected_descriptor,
-              new java.lang.String[] { "Seq", "Reason", },
+              new java.lang.String[] { "Order", "Reason", },
               smarkets.seto.SmarketsSetoPiqi.OrderCancelRejected.class,
               smarkets.seto.SmarketsSetoPiqi.OrderCancelRejected.Builder.class);
           internal_static_smarkets_seto_OrderAccepted_descriptor =

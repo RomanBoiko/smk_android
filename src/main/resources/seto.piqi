@@ -403,8 +403,8 @@
     .name order-cancel-rejected
     .proto-name "OrderCancelRejected"
     .field [
-        .name seq
-        .type eto/seq
+        .name order
+        .type order
     ]
     .field [
         .name reason
@@ -1167,6 +1167,14 @@
         .name baseball-season
         .proto-name "EVENT_BASEBALL_SEASON"
     ]
+    .option [
+        .name tennis-match
+        .proto-name "EVENT_TENNIS_MATCH"
+    ]
+    .option [
+        .name tennis-season
+        .proto-name "EVENT_TENNIS_SEASON"
+    ]
 ]
 
 .enum [
@@ -1522,6 +1530,11 @@
         .name eur
         .erlang-name "'EUR'"
         .proto-name "CURRENCY_EUR"
+    ]
+    .option [
+        .name usd
+        .erlang-name "'USD'"
+        .proto-name "CURRENCY_USD"
     ]
 ]
 .record [

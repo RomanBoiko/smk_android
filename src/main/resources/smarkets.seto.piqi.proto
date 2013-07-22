@@ -123,7 +123,7 @@ message OrderRejected {
 }
 
 message OrderCancelRejected {
-    required uint64 seq = 1;
+    required Uuid128 order = 1;
     required OrderCancelRejectedReason reason = 2;
 }
 
@@ -360,6 +360,8 @@ enum EventType {
     EVENT_AMERICAN_FOOTBALL_SEASON = 33;
     EVENT_BASEBALL_MATCH = 34;
     EVENT_BASEBALL_SEASON = 35;
+    EVENT_TENNIS_MATCH = 36;
+    EVENT_TENNIS_SEASON = 37;
 }
 
 enum EntityRelationshipType {
@@ -487,6 +489,7 @@ message account {
 enum Currency {
     CURRENCY_GBP = 1;
     CURRENCY_EUR = 2;
+    CURRENCY_USD = 3;
 }
 
 message Decimal {

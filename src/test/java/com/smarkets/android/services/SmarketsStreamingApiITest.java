@@ -36,7 +36,7 @@ public class SmarketsStreamingApiITest {
 				log.info("Account state response got: " + response);
 			}
 		});
-		pause(2);
+		pause(12);
 
 		log.info("============CurrentBets===============");
 		streamingApi.request(factory.currentBetsRequest(), new StreamingCallback() {
@@ -45,13 +45,23 @@ public class SmarketsStreamingApiITest {
 				log.info("Current bets response: " + response);
 			}
 		});
-		pause(2);
+		pause(12);
 
 		log.info("============PlaceBet===============");
-		streamingApi.request(factory.placeBetRequest(23422, 234232, 2.3, 11.2, true), new StreamingCallback() {
+		streamingApi.request(factory.placeBetRequest(2444858, 6711093, 2.3, 11.2, true), new StreamingCallback() {
 			@Override
 			public void process(Payload response) {
 				log.info("Order create response: " + response);
+			}
+		});
+		pause(2);
+
+		log.info("============MarketPrices===============");
+		streamingApi.request(factory.marketQuotesRequest(2444858L), new StreamingCallback() {
+			
+			@Override
+			public void process(Payload response) {
+				log.info("Market prices response: " + response);
 			}
 		});
 		pause(2);
@@ -64,15 +74,6 @@ public class SmarketsStreamingApiITest {
 			}
 		});
 		pause(2);
-
-//		log.info("============MarketPrices===============");
-//		streamingApi.request(factory.pricesRequest(123L), new SmkCallback() {
-//			@Override
-//			public void process(Payload response) {
-//				log.info("Market prices response: " + response);
-//			}
-//		});
-//		pause(2);
 
 		log.info("============HeartBeats===============");
 		log.info("Pausing to test heartbeats...");
