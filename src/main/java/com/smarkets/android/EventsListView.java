@@ -45,7 +45,8 @@ public class EventsListView {
 						.setTitle("Market Actions")
 						.setPositiveButton("Current prices", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Toast.makeText(parentActivity, "show current prices for market", Toast.LENGTH_SHORT).show();
+								SmkMarket market = (SmkMarket)objectUnderAction;
+								new MarketPricesDialog(parentActivity, smkService).showDialog(market);
 							}
 						})
 						.setNegativeButton("Place Bet", new DialogInterface.OnClickListener() {

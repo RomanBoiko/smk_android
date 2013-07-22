@@ -71,7 +71,7 @@ public class StreamingApiRequestsFactory {
 				.build();
 	}
 
-	public Payload pricesRequest(long marketId) {
+	public Payload marketQuotesRequest(long marketId) {
 		return SmarketsSetoPiqi.Payload
 				.newBuilder()
 				.setType(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES_REQUEST)
@@ -112,5 +112,6 @@ public class StreamingApiRequestsFactory {
 			return ++currentValue;
 		}
 	}
+
 
 }

@@ -3,7 +3,6 @@ package com.smarkets.android;
 import static com.smarkets.android.ScreenActivity.LOG_TAG;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.smarkets.android.domain.actionresults.LoginResult;
 

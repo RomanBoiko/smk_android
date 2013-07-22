@@ -117,7 +117,7 @@ public class StreamingApiRequestsFactoryTest {
 
 	@Test
 	public void shouldCreatePricesRequest() throws InvalidProtocolBufferException {
-		Payload pricesRequest = requestsFactory.pricesRequest(123L);
+		Payload pricesRequest = requestsFactory.marketQuotesRequest(123L);
 		log.debug(pricesRequest);
 		assertThat(pricesRequest.getType(), is(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES_REQUEST));
 		assertThat(pricesRequest.getEtoPayload().getSeq(), is(1L));

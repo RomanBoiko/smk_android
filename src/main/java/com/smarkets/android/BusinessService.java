@@ -88,7 +88,6 @@ public class BusinessService {
 
 	public void currentBets(final Callback<List<Bet>> action) throws IOException {
 		apiClient.request(requestFactory.currentBetsRequest(), new StreamingCallback() {
-			
 			@Override
 			public void process(Payload response) {
 				List<Bet> currentBets = new LinkedList<Bet>();
@@ -96,15 +95,29 @@ public class BusinessService {
 					for (SmarketsSetoPiqi.orders_for_market market : response.getOrdersForAccount().getMarketsList()) {
 						for (SmarketsSetoPiqi.orders_for_contract contract : market.getContractsList()) {
 							for (SmarketsSetoPiqi.orders_for_price bid : contract.getBidsList()) {
-								double price = bid.getPrice() / 100;
+								BigDecimal price = smkPrice(bid.getPrice());
 								for (SmarketsSetoPiqi.OrderState order : bid.getOrdersList()) {
-									currentBets.add(new Bet(BetType.BUY, market.getMarket().getLow(), contract.getContract().getLow(), SetoUuid.toUuid(order.getOrder()), new BigDecimal(order.getQuantity()/10000), new BigDecimal(price), new Date((long)order.getCreatedMicroseconds()/1000), BusinessService.this));
+									currentBets.add(new Bet(BetType.BUY,
+											market.getMarket().getLow(),
+											contract.getContract().getLow(),
+											SetoUuid.toUuid(order.getOrder()),
+											smkQuantity(order.getQuantity()),
+											price,
+											smkDate(order.getCreatedMicroseconds()),
+											BusinessService.this));
 								}
 							}
 							for (SmarketsSetoPiqi.orders_for_price offer : contract.getOffersList()) {
-								double price = offer.getPrice() / 100;
+								BigDecimal price = smkPrice(offer.getPrice());
 								for (SmarketsSetoPiqi.OrderState order : offer.getOrdersList()) {
-									currentBets.add(new Bet(BetType.SELL, market.getMarket().getLow(), contract.getContract().getLow(), SetoUuid.toUuid(order.getOrder()), new BigDecimal(order.getQuantity()/10000), new BigDecimal(price), new Date((long)order.getCreatedMicroseconds()/1000), BusinessService.this));
+									currentBets.add(new Bet(BetType.SELL,
+											market.getMarket().getLow(),
+											contract.getContract().getLow(),
+											SetoUuid.toUuid(order.getOrder()),
+											smkQuantity(order.getQuantity()),
+											price,
+											smkDate(order.getCreatedMicroseconds()),
+											BusinessService.this));
 								}
 							}
 						}
@@ -137,11 +150,46 @@ public class BusinessService {
 		});
 	}
 
+	public void currentPricesForMarket(Long marketId, final Callback<String> action) throws IOException {
+		apiClient.request(requestFactory.marketQuotesRequest(marketId), new StreamingCallback() {
+			
+			@Override
+			public void process(Payload response) {
+				StringBuffer marketQuotes = new StringBuffer();
+				if(response.getType().equals(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES)) {
+					for (SmarketsSetoPiqi.ContractQuotes contractQuotes : response.getMarketQuotes().getContractQuotesList()) {
+						marketQuotes.append("Contract "+contractQuotes.getContract().getLow() +"[");
+						marketQuotes.append("Bids {");
+						for (SmarketsSetoPiqi.Quote bid : contractQuotes.getBidsList()) {
+							marketQuotes.append(smkQuantity(bid.getQuantity()) + "(" + smkPrice(bid.getPrice()) + ")%");
+						}
+						marketQuotes.append("}, Offers {");
+						for (SmarketsSetoPiqi.Quote offer : contractQuotes.getOffersList()) {
+							marketQuotes.append(smkQuantity(offer.getQuantity()) + "(" + smkPrice(offer.getPrice()) + ")%");
+						}
+						marketQuotes.append("}]\n");
+					}
+				}
+				action.action(marketQuotes.toString());
+			}
+		});
+	}
+
 	public String contractNameForId(Long contractId) throws Exception {
 		return RestApiClient.getContractNameById(contractId);
 	}
 	
 	public String marketNameForId(Long marketId) throws Exception {
 		return RestApiClient.getMarketNameById(marketId);
+	}
+
+	private BigDecimal smkQuantity(int quantity) {
+		return new BigDecimal(quantity/10000);
+	}
+	private BigDecimal smkPrice(int price) {
+		return new BigDecimal(price/100);
+	}
+	private Date smkDate(long smkTime) {
+		return new Date((long)smkTime/1000);
 	}
 }
