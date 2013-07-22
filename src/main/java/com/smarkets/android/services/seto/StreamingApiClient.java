@@ -65,6 +65,7 @@ public class StreamingApiClient {
 				} else {
 					this.apiSocket = new Socket(streamingApiHost, streamingApiPort);
 				}
+				apiSocket.setSoTimeout(0);
 				this.outStream = CodedOutputStream.newInstance(this.apiSocket.getOutputStream());
 				this.inStream = CodedInputStream.newInstance(this.apiSocket.getInputStream());
 				startDaemon();

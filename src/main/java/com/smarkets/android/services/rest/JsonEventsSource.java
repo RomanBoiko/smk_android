@@ -40,6 +40,8 @@ public class JsonEventsSource {
 
 		URL url = new URL(restApiSubUrl);
 		URLConnection conn = url.openConnection();
+		conn.setConnectTimeout(2 * 60 * 1000);
+		conn.setReadTimeout(2 * 60 * 1000);
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
