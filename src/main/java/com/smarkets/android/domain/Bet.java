@@ -38,14 +38,24 @@ public class Bet {
 
 	public String marketName() {
 		if (null == marketName) {
-			marketName = smkService.marketNameForId(marketId);
+			try {
+				marketName = smkService.marketNameForId(marketId);
+			} catch (Exception e) {
+				e.printStackTrace();
+				marketName = "MarketNameError";
+			}
 		}
 		return marketName;
 	}
 
 	public String contractName() {
 		if (null == contractName) {
-			contractName = smkService.contractNameForId(contractId);
+			try {
+				contractName = smkService.contractNameForId(contractId);
+			} catch (Exception e) {
+				e.printStackTrace();
+				contractName = "ContractNameError";
+			}
 		}
 		return contractName;
 	}

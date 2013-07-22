@@ -12,7 +12,6 @@ import smarkets.seto.SmarketsSetoPiqi.Payload;
 
 import com.smarkets.android.SmkConfig;
 import com.smarkets.android.services.seto.StreamingApiClient;
-import com.smarkets.android.services.seto.StreamingApiClientReal;
 import com.smarkets.android.services.seto.StreamingApiRequestsFactory;
 import com.smarkets.android.services.seto.StreamingCallback;
 
@@ -111,7 +110,7 @@ public class SmarketsStreamingApiITest {
 	}
 
 	private StreamingApiClient streamingApiClient(StreamingApiRequestsFactory factory) throws UnknownHostException, IOException {
-		return new StreamingApiClientReal(smkConfig.smkStreamingApiHost(), smkConfig.smkStreamingApiPort(), smkConfig.smkStreamingApiSslEnabled(), factory);
+		return new StreamingApiClient(smkConfig.smkStreamingApiHost(), smkConfig.smkStreamingApiPort(), smkConfig.smkStreamingApiSslEnabled(), factory);
 	}
 	
 	private void logoutFromSmk(StreamingApiClient streamingApi, StreamingApiRequestsFactory factory) throws UnknownHostException, IOException, InterruptedException {

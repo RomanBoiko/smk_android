@@ -3,6 +3,7 @@ package com.smarkets.android.services.rest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -30,21 +31,26 @@ public class JsonEventsSource {
 	}
 
 	public static JsonEventsSource fetchViaHttp(String jsonUrl) throws IOException, JSONException {
-		jsonUrl = CONFIG.smkRestApiRoot() + jsonUrl;
+		String jsonString = textViaHttp(jsonUrl);
+		return new JsonEventsSource(new JSONObject(jsonString));
+	}
 
-		URL url = new URL(jsonUrl);
+	public static String textViaHttp(String restApiSubUrl) throws MalformedURLException, IOException {
+		restApiSubUrl = CONFIG.smkRestApiRoot() + restApiSubUrl;
+
+		URL url = new URL(restApiSubUrl);
 		URLConnection conn = url.openConnection();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
 		String inputLine;
-		StringBuffer jsonString = new StringBuffer();
+		StringBuffer textFetched = new StringBuffer();
 
 		while ((inputLine = br.readLine()) != null) {
-			jsonString.append(inputLine);
+			textFetched.append(inputLine);
 		}
 		br.close();
-		return new JsonEventsSource(new JSONObject(jsonString.toString()));
+		return textFetched.toString();
 	}
 
 	public JSONArray getChildEventsAsJsonArray() throws JSONException {
@@ -75,4 +81,6 @@ public class JsonEventsSource {
 			throw new RuntimeException();
 		}
 	}
+
+	
 }

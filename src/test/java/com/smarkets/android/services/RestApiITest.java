@@ -48,4 +48,14 @@ public class RestApiITest {
 			walkThroughEventChildren(children.get(1));
 		}
 	}
+
+	@Test
+	public void shouldFetchMarketNameById() throws IOException, JSONException {
+		assertThat(RestApiClient.getMarketNameById(2511861L), is("Asian handicap Bordeaux +4.00"));//PROD
+	}
+
+	@Test
+	public void shouldFetchContractNameById() throws IOException, JSONException {
+		assertThat(RestApiClient.getContractNameById(6850956L), is("Bordeaux +4.00"));//PROD
+	}
 }

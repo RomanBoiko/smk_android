@@ -15,9 +15,9 @@ import com.smarkets.android.domain.Bet;
 import com.smarkets.android.domain.BetType;
 import com.smarkets.android.domain.actionresults.LoginResult;
 import com.smarkets.android.domain.actionresults.PlaceBetResult;
+import com.smarkets.android.services.rest.RestApiClient;
 import com.smarkets.android.services.seto.SetoUuid;
 import com.smarkets.android.services.seto.StreamingApiClient;
-import com.smarkets.android.services.seto.StreamingApiClientReal;
 import com.smarkets.android.services.seto.StreamingApiRequestsFactory;
 import com.smarkets.android.services.seto.StreamingCallback;
 
@@ -30,7 +30,7 @@ public class BusinessService {
 	public BusinessService() throws IOException {
 		this.config = new SmkConfig();
 		this.requestFactory = new StreamingApiRequestsFactory();
-		this.apiClient = new StreamingApiClientReal(
+		this.apiClient = new StreamingApiClient(
 			config.smkStreamingApiHost(),
 			config.smkStreamingApiPort(),
 			config.smkStreamingApiSslEnabled(),
@@ -137,11 +137,11 @@ public class BusinessService {
 		});
 	}
 
-	public String contractNameForId(Long contractId) {
-		return "ContractToBeFetched";
+	public String contractNameForId(Long contractId) throws Exception {
+		return RestApiClient.getContractNameById(contractId);
 	}
 	
-	public String marketNameForId(Long marketId) {
-		return "MarketToBeFetched";
+	public String marketNameForId(Long marketId) throws Exception {
+		return RestApiClient.getMarketNameById(marketId);
 	}
 }
