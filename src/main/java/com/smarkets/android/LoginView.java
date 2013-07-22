@@ -3,6 +3,7 @@ package com.smarkets.android;
 import static com.smarkets.android.ScreenActivity.LOG_TAG;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.smarkets.android.domain.actionresults.LoginResult;
 
@@ -21,6 +22,7 @@ public class LoginView {
 
 	private final SharedPreferences credentialsCache;
 	private final Activity parentActivity;
+	private boolean loginActionAllowed = true;
 
 	public LoginView(Activity parentActivity) {
 		this.parentActivity = parentActivity;
@@ -42,32 +44,39 @@ public class LoginView {
 		Button btnCancel = (Button) parentActivity.findViewById(R.id.btnCancel);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				try {
-					String login = txtUserName.getText().toString();
-					String password = txtPassword.getText().toString();
-					SharedPreferences.Editor editor = credentialsCache.edit();
-					editor.putString(LOGIN_PROPERTY, login);
-					editor.putString(PASSWORD_PROPERTY, password);
-					editor.commit();
-					Log.i(LOG_TAG, String.format("Login/password saved to cache: %s/%s", login, password));
-
-					smkService.login(login, password, new BusinessService.Callback<LoginResult>(){
-						@Override
-						public void action(final LoginResult response) {
-							parentActivity.runOnUiThread(new Runnable() { public void run() {
-								if (LoginResult.LOGIN_SUCCESS.equals(response)) {
-									Log.i(LOG_TAG, "Login successful");
-									Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
-									changeGuiViewCallback.moveToNextView(parentActivity);
-								} else {
-									Log.i(LOG_TAG, "Login failed");
-									Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
-								}
-							}});
-						}
-					});
-				} catch (IOException e) {
-					Toast.makeText(parentActivity, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+				if(loginActionAllowed) {
+					loginActionAllowed = false;
+					try {
+						String login = txtUserName.getText().toString();
+						String password = txtPassword.getText().toString();
+						SharedPreferences.Editor editor = credentialsCache.edit();
+						editor.putString(LOGIN_PROPERTY, login);
+						editor.putString(PASSWORD_PROPERTY, password);
+						editor.commit();
+						Log.i(LOG_TAG, String.format("Login/password saved to cache: %s/%s", login, password));
+						
+						smkService.login(login, password, new BusinessService.Callback<LoginResult>(){
+							@Override
+							public void action(final LoginResult response) {
+								parentActivity.runOnUiThread(new Runnable() { public void run() {
+									if (LoginResult.LOGIN_SUCCESS.equals(response)) {
+										Log.i(LOG_TAG, "Login successful");
+										Toast.makeText(parentActivity, "Login Successful", Toast.LENGTH_LONG).show();
+										changeGuiViewCallback.moveToNextView(parentActivity);
+									} else {
+										Log.i(LOG_TAG, "Login failed");
+										Toast.makeText(parentActivity, "Invalid Login", Toast.LENGTH_LONG).show();
+									}
+								}});
+							}
+						});
+					} catch (IOException e) {
+						Toast.makeText(parentActivity, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+					} finally {
+						loginActionAllowed = true;
+					}
+				} else {
+					Toast.makeText(parentActivity, "Login action in progress, please wait", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
