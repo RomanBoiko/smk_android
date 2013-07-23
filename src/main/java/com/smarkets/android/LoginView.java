@@ -40,7 +40,6 @@ public class LoginView {
 		Log.i(LOG_TAG, String.format("Login/password from cache: %s/%s", retrievedLogin, retrievedPassword));
 		
 		Button btnLogin = (Button) parentActivity.findViewById(R.id.btnLogin);
-		Button btnCancel = (Button) parentActivity.findViewById(R.id.btnCancel);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				if(loginActionAllowed) {
@@ -77,12 +76,6 @@ public class LoginView {
 				} else {
 					Toast.makeText(parentActivity, "Login action in progress, please wait", Toast.LENGTH_SHORT).show();
 				}
-			}
-		});
-		btnCancel.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				txtUserName.setText(ScreenActivity.EMPTY);
-				txtPassword.setText(ScreenActivity.EMPTY);
 			}
 		});
 	}
