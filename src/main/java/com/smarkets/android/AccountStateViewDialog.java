@@ -42,7 +42,7 @@ public class AccountStateViewDialog {
 				}
 			});
 		} catch (Exception e) {
-			Log.e(ScreenActivity.LOG_TAG, "Account status not retrieved", e);
+			Log.e(LoginActivity.LOG_TAG, "Account status not retrieved", e);
 			throw new RuntimeException(e);
 		}
 	}
