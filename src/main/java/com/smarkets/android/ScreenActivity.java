@@ -8,30 +8,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class ScreenActivity extends Activity {
 
 	public final static String LOG_TAG = "smarkets";
-
-	private BusinessService smkService;
 
 	public static String EMPTY = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		try {
-			smkService = new BusinessService();
-		} catch (IOException e) {
-			Toast.makeText(this, "Smarkets API connection error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-		}
-		super.onCreate(savedInstanceState);
 		Log.i(LOG_TAG, "onCreate");
-		new LoginView(this).showLoginView(smkService, new ChangeGuiViewCallback() {
+		new LoginView(this).showLoginView(new ChangeGuiViewCallback() {
 			public void moveToNextView(Activity parentActivity) {
-				new EventsListView(parentActivity, smkService).showEventsList();
+				new EventsListView(parentActivity).showEventsList();
 			}
 		});
 	}
@@ -45,10 +35,10 @@ public class ScreenActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.account:
-			new AccountStateViewDialog(this).showFunds(smkService);
+			new AccountStateViewDialog(this).showFunds();
 			return true;
 		case R.id.currentBets:
-			new CurrentBetsViewDialog(this).showBets(smkService);
+			new CurrentBetsViewDialog(this).showBets();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -59,7 +49,7 @@ public class ScreenActivity extends Activity {
 	public void onStop() { 
 		Log.i(LOG_TAG, "onStop");
 		try {
-			smkService.logout(new BusinessService.Callback<Boolean>(){
+			BusinessService.logout(new BusinessService.Callback<Boolean>(){
 				@Override
 				public void action(final Boolean response) {
 					ScreenActivity.this.runOnUiThread(new Runnable() { public void run() {

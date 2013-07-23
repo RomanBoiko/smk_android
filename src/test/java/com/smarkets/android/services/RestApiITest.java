@@ -51,11 +51,11 @@ public class RestApiITest {
 
 	@Test
 	public void shouldFetchMarketNameById() throws IOException, JSONException {
-		assertThat(RestApiClient.getMarketNameById(2511861L), is("Asian handicap Bordeaux +4.00"));//PROD
+		assertThat(RestApiClient.getMarketNameById(128525L), is("Asian handicap Reading FC +4.00"));
 	}
 
 	@Test
 	public void shouldFetchContractNameById() throws IOException, JSONException {
-		assertThat(RestApiClient.getContractNameById(6850956L), is("Bordeaux +4.00"));//PROD
+		assertThat(RestApiClient.getContractNameById(185416L), is("Reading FC +4.00"));
 	}
 }

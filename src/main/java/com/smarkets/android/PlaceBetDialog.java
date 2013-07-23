@@ -21,11 +21,9 @@ public class PlaceBetDialog {
 
 	private final Dialog placeBetDialog;
 	private final Activity parentActivity;
-	private final BusinessService smkService;
 	private SmkMarket market;
 
-	public PlaceBetDialog(Activity parentActivity, BusinessService smkService) {
-		this.smkService = smkService;
+	public PlaceBetDialog(Activity parentActivity) {
 		this.parentActivity = parentActivity;
 		placeBetDialog = new AlertDialog.Builder(parentActivity)
 				.setView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_place_bet, null))
@@ -35,7 +33,7 @@ public class PlaceBetDialog {
 						Spinner contractSpinner = ((Spinner)(placeBetDialog.findViewById(R.id.contractsSpinner)));
 						Spinner buySellSpinner = ((Spinner)(placeBetDialog.findViewById(R.id.buySellSpinner)));
 						try {
-							PlaceBetDialog.this.smkService.placeBet(
+							BusinessService.placeBet(
 									BetType.valueOf(buySellSpinner.getItemAtPosition(buySellSpinner.getLastVisiblePosition()).toString()),
 									Long.parseLong(market.id),
 									Long.parseLong(((SmkContract)contractSpinner.getItemAtPosition(contractSpinner.getLastVisiblePosition())).id),

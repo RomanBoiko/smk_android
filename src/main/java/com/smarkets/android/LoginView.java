@@ -29,12 +29,12 @@ public class LoginView {
 
 	}
 	
-	public void showLoginView(final BusinessService smkService, final ChangeGuiViewCallback changeGuiViewCallback) {
+	public void showLoginView(final ChangeGuiViewCallback changeGuiViewCallback) {
 		parentActivity.setContentView(R.layout.login);
 		final EditText txtUserName = (EditText) parentActivity.findViewById(R.id.txtUname);
 		final EditText txtPassword = (EditText) parentActivity.findViewById(R.id.txtPwd);
 		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "hunter.morris@smarkets.com");
-		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "");
+		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "abc,123");
 		txtUserName.setText(retrievedLogin);
 		txtPassword.setText(retrievedPassword);
 		Log.i(LOG_TAG, String.format("Login/password from cache: %s/%s", retrievedLogin, retrievedPassword));
@@ -53,7 +53,7 @@ public class LoginView {
 						editor.commit();
 						Log.i(LOG_TAG, String.format("Login/password saved to cache: %s/%s", login, password));
 						
-						smkService.login(login.trim(), password.trim(), new BusinessService.Callback<LoginResult>(){
+						BusinessService.login(login.trim(), password.trim(), new BusinessService.Callback<LoginResult>(){
 							@Override
 							public void action(final LoginResult response) {
 								parentActivity.runOnUiThread(new Runnable() { public void run() {

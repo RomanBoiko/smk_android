@@ -25,13 +25,13 @@ public class AccountStateViewDialog {
 		accountStateDialog.show();
 	}
 
-	public void showFunds(BusinessService smkService) {
+	public void showFunds() {
 		final TextView cash = (TextView) accountStateDialog.findViewById(R.id.cash);
 		final TextView bonus = (TextView) accountStateDialog.findViewById(R.id.bonus);
 		final TextView exposure = (TextView) accountStateDialog.findViewById(R.id.exposure);
 
 		try {
-			smkService.getAccountStatus(new BusinessService.Callback<AccountFunds>(){
+			BusinessService.getAccountStatus(new BusinessService.Callback<AccountFunds>(){
 				@Override
 				public void action(final AccountFunds accountFunds) {
 					parentActivity.runOnUiThread(new Runnable() { public void run() {

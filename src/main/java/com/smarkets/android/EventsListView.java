@@ -25,11 +25,9 @@ import com.smarkets.android.domain.SmkEvent;
 public class EventsListView {
 
 	private Activity parentActivity;
-	private final BusinessService smkService;
 
-	public EventsListView(Activity parentActivity, BusinessService smkService) {
+	public EventsListView(Activity parentActivity) {
 		this.parentActivity = parentActivity;
-		this.smkService = smkService;
 	}
 
 	public void showEventsList() {
@@ -46,13 +44,13 @@ public class EventsListView {
 						.setPositiveButton("Current prices", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								SmkMarket market = (SmkMarket)objectUnderAction;
-								new MarketPricesDialog(parentActivity, smkService).showDialog(market);
+								new MarketPricesDialog(parentActivity).showDialog(market);
 							}
 						})
 						.setNegativeButton("Place Bet", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								SmkMarket market = (SmkMarket)objectUnderAction;
-								new PlaceBetDialog(parentActivity, smkService).showDialog(market);
+								new PlaceBetDialog(parentActivity).showDialog(market);
 							}
 						}).create().show();
 				} else {

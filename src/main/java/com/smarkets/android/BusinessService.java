@@ -22,22 +22,22 @@ import com.smarkets.android.services.seto.StreamingApiRequestsFactory;
 import com.smarkets.android.services.seto.StreamingCallback;
 
 public class BusinessService {
-	private final SmkConfig config;
-	private StreamingApiRequestsFactory requestFactory;
-	private StreamingApiClient apiClient;
-	private boolean loggedIn = false;
+	private static final SmkConfig config;
+	private static StreamingApiRequestsFactory requestFactory;
+	private static StreamingApiClient apiClient;
+	private static boolean loggedIn = false;
 
-	public BusinessService() throws IOException {
-		this.config = new SmkConfig();
+	static {
+		config = new SmkConfig();
 	}
 	
 	public interface Callback<T> {
 		void action(T response);
 	}
 
-	public void login(String username, String password, final Callback<LoginResult> action) throws IOException {
-		this.requestFactory = new StreamingApiRequestsFactory();
-		this.apiClient = new StreamingApiClient(
+	public static void login(String username, String password, final Callback<LoginResult> action) throws IOException {
+		requestFactory = new StreamingApiRequestsFactory();
+		apiClient = new StreamingApiClient(
 				config.smkStreamingApiHost(),
 				config.smkStreamingApiPort(),
 				config.smkStreamingApiSslEnabled(),
@@ -56,7 +56,7 @@ public class BusinessService {
 		});
 	}
 
-	public void logout(final Callback<Boolean> action) throws IOException {
+	public static void logout(final Callback<Boolean> action) throws IOException {
 		if(loggedIn) {
 			apiClient.request(requestFactory.logoutRequest(), new StreamingCallback() {
 				@Override
@@ -72,7 +72,7 @@ public class BusinessService {
 		}
 	}
 
-	public void getAccountStatus(final Callback<AccountFunds> action) throws IOException {
+	public static void getAccountStatus(final Callback<AccountFunds> action) throws IOException {
 		apiClient.request(requestFactory.accountStateRequest(), new StreamingCallback() {
 
 			@Override
@@ -86,7 +86,7 @@ public class BusinessService {
 	}
 
 
-	public void currentBets(final Callback<List<Bet>> action) throws IOException {
+	public static void currentBets(final Callback<List<Bet>> action) throws IOException {
 		apiClient.request(requestFactory.currentBetsRequest(), new StreamingCallback() {
 			@Override
 			public void process(Payload response) {
@@ -103,8 +103,7 @@ public class BusinessService {
 											SetoUuid.toUuid(order.getOrder()),
 											smkQuantity(order.getQuantity()),
 											price,
-											smkDate(order.getCreatedMicroseconds()),
-											BusinessService.this));
+											smkDate(order.getCreatedMicroseconds())));
 								}
 							}
 							for (SmarketsSetoPiqi.orders_for_price offer : contract.getOffersList()) {
@@ -116,8 +115,7 @@ public class BusinessService {
 											SetoUuid.toUuid(order.getOrder()),
 											smkQuantity(order.getQuantity()),
 											price,
-											smkDate(order.getCreatedMicroseconds()),
-											BusinessService.this));
+											smkDate(order.getCreatedMicroseconds())));
 								}
 							}
 						}
@@ -129,7 +127,7 @@ public class BusinessService {
 		});
 	}
 
-	public void placeBet(BetType type, Long marketId, Long contractId, BigDecimal quantity, BigDecimal price, final Callback<PlaceBetResult> action) throws IOException {
+	public static void placeBet(BetType type, Long marketId, Long contractId, BigDecimal quantity, BigDecimal price, final Callback<PlaceBetResult> action) throws IOException {
 		apiClient.request(requestFactory.placeBetRequest(marketId, contractId, quantity.doubleValue(), price.doubleValue(), (BetType.BUY.equals(type))), new StreamingCallback() {
 			@Override
 			public void process(Payload response) {
@@ -140,7 +138,7 @@ public class BusinessService {
 		});
 	}
 
-	public void cancelBet(Bet bet, final Callback<Boolean> action) throws IOException {
+	public static void cancelBet(Bet bet, final Callback<Boolean> action) throws IOException {
 		apiClient.request(requestFactory.cancelBetRequest(bet.betId), new StreamingCallback() {
 
 			@Override
@@ -150,7 +148,7 @@ public class BusinessService {
 		});
 	}
 
-	public void currentPricesForMarket(Long marketId, final Callback<String> action) throws IOException {
+	public static void currentPricesForMarket(Long marketId, final Callback<String> action) throws IOException {
 		apiClient.request(requestFactory.marketQuotesRequest(marketId), new StreamingCallback() {
 			
 			@Override
@@ -175,21 +173,21 @@ public class BusinessService {
 		});
 	}
 
-	public String contractNameForId(Long contractId) throws Exception {
+	public static String contractNameForId(Long contractId) throws Exception {
 		return RestApiClient.getContractNameById(contractId);
 	}
 	
-	public String marketNameForId(Long marketId) throws Exception {
+	public static String marketNameForId(Long marketId) throws Exception {
 		return RestApiClient.getMarketNameById(marketId);
 	}
 
-	private BigDecimal smkQuantity(int quantity) {
+	private static BigDecimal smkQuantity(int quantity) {
 		return new BigDecimal(quantity/10000);
 	}
-	private BigDecimal smkPrice(int price) {
+	private static BigDecimal smkPrice(int price) {
 		return new BigDecimal(price/100);
 	}
-	private Date smkDate(long smkTime) {
+	private static Date smkDate(long smkTime) {
 		return new Date((long)smkTime/1000);
 	}
 }

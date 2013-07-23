@@ -35,10 +35,10 @@ public class CurrentBetsViewDialog {
 		currentBetsDialog.show();
 	}
 
-	public void showBets(final BusinessService smkService) {
+	public void showBets() {
 		final ListView betsList = (ListView) currentBetsDialog.findViewById(R.id.betsList);
 		try {
-			showBetsList(smkService, betsList);
+			showBetsList(betsList);
 		} catch (IOException e) {
 			Toast.makeText(parentActivity, "Current bets show error: " + e.getMessage(), Toast.LENGTH_LONG).show();
 		}
@@ -60,7 +60,7 @@ public class CurrentBetsViewDialog {
 									public void action(final Boolean response) {
 										parentActivity.runOnUiThread(new Runnable() { public void run() {
 											if (response) {
-												showBets(smkService);
+												showBets();
 												Toast.makeText(parentActivity, "Bet cancelled", Toast.LENGTH_LONG).show();
 											} else {
 												Toast.makeText(parentActivity, "Can't cancel bet", Toast.LENGTH_LONG).show();
@@ -77,8 +77,8 @@ public class CurrentBetsViewDialog {
 		});
 	}
 
-	private void showBetsList(final BusinessService smkService, final ListView betsList) throws IOException {
-		smkService.currentBets(new Callback<List<Bet>>() {
+	private void showBetsList(final ListView betsList) throws IOException {
+		BusinessService.currentBets(new Callback<List<Bet>>() {
 			@Override
 			public void action(final List<Bet> response) {
 				parentActivity.runOnUiThread(new Runnable() { public void run() {

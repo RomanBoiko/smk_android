@@ -21,10 +21,9 @@ public class Bet {
 	public final Date createdDate;
 	private String marketName;
 	private String contractName;
-	private final BusinessService smkService;
 
 	public Bet(BetType type, Long marketId, Long contractId, UUID betId, BigDecimal quantity, BigDecimal price,
-			Date createdDate, BusinessService smkService) {
+			Date createdDate) {
 		this.type = type;
 		this.marketId = marketId;
 		this.contractId = contractId;
@@ -32,14 +31,13 @@ public class Bet {
 		this.quantity = quantity;
 		this.price = price;
 		this.createdDate = createdDate;
-		this.smkService = smkService;
 	}
 
 
 	public String marketName() {
 		if (null == marketName) {
 			try {
-				marketName = smkService.marketNameForId(marketId);
+				marketName = BusinessService.marketNameForId(marketId);
 			} catch (Exception e) {
 				e.printStackTrace();
 				marketName = "MarketNameError";
@@ -51,7 +49,7 @@ public class Bet {
 	public String contractName() {
 		if (null == contractName) {
 			try {
-				contractName = smkService.contractNameForId(contractId);
+				contractName = BusinessService.contractNameForId(contractId);
 			} catch (Exception e) {
 				e.printStackTrace();
 				contractName = "ContractNameError";
@@ -61,7 +59,7 @@ public class Bet {
 	}
 
 	public void cancel(final Callback<Boolean> action) throws IOException {
-		this.smkService.cancelBet(this, action);
+		BusinessService.cancelBet(this, action);
 	}
 
 	public String toString() {

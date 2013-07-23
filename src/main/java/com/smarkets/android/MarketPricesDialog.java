@@ -13,10 +13,8 @@ public class MarketPricesDialog {
 
 	private final Dialog placeBetDialog;
 	private final Activity parentActivity;
-	private final BusinessService smkService;
 
-	public MarketPricesDialog(Activity parentActivity, BusinessService smkService) {
-		this.smkService = smkService;
+	public MarketPricesDialog(Activity parentActivity) {
 		this.parentActivity = parentActivity;
 		placeBetDialog = new AlertDialog.Builder(parentActivity)
 				.setView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_market_prices, null))
@@ -29,14 +27,14 @@ public class MarketPricesDialog {
 
 	public void showDialog(SmkMarket market) {
 		try {
-			MarketPricesDialog.this.smkService.currentPricesForMarket(Long.parseLong(market.id), new BusinessService.Callback<String>(){
-						@Override
-						public void action(final String response) {
-							MarketPricesDialog.this.parentActivity.runOnUiThread(new Runnable() { public void run() {
-								((TextView) placeBetDialog.findViewById(R.id.marketQuotes)).setText(response);
-							}});
-						}
-					});
+			BusinessService.currentPricesForMarket(Long.parseLong(market.id), new BusinessService.Callback<String>(){
+				@Override
+				public void action(final String response) {
+					MarketPricesDialog.this.parentActivity.runOnUiThread(new Runnable() { public void run() {
+						((TextView) placeBetDialog.findViewById(R.id.marketQuotes)).setText(response);
+					}});
+				}
+			});
 		} catch (Exception e) {
 			Toast.makeText(MarketPricesDialog.this.parentActivity, "Market prices error: " + e.getMessage(), Toast.LENGTH_LONG).show();
 		}
