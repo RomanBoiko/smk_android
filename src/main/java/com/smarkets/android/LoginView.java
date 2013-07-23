@@ -33,7 +33,7 @@ public class LoginView {
 		parentActivity.setContentView(R.layout.login);
 		final EditText txtUserName = (EditText) parentActivity.findViewById(R.id.txtUname);
 		final EditText txtPassword = (EditText) parentActivity.findViewById(R.id.txtPwd);
-		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "jason.trost@smarkets.com");
+		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "hunter.morris@smarkets.com");
 		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "");
 		txtUserName.setText(retrievedLogin);
 		txtPassword.setText(retrievedPassword);
