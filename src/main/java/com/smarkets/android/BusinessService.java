@@ -23,18 +23,12 @@ import com.smarkets.android.services.seto.StreamingCallback;
 
 public class BusinessService {
 	private final SmkConfig config;
-	private final StreamingApiRequestsFactory requestFactory;
-	private final StreamingApiClient apiClient;
+	private StreamingApiRequestsFactory requestFactory;
+	private StreamingApiClient apiClient;
 	private boolean loggedIn = false;
 
 	public BusinessService() throws IOException {
 		this.config = new SmkConfig();
-		this.requestFactory = new StreamingApiRequestsFactory();
-		this.apiClient = new StreamingApiClient(
-			config.smkStreamingApiHost(),
-			config.smkStreamingApiPort(),
-			config.smkStreamingApiSslEnabled(),
-			requestFactory);
 	}
 	
 	public interface Callback<T> {
@@ -42,6 +36,12 @@ public class BusinessService {
 	}
 
 	public void login(String username, String password, final Callback<LoginResult> action) throws IOException {
+		this.requestFactory = new StreamingApiRequestsFactory();
+		this.apiClient = new StreamingApiClient(
+				config.smkStreamingApiHost(),
+				config.smkStreamingApiPort(),
+				config.smkStreamingApiSslEnabled(),
+				requestFactory);
 		apiClient.request(requestFactory.loginRequest(username, password), new StreamingCallback() {
 			@Override
 			public void process(Payload response) {

@@ -53,7 +53,7 @@ public class LoginView {
 						editor.commit();
 						Log.i(LOG_TAG, String.format("Login/password saved to cache: %s/%s", login, password));
 						
-						smkService.login(login, password, new BusinessService.Callback<LoginResult>(){
+						smkService.login(login.trim(), password.trim(), new BusinessService.Callback<LoginResult>(){
 							@Override
 							public void action(final LoginResult response) {
 								parentActivity.runOnUiThread(new Runnable() { public void run() {
