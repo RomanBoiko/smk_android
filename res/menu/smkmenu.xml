@@ -1,4 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/account" android:title="Account" />
-	<item android:id="@+id/currentBets" android:title="My Bets" />
+	<item android:id="@+id/account" android:title="Account" android:icon="@drawable/ic_menu_account_list"/>
+	<item android:id="@+id/currentBets" android:title="My Bets" android:icon="@drawable/ic_menu_myplaces"/>
 </menu>
