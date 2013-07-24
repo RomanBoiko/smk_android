@@ -11,6 +11,6 @@ public class LongRunningActionAlert {
 	}
 
 	public void show(){
-		Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+		Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
 	}
 }

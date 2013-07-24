@@ -26,12 +26,9 @@ public class CurrentBetsViewDialog {
 
 	public CurrentBetsViewDialog(Activity parentActivity) {
 		this.parentActivity = parentActivity;
-		currentBetsDialog = new AlertDialog.Builder(parentActivity)
-				.setView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_current_bets, null))
-				.setTitle("My Current Bets")
-				.setPositiveButton("Hide", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {}
-				}).create();
+		currentBetsDialog = new Dialog(parentActivity);
+		currentBetsDialog.setContentView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_current_bets, null));
+		currentBetsDialog.setTitle("Loading my current bets...");
 		currentBetsDialog.show();
 	}
 
@@ -82,6 +79,7 @@ public class CurrentBetsViewDialog {
 			@Override
 			public void action(final List<Bet> response) {
 				parentActivity.runOnUiThread(new Runnable() { public void run() {
+					currentBetsDialog.setTitle("My current bets");
 					betsList.setAdapter(betsSourceAdapter(response));
 				}});
 			}

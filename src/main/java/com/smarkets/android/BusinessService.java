@@ -156,14 +156,19 @@ public class BusinessService {
 				StringBuffer marketQuotes = new StringBuffer();
 				if(response.getType().equals(SmarketsSetoPiqi.PayloadType.PAYLOAD_MARKET_QUOTES)) {
 					for (SmarketsSetoPiqi.ContractQuotes contractQuotes : response.getMarketQuotes().getContractQuotesList()) {
-						marketQuotes.append("Contract "+contractQuotes.getContract().getLow() +"[");
-						marketQuotes.append("Bids {");
-						for (SmarketsSetoPiqi.Quote bid : contractQuotes.getBidsList()) {
-							marketQuotes.append(smkQuantity(bid.getQuantity()) + "(" + smkPrice(bid.getPrice()) + ")%");
+						try {
+							marketQuotes.append("Contract "+BusinessService.contractNameForId(contractQuotes.getContract().getLow()) +"[\n");
+						} catch (Exception e) {
+							e.printStackTrace();
+							marketQuotes.append("Contract " + contractQuotes.getContract().getLow() + "[\n");
 						}
-						marketQuotes.append("}, Offers {");
+						marketQuotes.append(" Bids {\n");
+						for (SmarketsSetoPiqi.Quote bid : contractQuotes.getBidsList()) {
+							marketQuotes.append("  " + smkQuantity(bid.getQuantity()) + "(" + smkPrice(bid.getPrice()) + ")%\n");
+						}
+						marketQuotes.append("}\n Offers {\n");
 						for (SmarketsSetoPiqi.Quote offer : contractQuotes.getOffersList()) {
-							marketQuotes.append(smkQuantity(offer.getQuantity()) + "(" + smkPrice(offer.getPrice()) + ")%");
+							marketQuotes.append(smkQuantity(offer.getQuantity()) + "(" + smkPrice(offer.getPrice()) + ")%\n");
 						}
 						marketQuotes.append("}]\n");
 					}

@@ -38,8 +38,8 @@ public class LoginActivity extends Activity {
 		this.setContentView(R.layout.login);
 		final EditText txtUserName = (EditText) this.findViewById(R.id.txtUname);
 		final EditText txtPassword = (EditText) this.findViewById(R.id.txtPwd);
-		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "hunter.morris@smarkets.com");
-		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "abc,123");
+		String retrievedLogin = credentialsCache.getString(LOGIN_PROPERTY, "jason.trost@smarkets.com");
+		String retrievedPassword = credentialsCache.getString(PASSWORD_PROPERTY, "");
 		txtUserName.setText(retrievedLogin);
 		txtPassword.setText(retrievedPassword);
 		Log.i(LOG_TAG, String.format("Login/password from cache: %s/%s", retrievedLogin, retrievedPassword));
@@ -85,27 +85,6 @@ public class LoginActivity extends Activity {
 				}
 			}
 		});
-	}
-
-
-	public void logout() {
-		Log.i(LOG_TAG, "onStop");
-		try {
-			BusinessService.logout(new BusinessService.Callback<Boolean>(){
-				@Override
-				public void action(final Boolean response) {
-					LoginActivity.this.runOnUiThread(new Runnable() { public void run() {
-						if (response) {
-							Log.i(LOG_TAG, "Logout successful");
-						} else {
-							Log.e(LOG_TAG, "Logout Failed");
-						}
-					}});
-				}
-			});
-		} catch (IOException e) {
-			Log.e(LOG_TAG, "logoutError: " + e.getMessage());
-		}
 	}
 
 	@Override

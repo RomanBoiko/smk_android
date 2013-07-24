@@ -1,9 +1,7 @@
 package com.smarkets.android;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,12 +14,9 @@ public class MarketPricesDialog {
 
 	public MarketPricesDialog(Activity parentActivity) {
 		this.parentActivity = parentActivity;
-		placeBetDialog = new AlertDialog.Builder(parentActivity)
-				.setView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_market_prices, null))
-				.setTitle("Market prices")
-				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) { }
-				}).create();
+		placeBetDialog = new Dialog(parentActivity);
+		placeBetDialog.setContentView(parentActivity.getLayoutInflater().inflate(R.layout.dialog_market_prices, null));
+		placeBetDialog.setTitle("Loading market prices...");
 		placeBetDialog.show();
 	}
 
@@ -31,6 +26,7 @@ public class MarketPricesDialog {
 				@Override
 				public void action(final String response) {
 					MarketPricesDialog.this.parentActivity.runOnUiThread(new Runnable() { public void run() {
+						placeBetDialog.setTitle("Market prices");
 						((TextView) placeBetDialog.findViewById(R.id.marketQuotes)).setText(response);
 					}});
 				}
