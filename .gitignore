@@ -2,3 +2,11 @@
 .project
 .settings
 target/*
+## Emacs mess
+*~
+\#*\#
+TAGS
+*flymake*
+## VIM cruft
+*.swp
+tags
