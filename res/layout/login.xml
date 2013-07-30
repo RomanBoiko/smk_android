@@ -8,36 +8,37 @@
 		android:layout_height="wrap_content" android:layout_centerInParent="true"
 		android:src="@drawable/smarkets_logo_onblack" />
 
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:layout_centerInParent="true"
-		android:stretchColumns="0" android:padding="25dp">
-		<TableRow>
-			<EditText android:text="" android:id="@+id/txtUname"
-				android:layout_width="fill_parent" android:layout_height="wrap_content"
-				android:layout_margin="2dp"
-				android:textColor="#505050"
-				android:background="@drawable/square_input">
-			</EditText>
-		</TableRow>
-		<TableRow>
-			<EditText android:text="" android:id="@+id/txtPwd"
-				android:layout_width="fill_parent" android:layout_height="wrap_content"
-				android:layout_margin="2dp"
-				android:password="true"
-				android:textColor="#505050"
-				android:background="@drawable/square_input">
-			</EditText>
-		</TableRow>
-		<TableRow>
-			<Button android:text="Log In" android:id="@+id/btnLogin"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="2dp"
-				android:textColor="#ffffff"
-				android:background="@drawable/square_button">
-			</Button>
-		</TableRow>
-	</TableLayout>
+		android:paddingLeft="30dp" android:paddingRight="30dp"
+		android:paddingBottom="55dp" android:paddingTop="40dp"
+		android:background="@color/smarkets_overlay_transparent">
+		<EditText android:text="" android:id="@+id/txtUname"
+			android:inputType="textEmailAddress|textNoSuggestions"
+			android:scrollHorizontally="true"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textColor="@color/smarkets_text_grey"
+			android:background="@drawable/square_input"
+			android:layout_marginBottom="15dp"
+			android:padding="4dp">
+		</EditText>
+		<EditText android:text="" android:id="@+id/txtPwd"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:password="true"
+			android:singleLine="true"
+			android:textColor="@color/smarkets_text_grey"
+			android:background="@drawable/square_input"
+			android:layout_marginBottom="15dp"
+			android:padding="4dp">
+		</EditText>
+		<Button android:text="Log In" android:id="@+id/btnLogin"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:background="@drawable/square_button">
+		</Button>
+	</LinearLayout>
 </RelativeLayout>

@@ -2,4 +2,8 @@
 <resources>
     <color name="smarkets_background_green">#00211f</color>
     <color name="smarkets_brand_green">#00ae74</color>
+    <color name="smarkets_text_grey">#555555</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="smarkets_overlay_transparent">#50000000</color>
 </resources>

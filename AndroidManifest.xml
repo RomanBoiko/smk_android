@@ -16,7 +16,8 @@
 		</activity>
 
 		<activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"
-			android:name=".LoginActivity" android:configChanges="keyboardHidden|orientation">
+			android:name=".LoginActivity" android:configChanges="keyboardHidden|orientation"
+			android:windowSoftInputMode="adjustResize">
 		</activity>
 
 		<activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"
