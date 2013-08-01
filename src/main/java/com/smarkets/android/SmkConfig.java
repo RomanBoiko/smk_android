@@ -15,9 +15,9 @@ public class SmkConfig {
 //	public final Boolean smkStreamingApiSslEnabled() { return true; }
 
 	//==========LOCAL VARGANT=======
-//	public final String smkRestApiRoot = "http://vagrant-dev.corp.smarkets.com:8007";
-//	public final String smkStreamingApiHost = "vagrant-dev.corp.smarkets.com";
-//	public final Integer smkStreamingApiPort = 3700;
-//	public final Boolean smkStreamingApiSslEnabled = false;
+//	public final String smkRestApiRoot() { return "http://vagrant-dev.corp.smarkets.com:8007"; }
+//	public final String smkStreamingApiHost() { return "vagrant-dev.corp.smarkets.com"; }
+//	public final Integer smkStreamingApiPort() { return 3700; }
+//	public final Boolean smkStreamingApiSslEnabled() { return false; }
 
 }
