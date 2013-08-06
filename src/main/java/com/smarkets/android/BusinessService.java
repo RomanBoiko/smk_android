@@ -17,14 +17,14 @@ import com.smarkets.android.domain.actionresults.LoginResult;
 import com.smarkets.android.domain.actionresults.PlaceBetResult;
 import com.smarkets.android.services.rest.RestApiClient;
 import com.smarkets.android.services.seto.SetoUuid;
-import com.smarkets.android.services.seto.StreamingApiClient;
+import com.smarkets.android.services.seto.StreamingApiClient2;
 import com.smarkets.android.services.seto.StreamingApiRequestsFactory;
 import com.smarkets.android.services.seto.StreamingCallback;
 
 public class BusinessService {
 	private static final SmkConfig config;
 	private static StreamingApiRequestsFactory requestFactory;
-	private static StreamingApiClient apiClient;
+	private static StreamingApiClient2 apiClient;
 	private static boolean loggedIn = false;
 
 	static {
@@ -37,7 +37,7 @@ public class BusinessService {
 
 	public static void login(String username, String password, final Callback<LoginResult> action) throws IOException {
 		requestFactory = new StreamingApiRequestsFactory();
-		apiClient = new StreamingApiClient(
+		apiClient = new StreamingApiClient2(
 				config.smkStreamingApiHost(),
 				config.smkStreamingApiPort(),
 				config.smkStreamingApiSslEnabled(),
